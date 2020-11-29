@@ -1,0 +1,9 @@
+D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\bin\Debug\netcoreapp3.1\MyBoutique.Mappings.deps.json
+D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\bin\Debug\netcoreapp3.1\MyBoutique.Mappings.dll
+D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\bin\Debug\netcoreapp3.1\MyBoutique.Mappings.pdb
+D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.csprojAssemblyReference.cache
+D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.AssemblyInfoInputs.cache
+D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.AssemblyInfo.cs
+D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.csproj.CoreCompileInputs.cache
+D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.dll
+D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.pdb

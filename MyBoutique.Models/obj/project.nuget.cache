@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "PtserV5ApoSD11E+xQ2h3a+Yt23FOnKCUOtYHIfK673uDv6e+wGJkIXjmxhAkjotzKjmYBxkQiuqbBQatc2/WQ==",
+  "success": true,
+  "projectFilePath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\malek\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

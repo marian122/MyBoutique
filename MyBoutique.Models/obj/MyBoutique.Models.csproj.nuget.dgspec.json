@@ -1,0 +1,122 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj": {}
+  },
+  "projects": {
+    "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\MyBoutique.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\MyBoutique.Common.csproj",
+        "projectName": "MyBoutique.Common",
+        "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\MyBoutique.Common.csproj",
+        "packagesPath": "C:\\Users\\malek\\.nuget\\packages\\",
+        "outputPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\malek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj",
+        "projectName": "MyBoutique.Models",
+        "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj",
+        "packagesPath": "C:\\Users\\malek\\.nuget\\packages\\",
+        "outputPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\malek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\MyBoutique.Common.csproj": {
+                "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\MyBoutique.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\bin\Debug\netcoreapp3.1\MyBoutique.Common.dll
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\bin\Debug\netcoreapp3.1\MyBoutique.Models.dll
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\obj\Debug\netcoreapp3.1\MyBoutique.Data.csprojAssemblyReference.cache
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\obj\Debug\netcoreapp3.1\MyBoutique.Data.AssemblyInfoInputs.cache
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\obj\Debug\netcoreapp3.1\MyBoutique.Data.AssemblyInfo.cs
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\bin\Debug\netcoreapp3.1\MyBoutique.Data.deps.json
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\bin\Debug\netcoreapp3.1\MyBoutique.Data.runtimeconfig.json
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\bin\Debug\netcoreapp3.1\MyBoutique.Data.runtimeconfig.dev.json
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\bin\Debug\netcoreapp3.1\MyBoutique.Data.dll
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\bin\Debug\netcoreapp3.1\MyBoutique.Data.pdb
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\bin\Debug\netcoreapp3.1\MyBoutique.Models.pdb
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\bin\Debug\netcoreapp3.1\MyBoutique.Common.pdb
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\obj\Debug\netcoreapp3.1\MyBoutique.Data.csproj.CoreCompileInputs.cache
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\obj\Debug\netcoreapp3.1\MyBoutique.Data.csproj.CopyComplete
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\obj\Debug\netcoreapp3.1\MyBoutique.Data.dll
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\obj\Debug\netcoreapp3.1\MyBoutique.Data.pdb
+D:\Code\Boutique\MyBoutique\MyBoutique.Data\obj\Debug\netcoreapp3.1\MyBoutique.Data.genruntimeconfig.cache

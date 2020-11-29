@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Qaa0Fqo18ljN1SraUaUPw9pPxZ44wikkSx5y+d6RiSM5ZlZIfT1Lp1/9r3fVhOdzNA4N8VXxANRa9QzMPv2TWQ==",
+  "success": true,
+  "projectFilePath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\malek\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\malek\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\malek\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
