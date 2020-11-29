@@ -9,12 +9,12 @@ namespace MyBoutique.Models
     {
         public string Name { get; set; }
 
-        public string Type { get; set; }
+        public CategoryType CategoryType { get; set; }
 
         public string Description { get; set; }
 
         public decimal Price { get; set; }
 
-        //Another prop for pic add later.
+        //Collection of pics
     }
 }
