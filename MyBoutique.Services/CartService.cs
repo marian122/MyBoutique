@@ -33,5 +33,7 @@ namespace MyBoutique.Services
             .Where(x => x.Id == id && x.IsDeleted == false)
             .To<TViewModel>()
             .FirstOrDefaultAsync();
+
+        // TODO: Implement to display orders only for current session id.
     }
 }

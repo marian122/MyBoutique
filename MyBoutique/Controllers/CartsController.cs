@@ -28,6 +28,8 @@ namespace MyBoutique.Controllers
             return this.Ok(result);
         }
 
+        // TODO: Implement to display orders only for current session id.
+
         // GET api/<CartsController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
