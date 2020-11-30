@@ -13,6 +13,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyBoutique.Common.Repositories;
 using MyBoutique.Data.Repositories;
+using MyBoutique.Services;
+using MyBoutique.Mappings;
+using MyBoutique.ViewModels;
+using System.Reflection;
+using MyBoutique.ViewModels.Collections;
 
 namespace MyBoutique
 {
@@ -65,11 +70,23 @@ namespace MyBoutique
 
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<ICartService, CartService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            AutoMapperConfig.RegisterMappings(
+                typeof(ProductViewModel).GetTypeInfo().Assembly,
+                typeof(OrderViewModel).GetTypeInfo().Assembly,
+                typeof(CartViewModel).GetTypeInfo().Assembly,
+                typeof(OrdersViewModel).GetTypeInfo().Assembly,
+                typeof(ProductsViewModel).GetTypeInfo().Assembly);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
