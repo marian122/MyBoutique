@@ -1,0 +1,31 @@
+footer {
+        padding-top: 30px;
+        background-color:rgb(64, 98, 160);
+        color: #bbb;
+        font-family: Lato;
+        font-size: 19px;
+        font-style: normal;
+        font-variant: small-caps;
+        font-weight: 100;
+        line-height: 24px;
+        text-decoration: none;
+        margin-bottom: 0;
+    }
+    
+    footer .form-control {
+        box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+        border: none;
+        resize: none;
+        padding: 0.7em 1em;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+        ul > li > a {
+            font-size: 19px;
+            color: white;
+            text-decoration: none;
+            line-height: 1.8;
+        }

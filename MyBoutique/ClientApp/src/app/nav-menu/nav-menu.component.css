@@ -4,14 +4,38 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+
+ul>li{
+  margin: 20px;
+}
+
+.navbar{
+  background-color:rgb(64, 98, 160);
+  font-family: Lato;
+  font-size: 19px;
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 100;
+  line-height: 24px;
+  text-decoration: none;
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+}
+
 html {
   font-size: 14px;
 }
 @media (min-width: 768px) {
-  html {
+  html {  
     font-size: 16px;
   }
+  
+  .navbar{
+    height: 100px;
+  }
 }
+
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
