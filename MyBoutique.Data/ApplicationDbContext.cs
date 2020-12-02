@@ -31,6 +31,8 @@ namespace MyBoutique.Data
 
         public DbSet<Model> Models { get; set; }
 
+        public DbSet<OrderData> OrderDatas { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
