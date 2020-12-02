@@ -1,0 +1,50 @@
+<footer class="footer text-white">
+  <div id="footerColor" class="container">
+      <div class="row">
+          <div class="col-md-4 mb-3 text-center">
+              <h5>Някъв текст за магазина</h5>
+              <div class="row">
+                  <ul>
+                    <li>Нещо яко за магазина</li>
+                  </ul>
+              </div>
+
+          </div>
+
+          <div class="col-md-5 mb-3 text-center">
+              <h5>Напишете отзив за бутика.</h5>
+              <form>
+                  <fieldset class="form-group">
+                      <input type="text" name="firstName" class="form-control" placeholder="Въведете име">
+                  </fieldset>
+                  <fieldset class="form-group">
+                      <input type="text" name="lastName" class="form-control" placeholder="Въведете фамилия">
+                  </fieldset>
+                  <fieldset class="form-group">
+                      <textarea type="text" name="message" class="form-control" placeholder="Вашето съобщение."></textarea>
+                  </fieldset>
+                  <fieldset class="form-group text-xs-right">
+                      <input type="submit" value="Изпрати" class="btn btn-light">
+                  </fieldset>
+              </form>
+          </div>
+
+          <div class="col-md-3 mb-3 text-center">
+              <h5>Контакти</h5>
+              <div class="row">
+                <ul>
+                  <li>
+                    някви контакти тука
+                  </li>
+              </ul>
+              </div>
+              
+              <a [routerLink]="['/']" class="navbar-brand">
+                <!-- Logo Image -->
+                <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
+                <!-- Logo Text -->
+              </a>
+          </div>
+      </div>
+  </div>
+</footer>
