@@ -1,12 +1,12 @@
 ﻿using MyBoutique.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace MyBoutique.Services.InputModels
+namespace MyBoutique.Infrastructures.InputModels
 {
     public class CreateProductInputModel
     {
         public int Id { get; set; }
-
+        
         [Required]
         [StringLength(80, MinimumLength = 4)]
         public string Name { get; set; }
