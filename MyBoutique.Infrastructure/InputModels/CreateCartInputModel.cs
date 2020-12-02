@@ -13,6 +13,6 @@ namespace MyBoutique.Infrastructure.InputModels
         [Range(typeof(decimal), "0", "79228162514264337593543950335")]
         public decimal TotalPrice { get; set; }
 
-        public OrderDataInputModel OrderData { get; set; }
+        public int OrderDataId { get; set; }
     }
 }
