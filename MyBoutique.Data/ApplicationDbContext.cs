@@ -25,6 +25,12 @@ namespace MyBoutique.Data
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet <CategoryType> Categories { get; set; }
+
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<Model> Models { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

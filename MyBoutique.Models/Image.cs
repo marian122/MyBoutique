@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MyBoutique.Common.BaseModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace MyBoutique.Models
 {
-    public class Image
+    public class Image : BaseDeletableModel<int>
     {
         [Required]
         [StringLength(80, MinimumLength = 4)]
