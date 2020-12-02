@@ -20,29 +20,29 @@ namespace MyBoutique.Controllers
             this.cartService = cartService;
         }
 
-        // GET: api/<CartsController>
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            var result = await this.cartService.GetAllOrdersAsync<OrderViewModel>();
-            return this.Ok(result);
-        }
+        //// GET: api/<CartsController>
+        //[HttpGet]
+        //public async Task<IActionResult> Get()
+        //{
+        //    //var result = await this.cartService.GetAllOrdersAsync<OrderViewModel>();
+        //    //return this.Ok(result);
+        //}
 
-        // TODO: Implement to display orders only for current session id.
+        //// TODO: Implement to display orders only for current session id.
 
-        // GET api/<CartsController>/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-            var order = await this.cartService.GetOrderByIdAsync<OrderViewModel>(id);
+        //// GET api/<CartsController>/5
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> Get(int id)
+        //{
+        //    //var order = await this.cartService.GetOrderByIdAsync<OrderViewModel>(id);
 
-            if (order != null)
-            {
-                return this.Ok(order);
-            }
+        //    //if (order != null)
+        //    //{
+        //    //    return this.Ok(order);
+        //    //}
 
-            return this.BadRequest($"Failed to load order with id={id} from db");
-        }
+        //    //return this.BadRequest($"Failed to load order with id={id} from db");
+        //}
 
     }
 }
