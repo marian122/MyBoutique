@@ -5,15 +5,17 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBoutique", "MyBoutique\MyBoutique.csproj", "{58D85715-89E1-4E19-A7CB-BAF3EBD1F08B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBoutique.Models", "MyBoutique.Models\MyBoutique.Models.csproj", "{9146723F-4833-40BD-B50C-BC0C5A21C1E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBoutique.Models", "MyBoutique.Models\MyBoutique.Models.csproj", "{9146723F-4833-40BD-B50C-BC0C5A21C1E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBoutique.Services", "MyBoutique.Services\MyBoutique.Services.csproj", "{E09FE5CC-A70F-4E29-A3B2-366CB0E299C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBoutique.Services", "MyBoutique.Services\MyBoutique.Services.csproj", "{E09FE5CC-A70F-4E29-A3B2-366CB0E299C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBoutique.Mappings", "MyBoutique.Mappings\MyBoutique.Mappings.csproj", "{DDCE32ED-9719-4F05-ABF6-61539BD6C7DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBoutique.Mappings", "MyBoutique.Mappings\MyBoutique.Mappings.csproj", "{DDCE32ED-9719-4F05-ABF6-61539BD6C7DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBoutique.Data", "MyBoutique.Data\MyBoutique.Data.csproj", "{4FEB592C-318C-4583-86EF-2F9BDEA3641A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBoutique.Data", "MyBoutique.Data\MyBoutique.Data.csproj", "{4FEB592C-318C-4583-86EF-2F9BDEA3641A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBoutique.Common", "MyBoutique.Common\MyBoutique.Common.csproj", "{70017006-AF50-4BF2-BCFA-46CB39371482}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBoutique.Common", "MyBoutique.Common\MyBoutique.Common.csproj", "{70017006-AF50-4BF2-BCFA-46CB39371482}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBoutique.Infrastructure", "MyBoutique.Infrastructure\MyBoutique.Infrastructure.csproj", "{19FB02CF-FC5A-4AFE-8AC9-16F07EA3C288}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{70017006-AF50-4BF2-BCFA-46CB39371482}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70017006-AF50-4BF2-BCFA-46CB39371482}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70017006-AF50-4BF2-BCFA-46CB39371482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19FB02CF-FC5A-4AFE-8AC9-16F07EA3C288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19FB02CF-FC5A-4AFE-8AC9-16F07EA3C288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19FB02CF-FC5A-4AFE-8AC9-16F07EA3C288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19FB02CF-FC5A-4AFE-8AC9-16F07EA3C288}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

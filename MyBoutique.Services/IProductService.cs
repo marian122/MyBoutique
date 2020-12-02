@@ -1,4 +1,4 @@
-﻿using MyBoutique.Services.InputModels;
+﻿using MyBoutique.Infrastructures.InputModels;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MyBoutique.Services.InputModels
+namespace MyBoutique.Infrastructures.InputModels
 {
     public class CreateOrderInputModel
     {
