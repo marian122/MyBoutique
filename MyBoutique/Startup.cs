@@ -18,6 +18,7 @@ using MyBoutique.Mappings;
 using MyBoutique.ViewModels;
 using System.Reflection;
 using MyBoutique.ViewModels.Collections;
+using System;
 
 namespace MyBoutique
 {
@@ -68,6 +69,12 @@ namespace MyBoutique
 
             services.AddSingleton(this.Configuration);
 
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(1);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
@@ -106,6 +113,8 @@ namespace MyBoutique
             }
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthentication();
             app.UseIdentityServer();
