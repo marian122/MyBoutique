@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyBoutique.Services;
-using MyBoutique.Services.InputModels;
 using MyBoutique.ViewModels;
 
 namespace MyBoutique.Controllers
