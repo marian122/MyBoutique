@@ -9,6 +9,7 @@
       "MyBoutique.Services/1.0.0": {
         "dependencies": {
           "MyBoutique.Data": "1.0.0",
+          "MyBoutique.Infrastructure": "1.0.0",
           "MyBoutique.Mappings": "1.0.0",
           "MyBoutique.Models": "1.0.0"
         },
@@ -1465,6 +1466,11 @@
           "MyBoutique.Data.dll": {}
         }
       },
+      "MyBoutique.Infrastructure/1.0.0": {
+        "runtime": {
+          "MyBoutique.Infrastructure.dll": {}
+        }
+      },
       "MyBoutique.Mappings/1.0.0": {
         "dependencies": {
           "AutoMapper": "9.0.0"
@@ -2356,6 +2362,11 @@
       "sha512": ""
     },
     "MyBoutique.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MyBoutique.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

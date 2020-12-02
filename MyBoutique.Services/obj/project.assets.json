@@ -1945,6 +1945,16 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "MyBoutique.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/MyBoutique.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyBoutique.Infrastructure.dll": {}
+        }
+      },
       "MyBoutique.Mappings/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -6795,6 +6805,11 @@
       "path": "../MyBoutique.Data/MyBoutique.Data.csproj",
       "msbuildProject": "../MyBoutique.Data/MyBoutique.Data.csproj"
     },
+    "MyBoutique.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../MyBoutique.Infrastructure/MyBoutique.Infrastructure.csproj",
+      "msbuildProject": "../MyBoutique.Infrastructure/MyBoutique.Infrastructure.csproj"
+    },
     "MyBoutique.Mappings/1.0.0": {
       "type": "project",
       "path": "../MyBoutique.Mappings/MyBoutique.Mappings.csproj",
@@ -6809,6 +6824,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "MyBoutique.Data >= 1.0.0",
+      "MyBoutique.Infrastructure >= 1.0.0",
       "MyBoutique.Mappings >= 1.0.0",
       "MyBoutique.Models >= 1.0.0"
     ]
@@ -6845,6 +6861,9 @@
           "projectReferences": {
             "C:\\repos\\MyBotique\\MyBoutique.Data\\MyBoutique.Data.csproj": {
               "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Data\\MyBoutique.Data.csproj"
+            },
+            "C:\\repos\\MyBotique\\MyBoutique.Infrastructure\\MyBoutique.Infrastructure.csproj": {
+              "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Infrastructure\\MyBoutique.Infrastructure.csproj"
             },
             "C:\\repos\\MyBotique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj": {
               "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj"

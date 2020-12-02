@@ -34,3 +34,5 @@ C:\repos\MyBotique\MyBoutique.Services\obj\Debug\netcoreapp3.1\MyBoutique.Servic
 C:\repos\MyBotique\MyBoutique.Services\obj\Debug\netcoreapp3.1\MyBoutique.Services.csproj.CopyComplete
 C:\repos\MyBotique\MyBoutique.Services\obj\Debug\netcoreapp3.1\MyBoutique.Services.dll
 C:\repos\MyBotique\MyBoutique.Services\obj\Debug\netcoreapp3.1\MyBoutique.Services.pdb
+C:\repos\MyBotique\MyBoutique.Services\bin\Debug\netcoreapp3.1\MyBoutique.Infrastructure.dll
+C:\repos\MyBotique\MyBoutique.Services\bin\Debug\netcoreapp3.1\MyBoutique.Infrastructure.pdb
