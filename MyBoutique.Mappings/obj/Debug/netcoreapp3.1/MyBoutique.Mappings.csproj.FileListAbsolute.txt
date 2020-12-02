@@ -7,3 +7,12 @@ D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutiq
 D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.csproj.CoreCompileInputs.cache
 D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.dll
 D:\Code\Boutique\MyBoutique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.pdb
+C:\repos\MyBotique\MyBoutique.Mappings\bin\Debug\netcoreapp3.1\MyBoutique.Mappings.deps.json
+C:\repos\MyBotique\MyBoutique.Mappings\bin\Debug\netcoreapp3.1\MyBoutique.Mappings.dll
+C:\repos\MyBotique\MyBoutique.Mappings\bin\Debug\netcoreapp3.1\MyBoutique.Mappings.pdb
+C:\repos\MyBotique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.csprojAssemblyReference.cache
+C:\repos\MyBotique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.AssemblyInfoInputs.cache
+C:\repos\MyBotique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.AssemblyInfo.cs
+C:\repos\MyBotique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.csproj.CoreCompileInputs.cache
+C:\repos\MyBotique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.dll
+C:\repos\MyBotique\MyBoutique.Mappings\obj\Debug\netcoreapp3.1\MyBoutique.Mappings.pdb

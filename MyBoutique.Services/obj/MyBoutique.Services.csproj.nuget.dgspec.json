@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Services\\MyBoutique.Services.csproj": {}
+    "C:\\repos\\MyBotique\\MyBoutique.Services\\MyBoutique.Services.csproj": {}
   },
   "projects": {
-    "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\MyBoutique.Common.csproj": {
+    "C:\\repos\\MyBotique\\MyBoutique.Common\\MyBoutique.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\MyBoutique.Common.csproj",
+        "projectUniqueName": "C:\\repos\\MyBotique\\MyBoutique.Common\\MyBoutique.Common.csproj",
         "projectName": "MyBoutique.Common",
-        "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\MyBoutique.Common.csproj",
-        "packagesPath": "C:\\Users\\malek\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\obj\\",
+        "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Common\\MyBoutique.Common.csproj",
+        "packagesPath": "C:\\Users\\Veselin Georgiew\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\MyBotique\\MyBoutique.Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\malek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Veselin Georgiew\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,21 +61,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Data\\MyBoutique.Data.csproj": {
+    "C:\\repos\\MyBotique\\MyBoutique.Data\\MyBoutique.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Data\\MyBoutique.Data.csproj",
+        "projectUniqueName": "C:\\repos\\MyBotique\\MyBoutique.Data\\MyBoutique.Data.csproj",
         "projectName": "MyBoutique.Data",
-        "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Data\\MyBoutique.Data.csproj",
-        "packagesPath": "C:\\Users\\malek\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Data\\obj\\",
+        "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Data\\MyBoutique.Data.csproj",
+        "packagesPath": "C:\\Users\\Veselin Georgiew\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\MyBotique\\MyBoutique.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\malek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Veselin Georgiew\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,8 +91,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj": {
-                "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj"
+              "C:\\repos\\MyBotique\\MyBoutique.Models\\MyBoutique.Models.csproj": {
+                "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Models\\MyBoutique.Models.csproj"
               }
             }
           }
@@ -167,21 +173,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj": {
+    "C:\\repos\\MyBotique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj",
+        "projectUniqueName": "C:\\repos\\MyBotique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj",
         "projectName": "MyBoutique.Mappings",
-        "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj",
-        "packagesPath": "C:\\Users\\malek\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Mappings\\obj\\",
+        "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj",
+        "packagesPath": "C:\\Users\\Veselin Georgiew\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\MyBotique\\MyBoutique.Mappings\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\malek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Veselin Georgiew\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -225,21 +234,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj": {
+    "C:\\repos\\MyBotique\\MyBoutique.Models\\MyBoutique.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj",
+        "projectUniqueName": "C:\\repos\\MyBotique\\MyBoutique.Models\\MyBoutique.Models.csproj",
         "projectName": "MyBoutique.Models",
-        "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj",
-        "packagesPath": "C:\\Users\\malek\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\obj\\",
+        "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Models\\MyBoutique.Models.csproj",
+        "packagesPath": "C:\\Users\\Veselin Georgiew\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\MyBotique\\MyBoutique.Models\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\malek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Veselin Georgiew\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -252,8 +264,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\MyBoutique.Common.csproj": {
-                "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Common\\MyBoutique.Common.csproj"
+              "C:\\repos\\MyBotique\\MyBoutique.Common\\MyBoutique.Common.csproj": {
+                "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Common\\MyBoutique.Common.csproj"
               }
             }
           }
@@ -281,21 +293,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Services\\MyBoutique.Services.csproj": {
+    "C:\\repos\\MyBotique\\MyBoutique.Services\\MyBoutique.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Services\\MyBoutique.Services.csproj",
+        "projectUniqueName": "C:\\repos\\MyBotique\\MyBoutique.Services\\MyBoutique.Services.csproj",
         "projectName": "MyBoutique.Services",
-        "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Services\\MyBoutique.Services.csproj",
-        "packagesPath": "C:\\Users\\malek\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Services\\obj\\",
+        "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Services\\MyBoutique.Services.csproj",
+        "packagesPath": "C:\\Users\\Veselin Georgiew\\.nuget\\packages\\",
+        "outputPath": "C:\\repos\\MyBotique\\MyBoutique.Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\malek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Veselin Georgiew\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -308,14 +323,14 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Data\\MyBoutique.Data.csproj": {
-                "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Data\\MyBoutique.Data.csproj"
+              "C:\\repos\\MyBotique\\MyBoutique.Data\\MyBoutique.Data.csproj": {
+                "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Data\\MyBoutique.Data.csproj"
               },
-              "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj": {
-                "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj"
+              "C:\\repos\\MyBotique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj": {
+                "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Mappings\\MyBoutique.Mappings.csproj"
               },
-              "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj": {
-                "projectPath": "D:\\Code\\Boutique\\MyBoutique\\MyBoutique.Models\\MyBoutique.Models.csproj"
+              "C:\\repos\\MyBotique\\MyBoutique.Models\\MyBoutique.Models.csproj": {
+                "projectPath": "C:\\repos\\MyBotique\\MyBoutique.Models\\MyBoutique.Models.csproj"
               }
             }
           }
@@ -346,7 +361,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

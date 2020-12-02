@@ -7,3 +7,12 @@ D:\Code\Boutique\MyBoutique\MyBoutique.Common\obj\Debug\netcoreapp3.1\MyBoutique
 D:\Code\Boutique\MyBoutique\MyBoutique.Common\obj\Debug\netcoreapp3.1\MyBoutique.Common.csproj.CoreCompileInputs.cache
 D:\Code\Boutique\MyBoutique\MyBoutique.Common\obj\Debug\netcoreapp3.1\MyBoutique.Common.dll
 D:\Code\Boutique\MyBoutique\MyBoutique.Common\obj\Debug\netcoreapp3.1\MyBoutique.Common.pdb
+C:\repos\MyBotique\MyBoutique.Common\bin\Debug\netcoreapp3.1\MyBoutique.Common.deps.json
+C:\repos\MyBotique\MyBoutique.Common\bin\Debug\netcoreapp3.1\MyBoutique.Common.dll
+C:\repos\MyBotique\MyBoutique.Common\bin\Debug\netcoreapp3.1\MyBoutique.Common.pdb
+C:\repos\MyBotique\MyBoutique.Common\obj\Debug\netcoreapp3.1\MyBoutique.Common.csprojAssemblyReference.cache
+C:\repos\MyBotique\MyBoutique.Common\obj\Debug\netcoreapp3.1\MyBoutique.Common.AssemblyInfoInputs.cache
+C:\repos\MyBotique\MyBoutique.Common\obj\Debug\netcoreapp3.1\MyBoutique.Common.AssemblyInfo.cs
+C:\repos\MyBotique\MyBoutique.Common\obj\Debug\netcoreapp3.1\MyBoutique.Common.csproj.CoreCompileInputs.cache
+C:\repos\MyBotique\MyBoutique.Common\obj\Debug\netcoreapp3.1\MyBoutique.Common.dll
+C:\repos\MyBotique\MyBoutique.Common\obj\Debug\netcoreapp3.1\MyBoutique.Common.pdb

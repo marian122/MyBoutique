@@ -1,13 +1,13 @@
-﻿using System;
+﻿using MyBoutique.Common.BaseModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MyBoutique.Models
 {
-    public enum CategoryType
+    public class CategoryType : BaseDeletableModel<int>
     {
-        Male = 0,
-        Female = 1,
-        Kid = 2
+        public string Name { get; set; }
+
     }
 }
