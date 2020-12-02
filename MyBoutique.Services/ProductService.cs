@@ -28,7 +28,8 @@ namespace MyBoutique.Services
                 Name = input.Name,
                 Description = input.Description,
                 Price = input.Price,
-                CategoryType = input.CategoryType,
+                CategoryTypeId = input.CategoryTypeId,
+                ModelId = input.ModelId,
                 CreatedOn = DateTime.Now,
                 IsDeleted = false
             };
