@@ -1,11 +1,12 @@
-﻿using MyBoutique.Common;
+﻿using Microsoft.EntityFrameworkCore;
+using MyBoutique.Common;
 using MyBoutique.Common.Repositories;
+using MyBoutique.Mappings;
 using MyBoutique.Models;
-using MyBoutique.Services.InputModels;
+using MyBoutique.Infrastructures.InputModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyBoutique.Services
@@ -35,6 +36,7 @@ namespace MyBoutique.Services
                     TotalPrice = product.Price * input.Quantity,
                     CreatedOn = DateTime.Now,
                     IsDeleted = false
+                    
                 };
 
                 this.ordersRepository.Add(order);
@@ -60,5 +62,19 @@ namespace MyBoutique.Services
 
             throw new InvalidOperationException(GlobalConstants.DeleteOrderError);
         }
+
+        public async Task<IEnumerable<TViewModel>> GetAllOrdersAsync<TViewModel>()
+            => await this.ordersRepository
+            .All()
+            .Where(x => x.IsDeleted == false)
+            .OrderBy(x => x.Quantity)
+            .To<TViewModel>()
+            .ToListAsync();
+
+        public async Task<TViewModel> GetOrderByIdAsync<TViewModel>(int id)
+            => await this.ordersRepository.All()
+            .Where(x => x.Id == id && x.IsDeleted == false)
+            .To<TViewModel>()
+            .FirstOrDefaultAsync();
     }
 }

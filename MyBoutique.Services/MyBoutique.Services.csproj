@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyBoutique.Data\MyBoutique.Data.csproj" />
+    <ProjectReference Include="..\MyBoutique.Infrastructure\MyBoutique.Infrastructure.csproj" />
     <ProjectReference Include="..\MyBoutique.Mappings\MyBoutique.Mappings.csproj" />
     <ProjectReference Include="..\MyBoutique.Models\MyBoutique.Models.csproj" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using MyBoutique.Services.InputModels;
+﻿using MyBoutique.Infrastructures.InputModels;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MyBoutique.Services
@@ -8,5 +9,9 @@ namespace MyBoutique.Services
         public Task<bool> CreateOrderAsync(CreateOrderInputModel input);
 
         public Task<bool> DeleteOrderAsync(int id);
+
+        public Task<IEnumerable<TViewModel>> GetAllOrdersAsync<TViewModel>();
+
+        public Task<TViewModel> GetOrderByIdAsync<TViewModel>(int id);
     }
 }

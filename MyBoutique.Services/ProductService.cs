@@ -1,7 +1,6 @@
 ﻿using MyBoutique.Common;
 using MyBoutique.Common.Repositories;
 using MyBoutique.Models;
-using MyBoutique.Services.InputModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyBoutique.Mappings;
 using Microsoft.EntityFrameworkCore;
+using MyBoutique.Infrastructures.InputModels;
 
 namespace MyBoutique.Services
 {
@@ -23,13 +23,19 @@ namespace MyBoutique.Services
 
         public async Task<bool> CreateProductAsync(CreateProductInputModel input)
         {
+
+            // Add CategorTypeCheck
+
             var product = new Product()
             {
                 Name = input.Name,
                 Description = input.Description,
                 Price = input.Price,
+<<<<<<< HEAD
                 CategoryTypeId = input.CategoryTypeId,
                 ModelId = input.ModelId,
+=======
+>>>>>>> 5373f863332b69189278a2c6fd4c60f7fb1e13b7
                 CreatedOn = DateTime.Now,
                 IsDeleted = false
             };
