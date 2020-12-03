@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyBoutique.Common;
 using MyBoutique.Common.Repositories;
 using MyBoutique.Infrastructure.InputModels;
 using MyBoutique.Mappings;
@@ -20,13 +21,22 @@ namespace MyBoutique.Services
         }
 
         public IEnumerable<TViewModel> AllOrders<TViewModel>()
-        {
-            throw new System.NotImplementedException();
-        }
+         =>  this.cartRepository.All()
+            .To<TViewModel>()
+            .ToList();
 
-        public Task<bool> DeleteOrderCartAsync<TViewModel>(int id)
+        public async Task<bool> DeleteOrderCartAsync<TViewModel>(int id)
         {
-            throw new System.NotImplementedException();
+            var order = this.cartRepository.All().FirstOrDefault(x => x.Id == id);
+
+            if (order != null)
+            {
+                this.cartRepository.Delete(order);
+                await this.cartRepository.SaveChangesAsync();
+                return true;
+            }
+
+            throw new InvalidOperationException(GlobalConstants.DeleteOrderError);
         }
 
         public async Task<int> MakeOrderCartAsync<TViewModel>(CreateCartInputModel inputModel)
