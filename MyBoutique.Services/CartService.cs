@@ -72,6 +72,12 @@ namespace MyBoutique.Services
            .To<TViewModel>()
            .FirstOrDefaultAsync();
 
+        public async Task<IEnumerable<TViewModel>> GetAllCartOrderBySessionId<TViewModel>(string id)
+          => await this.cartRepository.All()
+           .Where(x => x.SessionId == id && x.IsDeleted == false)
+           .To<TViewModel>()
+           .ToListAsync();
+
 
         // TODO: Implement to display orders only for current session id.
     }
