@@ -14,5 +14,7 @@ namespace MyBoutique.Infrastructure.InputModels
         public decimal TotalPrice { get; set; }
 
         public int OrderDataId { get; set; }
+
+        public string SessionId { get; set; }
     }
 }

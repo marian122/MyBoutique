@@ -39,6 +39,7 @@ namespace MyBoutique.Services
             throw new InvalidOperationException(GlobalConstants.DeleteOrderError);
         }
 
+
         public async Task<int> MakeOrderCartAsync<TViewModel>(CreateCartInputModel inputModel)
         {
             if (inputModel == null)
@@ -53,6 +54,7 @@ namespace MyBoutique.Services
                 TotalPrice = inputModel.TotalPrice,
                 CreatedOn = DateTime.UtcNow,
                 Orders = inputModel.Orders.AsQueryable().To<Order>().ToList(),
+                SessionId = inputModel.SessionId
             };
 
             this.cartRepository.Add(cart);
@@ -63,6 +65,13 @@ namespace MyBoutique.Services
 
 
         }
+
+        public async Task<TViewModel> GetOrderByIdAsynq<TViewModel>(int id)
+           => await this.cartRepository.All()
+           .Where(x => x.Id == id && x.IsDeleted == false)
+           .To<TViewModel>()
+           .FirstOrDefaultAsync();
+
 
         // TODO: Implement to display orders only for current session id.
     }

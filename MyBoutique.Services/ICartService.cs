@@ -10,6 +10,9 @@ namespace MyBoutique.Services
     {
         public Task<int> MakeOrderCartAsync<TViewModel>(CreateCartInputModel inputModel);
         public IEnumerable<TViewModel> AllOrders<TViewModel>();
+
+        public Task<TViewModel> GetOrderByIdAsynq<TViewModel>(int id);
+
         public Task<bool> DeleteOrderCartAsync<TViewModel>(int id);
 
     }
