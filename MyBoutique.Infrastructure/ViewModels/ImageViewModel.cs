@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MyBoutique.Mappings;
+using MyBoutique.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {
-    public class ImageViewModel
+    public class ImageViewModel : IMapFrom<Image>
     {
         public string Title { get; set; }
 

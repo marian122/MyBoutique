@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MyBoutique.Mappings;
+using MyBoutique.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {
-    public class ModelViewModel
+    public class ModelViewModel : IMapFrom<Model>, IMapTo<Model>
     {
         public string Size { get; set; }
 

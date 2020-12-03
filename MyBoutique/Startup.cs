@@ -19,6 +19,7 @@ using MyBoutique.Infrastructure.ViewModels;
 using System.Reflection;
 using MyBoutique.Infrastructure.ViewModels.Collections;
 using System;
+using AutoMapper;
 
 namespace MyBoutique
 {
@@ -51,6 +52,8 @@ namespace MyBoutique
                 options.Password.RequiredUniqueChars = 0;
 
             });
+
+            services.AddAutoMapper(typeof(OrderService).GetTypeInfo().Assembly);
 
             services.AddIdentityServer()
                 .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
@@ -96,7 +99,8 @@ namespace MyBoutique
                 typeof(OrderViewModel).GetTypeInfo().Assembly,
                 typeof(CartViewModel).GetTypeInfo().Assembly,
                 typeof(OrdersViewModel).GetTypeInfo().Assembly,
-                typeof(ProductsViewModel).GetTypeInfo().Assembly);
+                typeof(ProductsViewModel).GetTypeInfo().Assembly,
+                typeof(ImageViewModel).GetTypeInfo().Assembly);
 
             if (env.IsDevelopment())
             {

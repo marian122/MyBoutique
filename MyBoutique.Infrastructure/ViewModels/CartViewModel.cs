@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {
-    public class CartViewModel : IMapFrom<Cart>
+    public class CartViewModel : IMapFrom<Cart>, IMapTo<Cart>
     {
         public virtual ICollection<Order> Orders { get; set; }
 

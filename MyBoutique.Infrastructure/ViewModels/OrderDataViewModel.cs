@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {
-    public class OrderDataViewModel : IMapFrom<OrderData>
+    public class OrderDataViewModel : IMapFrom<OrderData>, IMapTo<OrderData>
     {
         public int Id { get; set; }
 

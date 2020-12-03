@@ -6,5 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyBoutique.Common\MyBoutique.Common.csproj" />
+    <ProjectReference Include="..\MyBoutique.Mappings\MyBoutique.Mappings.csproj" />
   </ItemGroup>
 </Project>

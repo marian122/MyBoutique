@@ -75,7 +75,7 @@ namespace MyBoutique.Services
                     .To<TViewModel>().ToListAsync();
         public async Task<TViewModel> GetModelByIdAsynq<TViewModel>(int id)
         {
-           var model = await this.repository.GetByIdAsync(id);
+            var model = await this.repository.GetByIdAsync(id);
 
             if (model == null)
             {
@@ -83,9 +83,10 @@ namespace MyBoutique.Services
                 //Add errMgs
             }
 
-            var conf = mapper.CreateMapper();
+              var conf = mapper.CreateMapper();
 
             return conf.Map<TViewModel>(model);
+         
         }
     }
 }
