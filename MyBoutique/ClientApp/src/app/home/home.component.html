@@ -2,43 +2,13 @@
     <h3 class="text-center">Разгледай нашите най-нови предложения</h3>
     <hr />
     <div class="row">
-        <div class="col-md-3">
+        <div *ngFor="let product of products | slice:0:4" class="col-md-3">
             <div class="card">
                 <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"
                     alt="Denim Jeans" style="width:100%">
-                <h3>Тъпа тениска</h3>
-                <p class="price">25.00 лв.</p>
-                <p>Малко текст за самия продукт</p>
-                <p><a class="btn btn-outline-dark" [routerLink]='["/details"]'>Виж повече</a></p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"
-                    alt="Denim Jeans" style="width:100%">
-                <h3>Тъпа тениска</h3>
-                <p class="price">25.00 лв.</p>
-                <p>Малко текст за самия продукт</p>
-                <p><a class="btn btn-outline-dark" [routerLink]='["/details"]'>Виж повече</a></p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"
-                    alt="Denim Jeans" style="width:100%">
-                <h3>Тъпа тениска</h3>
-                <p class="price">25.00 лв.</p>
-                <p>Малко текст за самия продукт</p>
-                <p><a class="btn btn-outline-dark" [routerLink]='["/details"]'>Виж повече</a></p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"
-                    alt="Denim Jeans" style="width:100%">
-                <h3>Тъпа тениска</h3>
-                <p class="price">25.00 лв.</p>
-                <p>Малко текст за самия продукт</p>
+                <h3>{{product.name}}</h3>
+                <p class="price">{{product.price}} лв.</p>
+                <p>{{product.description}}</p>
                 <p><a class="btn btn-outline-dark" [routerLink]='["/details"]'>Виж повече</a></p>
             </div>
         </div>
@@ -47,43 +17,13 @@
     <h3 class="text-center mt-5 mb-3">Горещи намаления</h3>
     <hr />
     <div class="row mb-5">
-        <div class="col-md-3">
+        <div *ngFor="let product of products | slice:0:4" class="col-md-3">
             <div class="card">
                 <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"
                     alt="Denim Jeans" style="width:100%">
-                <h3>Тъпа тениска</h3>
-                <p class="price">25.00 лв.</p>
-                <p>Малко текст за самия продукт</p>
-                <p><a class="btn btn-outline-dark" [routerLink]='["/details"]'>Виж повече</a></p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"
-                    alt="Denim Jeans" style="width:100%">
-                <h3>Тъпа тениска</h3>
-                <p class="price">25.00 лв.</p>
-                <p>Малко текст за самия продукт</p>
-                <p><a class="btn btn-outline-dark" [routerLink]='["/details"]'>Виж повече</a></p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"
-                    alt="Denim Jeans" style="width:100%">
-                <h3>Тъпа тениска</h3>
-                <p class="price">25.00 лв.</p>
-                <p>Малко текст за самия продукт</p>
-                <p><a class="btn btn-outline-dark" [routerLink]='["/details"]'>Виж повече</a></p>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"
-                    alt="Denim Jeans" style="width:100%">
-                <h3>Тъпа тениска</h3>
-                <p class="price">25.00 лв.</p>
-                <p>Малко текст за самия продукт</p>
+                <h3>{{product.name}}</h3>
+                <p class="price">{{product.price}} лв.</p>
+                <p>{{product.description}}</p>
                 <p><a class="btn btn-outline-dark" [routerLink]='["/details"]'>Виж повече</a></p>
             </div>
         </div>
