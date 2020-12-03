@@ -6,6 +6,9 @@ using System;
 using MyBoutique.Mappings;
 using System.Threading.Tasks;
 using AutoMapper;
+using System.Linq;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyBoutique.Services
 {
@@ -66,6 +69,10 @@ namespace MyBoutique.Services
             return true;
         }
 
+        public async Task<IEnumerable<TViewModel>> GetAllModelsAsync<TViewModel>()
+                  => await  this.repository.All()
+                    .OrderBy(x => x.CreatedOn)
+                    .To<TViewModel>().ToListAsync();
         public async Task<TViewModel> GetModelByIdAsynq<TViewModel>(int id)
         {
            var model = await this.repository.GetByIdAsync(id);

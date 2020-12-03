@@ -13,5 +13,7 @@ namespace MyBoutique.Services
 
         public Task<TViewModel> GetModelByIdAsynq<TViewModel>(int id);
 
+        public Task<IEnumerable<TViewModel>> GetAllModelsAsync<TViewModel>();
+
     }
 }
