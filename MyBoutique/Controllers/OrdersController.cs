@@ -25,13 +25,25 @@ namespace MyBoutique.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]CreateOrderInputModel input)
         {
-            var result = await this.orderService.CreateOrderAsync(input);
-
-            if (result)
+            if (this.ModelState.IsValid)
             {
-                return this.Ok(result);
-            }
+                try
+                {
+                    var result = await this.orderService.CreateOrderAsync(input);
 
+                    if (result)
+                    {
+                        return this.Ok(result);
+                    }
+
+                }
+                catch (Exception e)
+                {
+
+                    return this.BadRequest(e.Message);
+                }
+            }
+          
             return this.BadRequest("Failed to create order");
         }
 
@@ -47,6 +59,34 @@ namespace MyBoutique.Controllers
             }
 
             return this.BadRequest($"Failed to delete order.");
+        }
+
+        // GET api/<OrdersController>/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var order = await this.orderService.GetOrderByIdAsync<OrderViewModel>(id);
+
+            if (order != null)
+            {
+                return this.Ok(order);
+            }
+
+            return this.BadRequest($"Failed to load order with id={id} from db");
+        }
+
+        // GET: api/<OrderController>
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await this.orderService.GetAllOrdersAsync<OrderViewModel>();
+
+            if (result == null)
+            {
+                return this.NoContent();
+            }
+
+            return this.Ok(result);
         }
     }
 }
