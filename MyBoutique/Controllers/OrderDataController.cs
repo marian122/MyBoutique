@@ -74,12 +74,6 @@ namespace MyBoutique.Controllers
             return this.BadRequest("Failed to create data");
         }
 
-        // PUT api/<OrderDataController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
         // DELETE api/<OrderDataController>/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

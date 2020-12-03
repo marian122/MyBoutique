@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MyBoutique.Infrastructure.InputModels
 {
@@ -9,6 +6,6 @@ namespace MyBoutique.Infrastructure.InputModels
     {
         public string Title { get; set; }
 
-        public IFormFile File { get; set; }
+        public IFormFileCollection File { get; set; }
     }
 }
