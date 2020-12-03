@@ -36,7 +36,7 @@ namespace MyBoutique.Controllers
 
         // GET api/<CartsController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var order = await this.cartService.GetOrderByIdAsynq<OrderViewModel>(id);
 
@@ -63,7 +63,7 @@ namespace MyBoutique.Controllers
 
         // POST api/<CartsController>/
         [HttpPost]
-        public async Task<IActionResult> Post(CreateCartInputModel inputModel)
+        public async Task<IActionResult> Post([FromBody] CreateCartInputModel inputModel)
         {
 
             if (!this.ModelState.IsValid)

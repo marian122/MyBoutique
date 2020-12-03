@@ -31,7 +31,7 @@ namespace MyBoutique.Controllers
 
         // GET api/<ProductsController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> GetById(int id)
         {
             var product = await this.productService.GetByIdAsync<ProductViewModel>(id);
 
