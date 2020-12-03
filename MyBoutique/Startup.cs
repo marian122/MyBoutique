@@ -15,9 +15,9 @@ using MyBoutique.Common.Repositories;
 using MyBoutique.Data.Repositories;
 using MyBoutique.Services;
 using MyBoutique.Mappings;
-using MyBoutique.ViewModels;
+using MyBoutique.Infrastructure.ViewModels;
 using System.Reflection;
-using MyBoutique.ViewModels.Collections;
+using MyBoutique.Infrastructure.ViewModels.Collections;
 using System;
 
 namespace MyBoutique
@@ -81,6 +81,8 @@ namespace MyBoutique
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<ICartService, CartService>();
+            services.AddTransient<IOrderDataService, OrderDataService>();
+            services.AddTransient<IModelService, ModelService>();
 
         }
 

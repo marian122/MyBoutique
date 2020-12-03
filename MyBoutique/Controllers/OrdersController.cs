@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MyBoutique.Infrastructures.InputModels;
 using MyBoutique.Services;
-using MyBoutique.ViewModels;
+using MyBoutique.Infrastructure.ViewModels;
 
 namespace MyBoutique.Controllers
 {

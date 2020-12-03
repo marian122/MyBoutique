@@ -1,11 +1,13 @@
-﻿using System;
+﻿using MyBoutique.Mappings;
+using MyBoutique.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {
-    public class OrderDataViewModel
+    public class OrderDataViewModel : IMapFrom<OrderData>
     {
         public int Id { get; set; }
 

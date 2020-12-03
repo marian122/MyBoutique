@@ -1,7 +1,7 @@
 ﻿using MyBoutique.Mappings;
 using MyBoutique.Models;
 
-namespace MyBoutique.ViewModels
+namespace MyBoutique.Infrastructure.ViewModels
 {
     public class ProductViewModel : IMapFrom<Product>
     {

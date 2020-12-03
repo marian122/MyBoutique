@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyBoutique.Mappings\MyBoutique.Mappings.csproj" />
     <ProjectReference Include="..\MyBoutique.Models\MyBoutique.Models.csproj" />
   </ItemGroup>
 

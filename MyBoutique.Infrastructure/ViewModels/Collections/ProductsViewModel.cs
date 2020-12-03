@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MyBoutique.ViewModels.Collections
+namespace MyBoutique.Infrastructure.ViewModels.Collections
 {
     public class ProductsViewModel
     {
