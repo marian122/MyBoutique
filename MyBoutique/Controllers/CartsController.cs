@@ -34,8 +34,6 @@ namespace MyBoutique.Controllers
             return this.Ok(result);
         }
 
-        //// TODO: Implement to display orders only for current session id.
-
         // GET api/<CartsController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
@@ -50,8 +48,22 @@ namespace MyBoutique.Controllers
             return this.BadRequest($"Failed to load order with id={id} from db");
         }
 
-        [HttpPost()]
-        public async Task<IActionResult> Get(CreateCartInputModel inputModel)
+        [HttpGet("{sessionId}")]
+        public async Task<IActionResult> GetOrdersBySessionId(string sessionId)
+        {
+            var order = await this.cartService.GetAllCartOrderBySessionId<OrderViewModel>(sessionId);
+
+            if (order != null)
+            {
+                return this.Ok(order);
+            }
+
+            return this.BadRequest($"Failed to load order with sessionId={sessionId} from db");
+        }
+
+        // POST api/<CartsController>/
+        [HttpPost]
+        public async Task<IActionResult> Post(CreateCartInputModel inputModel)
         {
 
             if (!this.ModelState.IsValid)
