@@ -16,6 +16,11 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { FooterComponent } from './footer/footer.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MaleProductListComponent } from './male-product-list/male-product-list.component';
+import { FemaleProductListComponent } from './female-product-list/female-product-list.component';
+import { KidProductListComponent } from './kid-product-list/kid-product-list.component';
+import { DiscountProductListComponent } from './discount-product-list/discount-product-list.component';
+import { CreateProductComponent } from './create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CounterComponent,
     FetchDataComponent,
     FooterComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    MaleProductListComponent,
+    FemaleProductListComponent,
+    KidProductListComponent,
+    DiscountProductListComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,10 +43,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     ApiAuthorizationModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', redirectTo: 'products', pathMatch: 'full' },
+      { path: 'products', component: HomeComponent },
+      { path: 'products/:id', component: ProductDetailsComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-      { path: 'details', component: ProductDetailsComponent },
+      { path: 'male-products', component: MaleProductListComponent },
+      { path: 'female-products', component: FemaleProductListComponent },
+      { path: 'kid-products', component: KidProductListComponent },
+      { path: 'discount-products', component: DiscountProductListComponent },
+      { path: 'create-products', component: CreateProductComponent }
     ]),
     FontAwesomeModule,
     MDBBootstrapModule.forRoot()

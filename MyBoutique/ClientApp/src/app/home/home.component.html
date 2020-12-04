@@ -9,7 +9,7 @@
                 <h3>{{product.name}}</h3>
                 <p class="price">{{product.price}} лв.</p>
                 <p>{{product.description}}</p>
-                <p><a class="btn btn-outline-dark" [routerLink]='["/details"]'>Виж повече</a></p>
+                <p><a class="btn btn-outline-dark" [routerLink]='["/products",product.id]'>Виж повече</a></p>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
                 <h3>{{product.name}}</h3>
                 <p class="price">{{product.price}} лв.</p>
                 <p>{{product.description}}</p>
-                <p><a class="btn btn-outline-dark" [routerLink]='["/details"]'>Виж повече</a></p>
+                <p><a class="btn btn-outline-dark" [routerLink]='["/products",product.id]'>Виж повече</a></p>
             </div>
         </div>
     </div>

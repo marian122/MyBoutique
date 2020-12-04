@@ -34,7 +34,7 @@ namespace MyBoutique.Services
             var model = new Model()
             {
                 Size = inputModel.Size,
-                Color = inputModel.Size,
+                Color = inputModel.Color,
                 CreatedOn = DateTime.Now
             };
 

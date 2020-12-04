@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyBoutique.Data;
 
 namespace MyBoutique.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201204133256_categorychanged")]
+    partial class categorychanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -365,38 +367,6 @@ namespace MyBoutique.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("MyBoutique.Models.Color", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Color");
-                });
-
             modelBuilder.Entity("MyBoutique.Models.Image", b =>
                 {
                     b.Property<int>("Id")
@@ -597,6 +567,9 @@ namespace MyBoutique.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<int>("ModelId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
@@ -610,39 +583,9 @@ namespace MyBoutique.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ModelId");
+
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("MyBoutique.Models.Size", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Size");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -707,13 +650,6 @@ namespace MyBoutique.Data.Migrations
                     b.Navigation("OrderData");
                 });
 
-            modelBuilder.Entity("MyBoutique.Models.Color", b =>
-                {
-                    b.HasOne("MyBoutique.Models.Product", null)
-                        .WithMany("Colors")
-                        .HasForeignKey("ProductId");
-                });
-
             modelBuilder.Entity("MyBoutique.Models.Image", b =>
                 {
                     b.HasOne("MyBoutique.Models.Product", null)
@@ -736,11 +672,15 @@ namespace MyBoutique.Data.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("MyBoutique.Models.Size", b =>
+            modelBuilder.Entity("MyBoutique.Models.Product", b =>
                 {
-                    b.HasOne("MyBoutique.Models.Product", null)
-                        .WithMany("Sizes")
-                        .HasForeignKey("ProductId");
+                    b.HasOne("MyBoutique.Models.Model", "Model")
+                        .WithMany()
+                        .HasForeignKey("ModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Model");
                 });
 
             modelBuilder.Entity("MyBoutique.Models.Cart", b =>
@@ -750,11 +690,7 @@ namespace MyBoutique.Data.Migrations
 
             modelBuilder.Entity("MyBoutique.Models.Product", b =>
                 {
-                    b.Navigation("Colors");
-
                     b.Navigation("Photos");
-
-                    b.Navigation("Sizes");
                 });
 #pragma warning restore 612, 618
         }

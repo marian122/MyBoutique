@@ -23,7 +23,6 @@ namespace MyBoutique.Services
 
         public async Task<bool> CreateProductAsync(CreateProductInputModel input)
         {
-
             // Add CategorTypeCheck
 
             var product = new Product()
@@ -31,8 +30,10 @@ namespace MyBoutique.Services
                 Name = input.Name,
                 Description = input.Description,
                 Price = input.Price,
-                CategoryTypeId = input.CategoryTypeId,
-                ModelId = input.ModelId,
+                CategoryName = input.CategoryName,
+                CategoryType = input.CategoryType,
+                Sizes = input.Sizes,
+                Colors = input.Colors,
                 CreatedOn = DateTime.Now,
                 IsDeleted = false
             };

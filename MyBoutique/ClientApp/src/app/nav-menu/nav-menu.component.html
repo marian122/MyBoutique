@@ -8,17 +8,18 @@
       
       <div class="navbar-collapse collapse d-sm-inline-flex" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav">
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <a class="btn btn-light" [routerLink]='["/"]'>Начало</a>
          </li>
   
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['/']">Мъжки</a>
+          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-white" [routerLink]="['male-products']">Мъжки</a>
           </li>
   
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['/']">Женски</a>
+          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-white" [routerLink]="['female-products']">Женски</a>
           </li>
+          
         </ul>
       </div>
       
@@ -30,14 +31,14 @@
 
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav">
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['/']">Детски</a>
+          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-white" [routerLink]="['kid-products']">Детски</a>
           </li>
           
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['/']">Намаления</a>
+          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-white" [routerLink]="['discount-products']">Намаления</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <app-login-menu></app-login-menu>
           </li>
         </ul>

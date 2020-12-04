@@ -1,9 +1,10 @@
 export class Product {
-    id: number;
     name: string;
     description: string;
     price: number;
-    categoryTypeId: number;
-    modelId: number;
+    categoryName: string;
+    categoryType: string;
+    sizes: Array<string>;
+    colors: Array<string>;
     createdOn: Date;
 }

@@ -1,5 +1,6 @@
 ﻿using MyBoutique.Mappings;
 using MyBoutique.Models;
+using System.Collections.Generic;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {
@@ -11,7 +12,13 @@ namespace MyBoutique.Infrastructure.ViewModels
 
         public string Description { get; set; }
 
-        public CategoryType CategoryType { get; set; }
+        public string CategoryName { get; set; }
+
+        public string CategoryType { get; set; }
+
+        public ICollection<Size> Sizes { get; set; }
+
+        public ICollection<Color> Colors { get; set; }
 
         public decimal Price { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using MyBoutique.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyBoutique.Infrastructures.InputModels
@@ -20,14 +21,14 @@ namespace MyBoutique.Infrastructures.InputModels
         public decimal Price { get; set; }
 
         [Required]
-        public int CategoryTypeId { get; set; }
-
-        public CategoryType CategoryType { get; set; }
+        public string CategoryName { get; set; }
 
         [Required]
-        public int ModelId { get; set; }
+        public string CategoryType { get; set; }
 
-        public Model Model { get; set; }
+        public ICollection<Size> Sizes { get; set; }
+
+        public ICollection<Color> Colors { get; set; }
 
         //public ICollection<Image> Photos { get; set; }
     }

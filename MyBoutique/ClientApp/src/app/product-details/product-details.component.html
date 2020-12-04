@@ -38,29 +38,14 @@
         </div>
         <div class="col-md-6">
 
-            <h5>Тъпа тениска</h5>
-            <p class="mb-2 text-muted text-uppercase small">Тениски</p>
+            <h5>{{currentProduct.name}}</h5>
+            <p class="mb-2 text-muted text-uppercase small">{{currentProduct.categoryName}}</p>
 
-            <p><span class="mr-1"><strong>25.00 лв.</strong></span></p>
-            <p class="pt-1">Тениска 100% памук.
-
-                Производител Fruit of the Loom и Keya.
-
-                Технология директен печат върху текстил.
-
-                Два варианта - дамски втален модел и мъжки.
-
-                Името може да се промени с друго, по Ваше желание.
-
-                Напишете го в полето :КОМЕНТАР в поръчката.
-
-            </p>
+            <p><span class="mr-1"><strong>{{currentProduct.price}} лв.</strong></span></p>
+            <p class="pt-1">{{currentProduct.description}}</p>
             <div class="table-responsive">
                 <table class="table table-sm table-borderless mb-0">
                     <tbody>
-                        <tr>
-
-                        </tr>
                         <tr>
                             <th class="pl-0 w-25" scope="row"><strong>Доставка</strong></th>
                             <td>Еконт, Спиди</td>
@@ -75,12 +60,9 @@
                         <tr>
                             <td class="pl-0 pb-0" scope="row">Цвят</td>
                             <td class="pl-0">
-                                <div class="def-number-input number-input safari_only mb-0">
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>Черен</option>
-                                        <option>Бял</option>
-                                        <option>Червен</option>
-                                        <option>Син</option>
+                                <div  class="def-number-input number-input safari_only mb-0">
+                                    <select  class="form-control" id="exampleFormControlSelect1">
+                                        <option *ngFor="let color of currentProduct.colors">{{color.name}}</option>
                                     </select>
                                 </div>
                             </td>
@@ -102,37 +84,13 @@
                         </tr>
                         <tr>
                             <td class="pl-0 pb-0">Размер</td>
-                            <td class="pl-0">
+                            <td  class="pl-0">
                                 <div class="mt-1">
-                                    <div class="form-check form-check-inline pl-0">
+                                    <div *ngFor="let size of currentProduct.sizes" class="form-check form-check-inline pl-0">
                                         <input type="radio" class="form-check-input" id="large"
                                             name="materialExampleRadios">
                                         <label class="form-check-label small text-uppercase card-link-secondary"
-                                            for="large">XS</label>
-                                    </div>  
-                                    <div class="form-check form-check-inline pl-0">
-                                        <input type="radio" class="form-check-input" id="small"
-                                            name="materialExampleRadios" checked>
-                                        <label class="form-check-label small text-uppercase card-link-secondary"
-                                            for="small">S</label>
-                                    </div>
-                                    <div class="form-check form-check-inline pl-0">
-                                        <input type="radio" class="form-check-input" id="medium"
-                                            name="materialExampleRadios">
-                                        <label class="form-check-label small text-uppercase card-link-secondary"
-                                            for="medium">M</label>
-                                    </div>
-                                    <div class="form-check form-check-inline pl-0">
-                                        <input type="radio" class="form-check-input" id="large"
-                                            name="materialExampleRadios">
-                                        <label class="form-check-label small text-uppercase card-link-secondary"
-                                            for="large">L</label>
-                                    </div>
-                                    <div class="form-check form-check-inline pl-0">
-                                        <input type="radio" class="form-check-input" id="large"
-                                            name="materialExampleRadios">
-                                        <label class="form-check-label small text-uppercase card-link-secondary"
-                                            for="large">XL</label>
+                                            for="large">{{size.name}}</label>
                                     </div>
                                 </div>
                             </td>

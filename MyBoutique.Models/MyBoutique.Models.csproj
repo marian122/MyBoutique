@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Product.cs~RFb0a2837.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MyBoutique.Common\MyBoutique.Common.csproj" />
     <ProjectReference Include="..\MyBoutique.Mappings\MyBoutique.Mappings.csproj" />
   </ItemGroup>
