@@ -5,8 +5,10 @@ using System.Text;
 
 namespace MyBoutique.Models
 {
-    public class Color : BaseDeletableModel<int>
+    public class Color
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
     }
 }

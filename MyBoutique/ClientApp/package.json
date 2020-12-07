@@ -27,6 +27,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@nguniversal/module-map-ngfactory-loader": "8.2.6",
+    "@rxweb/reactive-form-validators": "^2.1.2",
     "@types/chart.js": "^2.9.28",
     "@types/jquery": "^3.5.4",
     "angular-bootstrap-md": "^10.1.1",

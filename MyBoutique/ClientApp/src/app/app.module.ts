@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -20,8 +21,7 @@ import { MaleProductListComponent } from './male-product-list/male-product-list.
 import { FemaleProductListComponent } from './female-product-list/female-product-list.component';
 import { KidProductListComponent } from './kid-product-list/kid-product-list.component';
 import { DiscountProductListComponent } from './discount-product-list/discount-product-list.component';
-import { CreateProductComponent } from './create-product/create-product.component';
-
+import { AddProductComponent } from './add-product/add-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,7 @@ import { CreateProductComponent } from './create-product/create-product.componen
     FemaleProductListComponent,
     KidProductListComponent,
     DiscountProductListComponent,
-    CreateProductComponent
+    AddProductComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -52,10 +52,12 @@ import { CreateProductComponent } from './create-product/create-product.componen
       { path: 'female-products', component: FemaleProductListComponent },
       { path: 'kid-products', component: KidProductListComponent },
       { path: 'discount-products', component: DiscountProductListComponent },
-      { path: 'create-products', component: CreateProductComponent }
+      { path: 'add-product', component: AddProductComponent }
     ]),
     FontAwesomeModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    ReactiveFormsModule,
+    RxReactiveFormsModule 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
