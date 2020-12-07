@@ -10,6 +10,7 @@ import { ProductsService } from '../services/products.service';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
+  selectedCategoryName: string = '';
   form: FormGroup;
   loading = false;
   submitted = false;
@@ -28,6 +29,10 @@ export class AddProductComponent implements OnInit {
       sizes: this.formBuilder.array([]),
       colors: this.formBuilder.array([]),
     });
+  }
+
+  selectCategoryName(event: any){
+    this.selectedCategoryName = event.target.value;
   }
   
   get sizes() : FormArray {

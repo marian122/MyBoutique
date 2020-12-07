@@ -22,6 +22,18 @@ import { FemaleProductListComponent } from './female-product-list/female-product
 import { KidProductListComponent } from './kid-product-list/kid-product-list.component';
 import { DiscountProductListComponent } from './discount-product-list/discount-product-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { UnderwearComponent } from './male-product-list/underwear/underwear.component';
+import { FemaleBlouseComponent } from './female-product-list/female-blouse/female-blouse.component';
+import { FemaleShirtComponent } from './female-product-list/female-shirt/female-shirt.component';
+import { FemaleUnionsuitComponent } from './female-product-list/female-unionsuit/female-unionsuit.component';
+import { FemaleJacketsComponent } from './female-product-list/female-jackets/female-jackets.component';
+import { FemaleCoatsComponent } from './female-product-list/female-coats/female-coats.component';
+import { FemaleSkirtsComponent } from './female-product-list/female-skirts/female-skirts.component';
+import { FemalePantsComponent } from './female-product-list/female-pants/female-pants.component';
+import { FemaleSingletsComponent } from './female-product-list/female-singlets/female-singlets.component';
+import { FemaleTunicsComponent } from './female-product-list/female-tunics/female-tunics.component';
+import { FemaleScarvesComponent } from './female-product-list/female-scarves/female-scarves.component';
+import { FemaleUnderwearComponent } from './female-product-list/female-underwear/female-underwear.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +47,19 @@ import { AddProductComponent } from './add-product/add-product.component';
     FemaleProductListComponent,
     KidProductListComponent,
     DiscountProductListComponent,
-    AddProductComponent
+    AddProductComponent,
+    UnderwearComponent,
+    FemaleBlouseComponent,
+    FemaleShirtComponent,
+    FemaleUnionsuitComponent,
+    FemaleJacketsComponent,
+    FemaleCoatsComponent,
+    FemaleSkirtsComponent,
+    FemalePantsComponent,
+    FemaleSingletsComponent,
+    FemaleTunicsComponent,
+    FemaleScarvesComponent,
+    FemaleUnderwearComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -52,7 +76,12 @@ import { AddProductComponent } from './add-product/add-product.component';
       { path: 'female-products', component: FemaleProductListComponent },
       { path: 'kid-products', component: KidProductListComponent },
       { path: 'discount-products', component: DiscountProductListComponent },
-      { path: 'add-product', component: AddProductComponent }
+      { path: 'add-product', component: AddProductComponent },
+      { path: 'male-products/underwear', component: UnderwearComponent },
+      { path: 'female-products/blouses', component: FemaleBlouseComponent },
+      { path: 'female-products/underwear', component: FemaleUnderwearComponent }
+
+
     ]),
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
