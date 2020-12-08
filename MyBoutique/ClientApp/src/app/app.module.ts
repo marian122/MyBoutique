@@ -20,7 +20,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaleProductListComponent } from './male-product-list/male-product-list.component';
 import { FemaleProductListComponent } from './female-product-list/female-product-list.component';
 import { KidProductListComponent } from './kid-product-list/kid-product-list.component';
-import { DiscountProductListComponent } from './discount-product-list/discount-product-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { UnderwearComponent } from './male-product-list/underwear/underwear.component';
 @NgModule({
@@ -35,9 +34,13 @@ import { UnderwearComponent } from './male-product-list/underwear/underwear.comp
     MaleProductListComponent,
     FemaleProductListComponent,
     KidProductListComponent,
+<<<<<<< HEAD
     DiscountProductListComponent,
     AddProductComponent,
     UnderwearComponent,
+=======
+    AddProductComponent
+>>>>>>> marian
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -53,11 +56,15 @@ import { UnderwearComponent } from './male-product-list/underwear/underwear.comp
       { path: 'male-products', component: MaleProductListComponent },
       { path: 'female-products', component: FemaleProductListComponent },
       { path: 'kid-products', component: KidProductListComponent },
+<<<<<<< HEAD
       { path: 'discount-products', component: DiscountProductListComponent },
       { path: 'add-product', component: AddProductComponent },
       { path: 'male-products/underwear', component: UnderwearComponent }
 
 
+=======
+      { path: 'add-product', component: AddProductComponent }
+>>>>>>> marian
     ]),
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
