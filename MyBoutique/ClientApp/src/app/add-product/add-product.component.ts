@@ -44,6 +44,9 @@ export class AddProductComponent implements OnInit {
     this.sizes.push(this.newSize());
   }
 
+  deleteSize(value: any){
+    this.sizes.removeAt(value);
+  }
 
   get colors() : FormArray {
     return this.form.get("colors") as FormArray
@@ -57,6 +60,10 @@ export class AddProductComponent implements OnInit {
 
   addColors() {
     this.colors.push(this.newColor());
+  }
+
+  deleteColor(value: any){
+    this.colors.removeAt(value);
   }
 
   get f() { return this.form.controls; }

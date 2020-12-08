@@ -1,4 +1,77 @@
 <div class="row">
+    <div class="col-md-12">
+
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 col-md-12">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
+                    <h3 class="font-weight-bold text-center dark-grey-text">Избери категория</h3>
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex" [ngClass]="{ show: isExpanded }">
+                    <ul class="navbar-nav">
+                        <!-- <h3 class="font-weight-bold text-center dark-grey-text">Категории</h3> -->
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Якета')">Якета</a>
+                        </li>
+
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Чорапи')">Чорапи</a>
+                        </li>
+
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Блузи')">Блузи</a>
+                        </li>
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Ризи')">Ризи</a>
+                        </li>
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Гащеризони')">Гащеризони</a>
+                        </li>
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Палта')">Палта</a>
+                        </li>
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Поли')">Поли</a>
+                        </li>
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Панталони')">Панталони</a>
+                        </li>
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Потници')">Потници</a>
+                        </li>
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Туники')">Туники</a>
+                        </li>
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Шалове')">Шалове</a>
+                        </li>
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                            [routerLinkActiveOptions]="{ exact: true }">
+                            <a class="btn" (click)="getProductsBySubcategory('Шалове')">Бельо</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
     <div *ngFor="let product of filteredProducts" class="col-md-3 mb-5">
         <div class="card">
             <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"

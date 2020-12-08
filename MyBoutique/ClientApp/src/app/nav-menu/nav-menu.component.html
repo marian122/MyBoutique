@@ -1,6 +1,7 @@
 <header>
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
     <div class="container">
+      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
         aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
@@ -20,17 +21,16 @@
             <a class="nav-link text-white" [routerLink]="['female-products']">Женски</a>
           </li>
 
-          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['add-product']">Добави продукт</a>
-          </li>
         </ul>
       </div>
       
-      <a [routerLink]="['/']" class="navbar-brand">
-        <!-- Logo Image -->
-        <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
-        <!-- Logo Text -->
-      </a>
+      <div>
+        <a [routerLink]="['/']" class="navbar-brand">
+          <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
+        </a>
+      </div>
+      
+      
 
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav">
@@ -39,7 +39,7 @@
           </li>
           
           <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['discount-products']">Намаления</a>
+            <a class="nav-link text-white">За нас</a>
           </li>
           <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <app-login-menu></app-login-menu>

@@ -20,7 +20,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaleProductListComponent } from './male-product-list/male-product-list.component';
 import { FemaleProductListComponent } from './female-product-list/female-product-list.component';
 import { KidProductListComponent } from './kid-product-list/kid-product-list.component';
-import { DiscountProductListComponent } from './discount-product-list/discount-product-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 @NgModule({
   declarations: [
@@ -34,7 +33,6 @@ import { AddProductComponent } from './add-product/add-product.component';
     MaleProductListComponent,
     FemaleProductListComponent,
     KidProductListComponent,
-    DiscountProductListComponent,
     AddProductComponent
   ],
   imports: [
@@ -51,7 +49,6 @@ import { AddProductComponent } from './add-product/add-product.component';
       { path: 'male-products', component: MaleProductListComponent },
       { path: 'female-products', component: FemaleProductListComponent },
       { path: 'kid-products', component: KidProductListComponent },
-      { path: 'discount-products', component: DiscountProductListComponent },
       { path: 'add-product', component: AddProductComponent }
     ]),
     FontAwesomeModule,
