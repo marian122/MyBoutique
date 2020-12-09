@@ -23,7 +23,7 @@ namespace MyBoutique.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = this.cartService.AllOrders<OrderViewModel>();
+            var result = this.cartService.AllOrders<CartViewModel>();
 
             if (!result.Any())
             {

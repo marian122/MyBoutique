@@ -21,6 +21,7 @@ import { MaleProductListComponent } from './male-product-list/male-product-list.
 import { FemaleProductListComponent } from './female-product-list/female-product-list.component';
 import { KidProductListComponent } from './kid-product-list/kid-product-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { CartOrdersComponent } from './cart-orders/cart-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     MaleProductListComponent,
     FemaleProductListComponent,
     KidProductListComponent,
-    AddProductComponent
+    AddProductComponent,
+    CartOrdersComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -49,7 +51,9 @@ import { AddProductComponent } from './add-product/add-product.component';
       { path: 'male-products', component: MaleProductListComponent },
       { path: 'female-products', component: FemaleProductListComponent },
       { path: 'kid-products', component: KidProductListComponent },
-      { path: 'add-product', component: AddProductComponent }
+      { path: 'add-product', component: AddProductComponent },
+      { path: 'cart-orders', component: CartOrdersComponent }
+
     ]),
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),

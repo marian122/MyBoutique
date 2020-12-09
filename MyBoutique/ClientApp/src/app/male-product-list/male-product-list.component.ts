@@ -52,6 +52,7 @@ export class MaleProductListComponent implements OnInit {
         this.filteredProducts = this.products.filter(p =>  {
           return p.categoryName === CategoryConstants.Male
         });
+        console.log(this.products)
       }
     })
   }

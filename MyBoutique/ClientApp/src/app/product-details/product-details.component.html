@@ -61,8 +61,9 @@
                             <td class="pl-0 pb-0" scope="row">Цвят</td>
                             <td class="pl-0">
                                 <div  class="def-number-input number-input safari_only mb-0">
-                                    <select  class="form-control" id="exampleFormControlSelect1">
-                                        <option *ngFor="let color of currentProduct.colors">{{color.name}}</option>
+                                    <select  (change)="getCurrentColor($event)" class="form-control" id="exampleFormControlSelect1">
+                                        <option value="">Избери цвят</option>
+                                        <option *ngFor="let color of currentProduct.colors" value="{{color.name}}">{{color.name}}</option>
                                     </select>
                                 </div>
                             </td>
@@ -71,13 +72,12 @@
                             <td class="pl-0 pb-0">Количество</td>
                             <td class="pl-0">
                                 <div class="def-number-input number-input safari_only mb-0">
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                    </select>
+                                        <a class="mr-1">
+                                            {{orderPayload.quantity}}
+                                        </a>
+                  
+                                      <button class="btn btn-light btn-sm mr-1" (click)="incrementQTY(orderPayload)">+</button>
+                                      <button class="btn btn-light btn-sm ml-1" (click)="decrementQTY(orderPayload)">-</button>
                                 </div>
                             </td>
 
@@ -87,7 +87,7 @@
                             <td  class="pl-0">
                                 <div class="mt-1">
                                     <div *ngFor="let size of currentProduct.sizes" class="form-check form-check-inline pl-0">
-                                        <input type="radio" class="form-check-input" id="large"
+                                        <input (change)="getCurrentSize($event)" type="radio" value="{{size.name}}" class="form-check-input" id="large"
                                             name="materialExampleRadios">
                                         <label class="form-check-label small text-uppercase card-link-secondary"
                                             for="large">{{size.name}}</label>
@@ -98,8 +98,8 @@
                     </tbody>
                 </table>
             </div>
-            <button type="button" class="btn btn-outline-dark btn-md mr-1 mb-2">Добави в количката</button>
+            <button type="button" class="btn btn-outline-dark btn-md mr-1 mb-2" (click)="addProductToCart(currentProduct.id, '1', orderPayload.quantity, 'orderPayload.size', 'orderPayload.color')">Добави в количката</button>
         </div>
     </div>
-
+    
 </section>

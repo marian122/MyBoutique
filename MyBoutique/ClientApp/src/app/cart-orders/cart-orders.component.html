@@ -1,0 +1,131 @@
+<div class="container" *ngIf="orders.length >= 1">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="font-weight-bold text-center dark-grey-text">Вашите покупки</h3>
+            <div class="basket" >
+                <div class="basket-labels">
+                  <ul>
+                    <li class="item item-heading">Продукт</li>
+                    <li class="quantity">Цена</li>
+                    <li class="quantity">Количество</li>
+                  </ul>
+                </div>
+                <div class="basket-product" *ngFor="let item of orders">
+                  <div class="item">
+                    <div class="product-image">
+                      <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"alt="Placholder Image 2">
+                    </div>
+                    <div class="product-details">
+                      <h1><strong><span class="item-quantity">{{item.quantity}}</span> x </strong>{{item.product.name}}</h1>
+                      <p><strong>Цвят:</strong> {{item.color}}</p>
+                      <p><strong>Размер:</strong> {{item.size}}</p>
+                      <p>{{item.product.categoryName}} - {{item.product.categoryType}}</p>
+                    </div>
+                  </div>
+                  <div class="price">{{item.product.price}} лв/бр.</div>
+                  <div>
+                    <a class="btn btn-light btn-sm" (click)="incrementQTY(item)">+</a>   
+                    <a class="ml-1 mr-1">
+                        {{ item.quantity }}
+                    </a>
+                    <a class="btn btn-light btn-sm" (click)="decrementQTY(item)">-</a>
+                    <a class="ml-3"><strong>Общо:</strong> {{item.totalPrice}} лв.</a>
+                  </div>
+
+                  <div class="remove">
+                    <button (click)="removeProduct(item.id)">Премахни</button>
+                  </div>
+                </div>
+                <div class="mt-5 mb-3"><strong>Общо:</strong> {{subTotal}} лв.</div>
+              </div>
+              
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="font-weight-bold text-center dark-grey-text">Завършване на поръчката</h3>
+            <form [formGroup]="form">
+                <div class="form-group">
+                  <label for="name" class="font-weight-bold text-left dark-grey-text">Име</label>
+                  <input type="text" formControlName="name" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Името е задължително</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="font-weight-bold text-left dark-grey-text">Фамилия</label>
+                    <input type="text" formControlName="name" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                      <div *ngIf="f.name.errors.required">Името е задължително</div>
+                    </div>
+                  </div>
+    
+                  <div class="form-group">
+                    <label for="name" class="font-weight-bold text-left dark-grey-text">Телефонен номер</label>
+                    <input type="text" formControlName="name" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                      <div *ngIf="f.name.errors.required">Името е задължително</div>
+                    </div>
+                  </div>
+    
+                  <div class="form-group">
+                    <label for="name" class="font-weight-bold text-left dark-grey-text">Имейл адрес</label>
+                    <input type="text" formControlName="name" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                      <div *ngIf="f.name.errors.required">Името е задължително</div>
+                    </div>
+                  </div>
+    
+                  <div class="form-group">
+                    <label for="name" class="font-weight-bold text-left dark-grey-text">Град</label>
+                    <input type="text" formControlName="name" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                      <div *ngIf="f.name.errors.required">Името е задължително</div>
+                    </div>
+                  </div>
+    
+                  <div class="form-group">
+                    <label for="name" class="font-weight-bold text-left dark-grey-text">Адрес</label>
+                    <input type="text" formControlName="name" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                      <div *ngIf="f.name.errors.required">Името е задължително</div>
+                    </div>
+                  </div>
+                <div class="form-group">
+                  <label for="description" class="font-weight-bold text-left dark-grey-text">Допълнителна информация</label>
+                  <textarea rows="4" cols="50" type="text" formControlName="description" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+                    </textarea>
+                  <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                    <div *ngIf="f.description.errors.required">Описанието е задължително</div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <button (click)="onSubmit()" [disabled]="loading" class="btn btn-dark">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Изпрати
+                  </button>
+                  <a routerLink="/home" class="btn btn-light ml-3">Отказ</a>
+                </div>
+              </form>
+          </div>
+    </div>
+</div>
+
+
+
+<div class="container" *ngIf="orders.length === 0">
+    <h3 class="text-center">
+        Вашата количка е празна!
+    </h3>
+</div>

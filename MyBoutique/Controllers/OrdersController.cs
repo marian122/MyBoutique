@@ -80,7 +80,7 @@ namespace MyBoutique.Controllers
         public async Task<IActionResult> GetAll()
         {
             var result = await this.orderService.GetAllOrdersAsync<OrderViewModel>();
-
+            
             if (result == null)
             {
                 return this.NoContent();

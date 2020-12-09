@@ -38,7 +38,7 @@
           </li>
           
           <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white">За нас</a>
+            <a class="nav-link text-white" [routerLink]="['cart-orders']">Моята количка</a>
           </li>
           <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <app-login-menu></app-login-menu>

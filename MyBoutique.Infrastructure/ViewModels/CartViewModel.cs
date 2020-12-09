@@ -11,6 +11,6 @@ namespace MyBoutique.Infrastructure.ViewModels
     {
         public virtual ICollection<Order> Orders { get; set; }
 
-        public decimal TotalPrice { get; set; }
+        public decimal SubTotal { get; set; }
     }
 }

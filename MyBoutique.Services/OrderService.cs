@@ -32,6 +32,8 @@ namespace MyBoutique.Services
                 {
                     UserId = "placeHereSessionId",
                     ProductId = product.Id,
+                    Color = input.Color,
+                    Size = input.Size,
                     Quantity = input.Quantity,
                     TotalPrice = product.Price * input.Quantity,
                     CreatedOn = DateTime.Now,

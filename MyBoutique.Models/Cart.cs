@@ -16,6 +16,7 @@ namespace MyBoutique.Models
 
         [Required]
         public int OrderDataId { get; set; }
+
         public OrderData OrderData { get; set; }
 
         public string SessionId { get; set; }
