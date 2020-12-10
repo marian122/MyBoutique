@@ -31,6 +31,7 @@ namespace MyBoutique.Services
                 var order = new Order()
                 {
                     UserId = "placeHereSessionId",
+                    Product = product,
                     ProductId = product.Id,
                     Color = input.Color,
                     Size = input.Size,
@@ -49,6 +50,24 @@ namespace MyBoutique.Services
             }
 
             throw new InvalidOperationException(GlobalConstants.CreateOrderError);
+        }
+
+        public async Task<bool> DeleteAllOrdersAsync()
+        {
+            var ordersInCart = this.ordersRepository.All().Where(x => x.IsDeleted == false);
+            if (ordersInCart.Any())
+            {
+                foreach (var order in ordersInCart)
+                {
+                    order.IsDeleted = true;
+                }
+
+                var result = await this.ordersRepository.SaveChangesAsync();
+
+                return true;
+            }
+
+            throw new InvalidOperationException(GlobalConstants.DeleteAllOrdersError);
         }
 
         public async Task<bool> DeleteOrderAsync(int id)

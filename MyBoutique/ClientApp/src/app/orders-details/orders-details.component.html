@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3 class="font-weight-bold text-center dark-grey-text">Поръчки</h3>
+            <div class="basket"  *ngFor="let data of orderData">
+                <div class="basket-labels">
+                  <ul>
+                    <li class="item item-heading">Поръчка номер: 02313</li>
+                    <li class="quantity">Детайли за доставка</li>
+                  </ul>
+                </div>
+                <div class="row">
+                
+                <div class="basket-product col-md-6">
+                    <div class="basket-product" *ngFor="let productInfo of data.orders">
+                        <div class="item">
+                            <div class="product-image">
+                              <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"alt="Placholder Image 2">
+                            </div>
+                            <div class="product-details">
+                              <h1><strong><span class="item-quantity">{{productInfo.quantity}}</span> x </strong>{{productInfo.product.name}}</h1>
+                              <p><strong>Цена:</strong> {{productInfo.totalPrice}} лв.</p>
+                              <p><strong>Цвят:</strong> {{productInfo.color}}</p>
+                              <p><strong>Размер:</strong> {{productInfo.size}}</p>
+                              <h1><p>{{productInfo.product.categoryName}} - {{productInfo.product.categoryType}}</p></h1>
+                            </div>
+                            <div class="remove">
+                                <button (click)="removeProduct(item.id)">Премахни</button>
+                              </div>
+                          </div>
+                        </div>
+                </div>  
+                <div class="col-md-5 ml-5">
+                    <p><strong>Име: </strong>{{data.firstName}}</p>
+                    <p><strong>Фамилия: </strong>{{data.lastName}}</p>
+                    <p><strong>Тел. номер: </strong>{{data.phone}}</p>
+                    <p><strong>Град: </strong>{{data.city}}</p>
+                    <p><strong>Адрес: </strong>{{data.address}}</p>
+                    <p><strong>Имейл: </strong>{{data.email}}</p>
+                    <p><strong>Допълнителна информация: </strong>{{data.additionalInformation}}</p>
+                    <div class="mt-5 mb-3"><strong>Общо:</strong> {{subTotal}} лв.</div>
+                  </div>
+                
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

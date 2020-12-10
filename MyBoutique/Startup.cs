@@ -60,7 +60,9 @@ namespace MyBoutique
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddRazorPages();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -72,7 +74,8 @@ namespace MyBoutique
 
             services.AddSingleton(this.Configuration);
 
-            services.AddSession(options => {
+            services.AddSession(options =>
+            {
                 options.IdleTimeout = TimeSpan.FromMinutes(1);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;

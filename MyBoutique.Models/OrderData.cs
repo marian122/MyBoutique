@@ -33,8 +33,12 @@ namespace MyBoutique.Models
         [Required]
         [Phone]
         public string Phone { get; set; }
-        
+
+        public string AdditionalInformation { get; set; }
+
+
         public string PromoCode { get; set; }
+
 
         public virtual ICollection<Order> Orders { get; set; }
     }

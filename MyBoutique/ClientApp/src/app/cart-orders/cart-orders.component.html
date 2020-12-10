@@ -50,28 +50,28 @@
             <h3 class="font-weight-bold text-center dark-grey-text">Завършване на поръчката</h3>
             <form [formGroup]="form">
                 <div class="form-group">
-                  <label for="name" class="font-weight-bold text-left dark-grey-text">Име</label>
-                  <input type="text" formControlName="name" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                    <div *ngIf="f.name.errors.required">Името е задължително</div>
+                  <label for="firstName" class="font-weight-bold text-left dark-grey-text">Име</label>
+                  <input type="text" formControlName="firstName" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">Името е задължително</div>
                   </div>
                 </div>
                 <div class="form-group">
-                    <label for="surname" class="font-weight-bold text-left dark-grey-text">Фамилия</label>
-                    <input type="text" formControlName="surname" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.surname.errors }" />
-                    <div *ngIf="submitted && f.surname.errors" class="invalid-feedback">
-                      <div *ngIf="f.surname.errors.required">Фамилията е задължителна</div>
+                    <label for="lastName" class="font-weight-bold text-left dark-grey-text">Фамилия</label>
+                    <input type="text" formControlName="lastName" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                      <div *ngIf="f.lastName.errors.required">Фамилията е задължителна</div>
                     </div>
                   </div>
     
                   <div class="form-group">
-                    <label for="telNumber" class="font-weight-bold text-left dark-grey-text">Телефонен номер</label>
-                    <input type="text" formControlName="telNumber" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.telNumber.errors }" />
-                    <div *ngIf="submitted && f.telNumber.errors" class="invalid-feedback">
-                      <div *ngIf="f.telNumber.errors.required">Тел. номер е задължителен</div>
+                    <label for="phone" class="font-weight-bold text-left dark-grey-text">Телефонен номер</label>
+                    <input type="text" formControlName="phone" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                      <div *ngIf="f.phone.errors.required">Тел. номер е задължителен</div>
                     </div>
                   </div>
     

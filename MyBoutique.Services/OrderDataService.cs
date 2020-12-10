@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace MyBoutique.Services
 {
+
     public class OrderDataService : IOrderDataService
     {
         private readonly IDeletableEntityRepository<OrderData> repository;
@@ -44,6 +45,7 @@ namespace MyBoutique.Services
                     Email = inputModel.Email,
                     Phone = inputModel.Phone,
                     PromoCode = inputModel.PromoCode,
+                    AdditionalInformation = inputModel.AdditionalInformation,
                     CreatedOn = DateTime.Now,
                     Orders = orders,
                 };
@@ -55,6 +57,24 @@ namespace MyBoutique.Services
             }
 
             throw new InvalidOperationException(GlobalConstants.FinishOrderError);
+        }
+
+        public async Task<bool> DeleteAllOrdersDataAsync()
+        {
+            var ordersInCart = this.repository.All().Where(x => x.IsDeleted == false);
+            if (ordersInCart.Any())
+            {
+                foreach (var order in ordersInCart)
+                {
+                    order.IsDeleted = true;
+                }
+
+                var result = await this.repository.SaveChangesAsync();
+
+                return true;
+            }
+
+            throw new InvalidOperationException(GlobalConstants.DeleteAllOrdersDataError);
         }
 
         public async Task<bool> DeleteOrderDataAsynq(int id)
@@ -80,10 +100,14 @@ namespace MyBoutique.Services
             return true;
         }
 
-        public IEnumerable<TViewModel> GetAllOrderDataAsynq<TViewModel>()
-                  => this.repository.All()
-                    .OrderBy(x => x.CreatedOn)
-                    .To<TViewModel>();
+        public async Task<IEnumerable<TViewModel>> GetAllOrderDataAsynq<TViewModel>()
+         => await this.repository.All()
+            .Where(x => x.IsDeleted == false)
+            .OrderBy(x => x.CreatedOn)
+            .Include(x => x.Orders)
+            .ThenInclude(x => x.Product)
+            .To<TViewModel>()
+            .ToListAsync();
 
         public async Task<TViewModel> GetOrderDataByIdAsynq<TViewModel>(int id)
          => await this.repository.All()

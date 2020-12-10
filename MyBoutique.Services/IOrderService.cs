@@ -10,6 +10,8 @@ namespace MyBoutique.Services
 
         public Task<bool> DeleteOrderAsync(int id);
 
+        public Task<bool> DeleteAllOrdersAsync();
+
         public Task<IEnumerable<TViewModel>> GetAllOrdersAsync<TViewModel>();
 
         public Task<TViewModel> GetOrderByIdAsync<TViewModel>(int id);

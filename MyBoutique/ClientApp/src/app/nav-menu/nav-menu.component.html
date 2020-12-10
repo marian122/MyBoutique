@@ -20,6 +20,10 @@
           <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-white" [routerLink]="['female-products']">Женски</a>
           </li>
+
+          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-white" [routerLink]="['kid-products']">Детски</a>
+          </li>
         </ul>
       </div>
       
@@ -33,13 +37,16 @@
 
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav">
-          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['kid-products']">Детски</a>
-          </li>
+          
           
           <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link text-white" [routerLink]="['cart-orders']">Моята количка</a>
           </li>
+
+          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-white" [routerLink]="['orders-details']">Поръчки</a>
+          </li>
+
           <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
             <app-login-menu></app-login-menu>
           </li>

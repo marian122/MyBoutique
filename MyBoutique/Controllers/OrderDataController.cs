@@ -22,9 +22,9 @@ namespace MyBoutique.Controllers
 
         // GET: api/<OrderDataController>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var orderData = this.orderDataService.GetAllOrderDataAsynq<OrderDataViewModel>();
+            var orderData = await this.orderDataService.GetAllOrderDataAsynq<OrderDataViewModel>();
 
             if (orderData != null)
             {
@@ -64,6 +64,20 @@ namespace MyBoutique.Controllers
             }
 
             return this.BadRequest("Failed to create data");
+        }
+
+        // DELETE api/<OrderDataController>
+        [HttpDelete()]
+        public async Task<IActionResult> Delete()
+        {
+            var order = await this.orderDataService.DeleteAllOrdersDataAsync();
+
+            if (order)
+            {
+                return this.Ok(order);
+            }
+
+            return this.BadRequest($"Failed to delete orderDatas.");
         }
 
         // DELETE api/<OrderDataController>/5

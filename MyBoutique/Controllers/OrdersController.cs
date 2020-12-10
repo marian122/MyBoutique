@@ -61,6 +61,20 @@ namespace MyBoutique.Controllers
             return this.BadRequest($"Failed to delete order.");
         }
 
+        // DELETE api/<OrdersController>
+        [HttpDelete()]
+        public async Task<IActionResult> Delete()
+        {
+            var order = await this.orderService.DeleteAllOrdersAsync();
+
+            if (order)
+            {
+                return this.Ok(order);
+            }
+
+            return this.BadRequest($"Failed to delete orders.");
+        }
+
         // GET api/<OrdersController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

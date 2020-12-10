@@ -22,6 +22,8 @@ namespace MyBoutique.Infrastructure.InputModels
         public string Phone { get; set; }
 
 
+        public string AdditionalInformation { get; set; }
+
         public string PromoCode { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }

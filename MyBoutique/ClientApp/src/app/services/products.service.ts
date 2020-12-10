@@ -13,6 +13,7 @@ export class ProductsService {
   public products = [];
   public orders = [];
   public subTotal = 0;
+  public orderData = [];
 
   constructor(private http: HttpClient) { }
 
@@ -62,5 +63,28 @@ export class ProductsService {
     .pipe( 
       tap(data => console.log('deleted order: ', JSON.stringify(data)))
     );
+  }
+
+  public createOrder(data) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post(`${environment.apiUrl}/api/orderdata`, data, { headers, responseType: 'text' })
+      .pipe(
+        tap(data => console.log('createdOrder: ', JSON.stringify(data)))
+      );
+  }
+
+  public getAllOrderData(){
+    return this.http.get(`${environment.apiUrl}/api/orderdata`)
+    .pipe(map((data: any) => {
+      this.orderData = data;
+      this.orderData.forEach(element => {
+        element.orders.forEach(innerElement => {
+          this.subTotal += innerElement.totalPrice
+          console.log(element)
+        });
+      });
+      return true;
+    }))
   }
 }

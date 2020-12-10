@@ -22,6 +22,7 @@ import { FemaleProductListComponent } from './female-product-list/female-product
 import { KidProductListComponent } from './kid-product-list/kid-product-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { CartOrdersComponent } from './cart-orders/cart-orders.component';
+import { OrdersDetailsComponent } from './orders-details/orders-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { CartOrdersComponent } from './cart-orders/cart-orders.component';
     FemaleProductListComponent,
     KidProductListComponent,
     AddProductComponent,
-    CartOrdersComponent
+    CartOrdersComponent,
+    OrdersDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -52,7 +54,9 @@ import { CartOrdersComponent } from './cart-orders/cart-orders.component';
       { path: 'female-products', component: FemaleProductListComponent },
       { path: 'kid-products', component: KidProductListComponent },
       { path: 'add-product', component: AddProductComponent },
-      { path: 'cart-orders', component: CartOrdersComponent }
+      { path: 'cart-orders', component: CartOrdersComponent },
+      { path: 'orders-details', component: OrdersDetailsComponent }
+
 
     ]),
     FontAwesomeModule,
