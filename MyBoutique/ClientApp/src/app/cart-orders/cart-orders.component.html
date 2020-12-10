@@ -1,4 +1,5 @@
-<div class="container" *ngIf="orders.length >= 1">
+<div class="container"  *ngIf="orders.length >= 1">
+  <div class="container">
     <div class="row">
         <div class="col-md-12">
             <h3 class="font-weight-bold text-center dark-grey-text">Вашите покупки</h3>
@@ -43,7 +44,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container border">
     <div class="row">
         <div class="col-md-12">
             <h3 class="font-weight-bold text-center dark-grey-text">Завършване на поръчката</h3>
@@ -57,57 +58,54 @@
                   </div>
                 </div>
                 <div class="form-group">
-                    <label for="name" class="font-weight-bold text-left dark-grey-text">Фамилия</label>
-                    <input type="text" formControlName="name" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                      <div *ngIf="f.name.errors.required">Името е задължително</div>
+                    <label for="surname" class="font-weight-bold text-left dark-grey-text">Фамилия</label>
+                    <input type="text" formControlName="surname" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.surname.errors }" />
+                    <div *ngIf="submitted && f.surname.errors" class="invalid-feedback">
+                      <div *ngIf="f.surname.errors.required">Фамилията е задължителна</div>
                     </div>
                   </div>
     
                   <div class="form-group">
-                    <label for="name" class="font-weight-bold text-left dark-grey-text">Телефонен номер</label>
-                    <input type="text" formControlName="name" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                      <div *ngIf="f.name.errors.required">Името е задължително</div>
+                    <label for="telNumber" class="font-weight-bold text-left dark-grey-text">Телефонен номер</label>
+                    <input type="text" formControlName="telNumber" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.telNumber.errors }" />
+                    <div *ngIf="submitted && f.telNumber.errors" class="invalid-feedback">
+                      <div *ngIf="f.telNumber.errors.required">Тел. номер е задължителен</div>
                     </div>
                   </div>
     
                   <div class="form-group">
-                    <label for="name" class="font-weight-bold text-left dark-grey-text">Имейл адрес</label>
-                    <input type="text" formControlName="name" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                      <div *ngIf="f.name.errors.required">Името е задължително</div>
+                    <label for="email" class="font-weight-bold text-left dark-grey-text">Имейл адрес</label>
+                    <input type="text" formControlName="email" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required">Имейл адреса е задължителен</div>
                     </div>
                   </div>
     
                   <div class="form-group">
-                    <label for="name" class="font-weight-bold text-left dark-grey-text">Град</label>
-                    <input type="text" formControlName="name" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                      <div *ngIf="f.name.errors.required">Името е задължително</div>
+                    <label for="city" class="font-weight-bold text-left dark-grey-text">Град</label>
+                    <input type="text" formControlName="city" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.city.errors }" />
+                    <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                      <div *ngIf="f.city.errors.required">Града е задължителен</div>
                     </div>
                   </div>
     
                   <div class="form-group">
-                    <label for="name" class="font-weight-bold text-left dark-grey-text">Адрес</label>
-                    <input type="text" formControlName="name" class="form-control"
-                      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
-                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                      <div *ngIf="f.name.errors.required">Името е задължително</div>
+                    <label for="address" class="font-weight-bold text-left dark-grey-text">Адрес</label>
+                    <input type="text" formControlName="address" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                      <div *ngIf="f.address.errors.required">Адреса е задължителен</div>
                     </div>
                   </div>
                 <div class="form-group">
-                  <label for="description" class="font-weight-bold text-left dark-grey-text">Допълнителна информация</label>
-                  <textarea rows="4" cols="50" type="text" formControlName="description" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+                  <label for="additionalInformation" class="font-weight-bold text-left dark-grey-text">Допълнителна информация</label>
+                  <textarea rows="4" cols="50" type="text" formControlName="additionalInformation" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.additionalInformation.errors }">
                     </textarea>
-                  <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-                    <div *ngIf="f.description.errors.required">Описанието е задължително</div>
-                  </div>
                 </div>
                 
                 <div class="form-group">
@@ -115,17 +113,15 @@
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Изпрати
                   </button>
-                  <a routerLink="/home" class="btn btn-light ml-3">Отказ</a>
+                  <a routerLink="/products" class="btn btn-light ml-3">Отказ</a>
                 </div>
               </form>
           </div>
     </div>
 </div>
-
-
-
+</div>
 <div class="container" *ngIf="orders.length === 0">
-    <h3 class="text-center">
-        Вашата количка е празна!
-    </h3>
+  <h3 class="text-center">
+      Вашата количка е празна!
+  </h3>
 </div>

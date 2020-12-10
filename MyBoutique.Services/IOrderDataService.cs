@@ -8,7 +8,7 @@ namespace MyBoutique.Services
 {
     public interface IOrderDataService
     {
-        public Task<int> CreateOrderDataAsynq(OrderDataInputModel inputModel);
+        public Task<bool> CreateOrderDataAsynq(OrderDataInputModel inputModel);
 
         public Task<bool> DeleteOrderDataAsynq(int id);
 

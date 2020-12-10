@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using MyBoutique.Common;
 using MyBoutique.Common.Repositories;
 using MyBoutique.Infrastructure.InputModels;
 using MyBoutique.Mappings;
@@ -13,38 +15,46 @@ namespace MyBoutique.Services
     public class OrderDataService : IOrderDataService
     {
         private readonly IDeletableEntityRepository<OrderData> repository;
-        private readonly MapperConfiguration mapper;
+        private readonly IDeletableEntityRepository<Order> orderRepository;
 
-        public OrderDataService(IDeletableEntityRepository<OrderData> repository, MapperConfiguration mapper)
+        public OrderDataService(IDeletableEntityRepository<OrderData> repository,
+                                IDeletableEntityRepository<Order> orderRepository)
         {
             this.repository = repository;
-            this.mapper = mapper;
+            this.orderRepository = orderRepository;
         }
 
-        public async Task<int> CreateOrderDataAsynq(OrderDataInputModel inputModel)
+        public async Task<bool> CreateOrderDataAsynq(OrderDataInputModel inputModel)
         {
-            if (inputModel == null)
+            //get all orders
+            var orders = await this.orderRepository
+            .All()
+            .Where(x => x.IsDeleted == false)
+            .OrderBy(x => x.Quantity)
+            .ToListAsync();
+
+            if (inputModel != null && orders.Count >= 1)
             {
-                throw new ArgumentNullException();
-                //Add errMgs
+                var data = new OrderData()
+                {
+                    FirstName = inputModel.FirstName,
+                    LastName = inputModel.LastName,
+                    Address = inputModel.Address,
+                    City = inputModel.City,
+                    Email = inputModel.Email,
+                    Phone = inputModel.Phone,
+                    PromoCode = inputModel.PromoCode,
+                    CreatedOn = DateTime.Now,
+                    Orders = orders,
+                };
+
+                this.repository.Add(data);
+                await this.repository.SaveChangesAsync();
+
+                return true;
             }
 
-            var data = new OrderData()
-            {
-                FirstName = inputModel.FirstName,
-                LastName = inputModel.LastName,
-                Adress = inputModel.Adress,
-                Phone = inputModel.Phone,
-                PromoCode = inputModel.PromoCode,
-                CreatedOn = DateTime.Now,
-            };
-
-            this.repository.Add(data);
-
-            var result = await this.repository.SaveChangesAsync();
-
-            return result > 0 ? data.Id : throw new InvalidOperationException();
-            //Add errMgs
+            throw new InvalidOperationException(GlobalConstants.FinishOrderError);
         }
 
         public async Task<bool> DeleteOrderDataAsynq(int id)
@@ -76,18 +86,9 @@ namespace MyBoutique.Services
                     .To<TViewModel>();
 
         public async Task<TViewModel> GetOrderDataByIdAsynq<TViewModel>(int id)
-        {
-            var model = await this.repository.GetByIdAsync(id);
-
-            if (model == null)
-            {
-                throw new ArgumentNullException();
-                //Add errMgs
-            }
-
-            var conf = mapper.CreateMapper();
-
-            return conf.Map<TViewModel>(model);
-        }
+         => await this.repository.All()
+            .Where(x => x.Id == id && x.IsDeleted == false)
+            .To<TViewModel>()
+            .FirstOrDefaultAsync();
     }
 }

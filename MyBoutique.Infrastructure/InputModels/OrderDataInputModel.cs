@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBoutique.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -7,28 +8,22 @@ namespace MyBoutique.Infrastructure.InputModels
 {
     public class OrderDataInputModel
     {
-        [Required]
-        [StringLength(80, MinimumLength = 4)]
         public string FirstName { get; set; }
 
-
-        [Required]
-        [StringLength(80, MinimumLength = 4)]
         public string LastName { get; set; }
 
+        public string City { get; set; }
 
-        [Required]
-        [StringLength(80, MinimumLength = 4)]
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
 
-        [Required]
-        [Phone]
+        public string Email { get; set; }
+
         public string Phone { get; set; }
 
 
-        [Required]
-        [MaxLength(8)]
         public string PromoCode { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

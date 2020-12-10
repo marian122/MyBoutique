@@ -11,5 +11,8 @@ namespace MyBoutique.Common
 
         public const string DeleteOrderError = "Deleting a order failed in OrderService";
 
+        public const string FinishOrderError = "Finishing a order failed in OrderDataService";
+
+
     }
 }

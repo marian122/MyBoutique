@@ -21,11 +21,14 @@ export class CartOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
-      description: ['', [Validators.required, Validators.minLength(2)]]
+      surname: ['', [Validators.required, Validators.minLength(2)]],
+      telNumber: ['', [Validators.required, Validators.minLength(9)]],
+      email: ['', [Validators.required, Validators.minLength(2)]],
+      city: ['', [Validators.required, Validators.minLength(2)]],
+      address: ['', [Validators.required, Validators.minLength(2)]],
+      additionalInformation: ['']
     });
     this.getOrdersBySessionId();
-    
-    
   }
 
   getOrdersBySessionId(): void {

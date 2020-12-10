@@ -17,19 +17,25 @@ namespace MyBoutique.Models
         [StringLength(80, MinimumLength = 4)]
         public string LastName { get; set; }
 
+        [Required]
+        [StringLength(80, MinimumLength = 4)]
+        public string City { get; set; }
 
         [Required]
         [StringLength(80, MinimumLength = 4)]
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
 
         [Required]
         [Phone]
         public string Phone { get; set; }
-
-
-        [Required]
-        [MaxLength(8)]
+        
         public string PromoCode { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

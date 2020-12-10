@@ -54,21 +54,13 @@ namespace MyBoutique.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                try
+                var result = await this.orderDataService.CreateOrderDataAsynq(input);
+
+                if (result == true)
                 {
-                    var result = await this.orderDataService.CreateOrderDataAsynq(input);
-
-                    if (result != 0)
-                    {
-                        return this.Ok(result);
-                    }
-
+                    return this.Ok(result);
                 }
-                catch (Exception e)
-                {
 
-                    return this.BadRequest(e.Message);
-                }
             }
 
             return this.BadRequest("Failed to create data");

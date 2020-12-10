@@ -84,7 +84,7 @@ namespace MyBoutique
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<ICartService, CartService>();
-            //services.AddTransient<IOrderDataService, OrderDataService>();
+            services.AddTransient<IOrderDataService, OrderDataService>();
             //services.AddTransient<IImageService, ImageService>();
 
 
