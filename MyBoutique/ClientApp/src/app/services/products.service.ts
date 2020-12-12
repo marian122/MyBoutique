@@ -58,10 +58,17 @@ export class ProductsService {
     );
   }
  
-  public deleteProductFromCart(id : number){
+  public deleteOrder(id : number){
     return this.http.delete(`${environment.apiUrl}/api/orders/${id}`)
     .pipe( 
       tap(data => console.log('deleted order: ', JSON.stringify(data)))
+    );
+  }
+
+  public deleteAllProductsFromCart(){
+    return this.http.delete(`${environment.apiUrl}/api/orders`)
+    .pipe( 
+      tap(data => console.log('deleted orders: ', JSON.stringify(data)))
     );
   }
 

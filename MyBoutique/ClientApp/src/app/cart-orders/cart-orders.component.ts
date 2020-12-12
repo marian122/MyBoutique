@@ -54,7 +54,7 @@ export class CartOrdersComponent implements OnInit {
       .subscribe(
         data => {
           console.log(this.form.value);
-
+          this.cleartCartProducts();
           this.router.navigate(['/products'], { relativeTo: this.route });
         },
         error => {
@@ -62,6 +62,13 @@ export class CartOrdersComponent implements OnInit {
           this.loading = false;
         });
 
+  }
+
+  cleartCartProducts(): void{
+    this.service.deleteAllProductsFromCart()
+    .subscribe(event => {
+      console.log(event);
+    })
   }
 
   getOrdersBySessionId(): void {
@@ -92,7 +99,7 @@ export class CartOrdersComponent implements OnInit {
   }
 
   public removeProduct = (id: number) => {
-    this.service.deleteProductFromCart(id)
+    this.service.deleteOrder(id)
       .subscribe(event => {
         console.log(event);
         this.getOrdersBySessionId()

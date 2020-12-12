@@ -30,4 +30,11 @@ export class OrdersDetailsComponent implements OnInit {
       })
   }
 
+  removeProduct(id: number): void{
+    this.service.deleteOrder(id)
+    .subscribe(event => {
+      console.log(event);
+    })
+  }
+
 }
