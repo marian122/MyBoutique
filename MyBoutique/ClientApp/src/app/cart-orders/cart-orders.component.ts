@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { ProductsService } from '../services/products.service';
+import { AlertService } from 'src/_services';
+import { ProductsService } from '../../_services/products.service';
 
 @Component({
   selector: 'app-cart-orders',
@@ -20,15 +21,16 @@ export class CartOrdersComponent implements OnInit {
   constructor(private service: ProductsService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private alertService: AlertService) {
     this.orders = [];
     this.subTotal = 0;
   }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.minLength(2)]],
-      lastName: ['', [Validators.required, Validators.minLength(2)]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.minLength(9)]],
       email: ['', [Validators.required, Validators.minLength(2)]],
       city: ['', [Validators.required, Validators.minLength(2)]],
@@ -56,8 +58,8 @@ export class CartOrdersComponent implements OnInit {
       .subscribe(
         data => {
           console.log(this.form.value);
+          this.router.navigate(['/successfull-order'], { relativeTo: this.route });
           this.cleartCartProducts();
-          this.router.navigate(['/products'], { relativeTo: this.route });
         },
         error => {
           console.log(error);
@@ -66,11 +68,11 @@ export class CartOrdersComponent implements OnInit {
 
   }
 
-  cleartCartProducts(): void{
+  cleartCartProducts(): void {
     this.service.deleteAllProductsFromCart()
-    .subscribe(event => {
-      console.log(event);
-    })
+      .subscribe(event => {
+        console.log(event);
+      })
   }
 
   getOrdersBySessionId(): void {
@@ -103,12 +105,14 @@ export class CartOrdersComponent implements OnInit {
     }
   }
 
-  public removeProduct = (id: number) => {
+  public removeProduct = (id: number, productName: string) => {
     this.service.deleteOrder(id)
-    .subscribe(event => {
-      console.log(event);
-      this.getOrdersBySessionId();
-    })
+      .subscribe(event => {
+        console.log(event);
+        let message = `Успешно премахнахте ${productName} от вашата количка.`;
+        this.alertService.success(message, { autoClose: true });
+        this.getOrdersBySessionId();
+      })
   }
 
 }

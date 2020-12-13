@@ -60,9 +60,9 @@
                         <tr>
                             <td class="pl-0 pb-0" scope="row">Цвят</td>
                             <td class="pl-0">
-                                <div  class="def-number-input number-input safari_only mb-0">
+                                <div class="def-number-input number-input safari_only mb-0">
                                     <select  (change)="getCurrentColor($event)" class="form-control" id="exampleFormControlSelect1">
-                                        <option value="">Избери цвят</option>
+                                        <option value="" disabled selected hidden>Избери цвят</option>
                                         <option *ngFor="let color of currentProduct.colors" value="{{color.name}}">{{color.name}}</option>
                                     </select>
                                 </div>

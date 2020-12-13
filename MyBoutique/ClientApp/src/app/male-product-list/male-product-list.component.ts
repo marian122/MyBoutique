@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryConstants } from '../../environments/CategoryConstants';
-import { Product } from '../models/product';
-import { ProductsService } from '../services/products.service';
+import { Product } from '../../_models/product';
+import { ProductsService } from '../../_services/products.service';
 
 @Component({
   selector: 'app-male-product-list',

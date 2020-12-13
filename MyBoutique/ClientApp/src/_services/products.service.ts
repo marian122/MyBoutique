@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-import { Product } from '../models/product';
-import { Order } from '../models/order';
+import { Product } from '../_models/product';
+import { Order } from '../_models/order';
 
 @Injectable({
   providedIn: 'root'

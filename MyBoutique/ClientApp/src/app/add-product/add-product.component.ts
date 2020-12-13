@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { ProductsService } from '../services/products.service';
+import { ProductsService } from '../../_services/products.service';
 
 @Component({
   selector: 'app-add-product',

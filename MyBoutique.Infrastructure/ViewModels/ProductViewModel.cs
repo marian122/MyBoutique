@@ -1,5 +1,6 @@
 ﻿using MyBoutique.Mappings;
 using MyBoutique.Models;
+using System;
 using System.Collections.Generic;
 
 namespace MyBoutique.Infrastructure.ViewModels
@@ -15,6 +16,8 @@ namespace MyBoutique.Infrastructure.ViewModels
         public string CategoryName { get; set; }
 
         public string CategoryType { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public ICollection<Size> Sizes { get; set; }
 

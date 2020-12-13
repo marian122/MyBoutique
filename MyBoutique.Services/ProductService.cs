@@ -69,7 +69,7 @@ namespace MyBoutique.Services
         public async Task<IEnumerable<TViewModel>> GetAllProductsAsync<TViewModel>()
             => await this.productRepository.All()
                 .Where(x => x.IsDeleted == false)
-                .OrderBy(x => x.Price)
+                .OrderBy(x => x.CreatedOn)
                 .To<TViewModel>()
                 .ToListAsync();
 

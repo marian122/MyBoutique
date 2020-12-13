@@ -9,8 +9,6 @@ import { RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -21,13 +19,14 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { CartOrdersComponent } from './cart-orders/cart-orders.component';
 import { OrdersDetailsComponent } from './orders-details/orders-details.component';
 import { AccountModule } from './account/account.module';
+import { AlertComponent } from './alert/alert.component';
+import { SuccessfullOrderComponent } from './successfull-order/successfull-order.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     FooterComponent,
     ProductDetailsComponent,
     MaleProductListComponent,
@@ -35,7 +34,9 @@ import { AccountModule } from './account/account.module';
     KidProductListComponent,
     AddProductComponent,
     CartOrdersComponent,
-    OrdersDetailsComponent
+    OrdersDetailsComponent,
+    AlertComponent,
+    SuccessfullOrderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,19 +44,15 @@ import { AccountModule } from './account/account.module';
     AccountModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: 'products', component: HomeComponent },
       { path: 'products/:id', component: ProductDetailsComponent },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent,  },
       { path: 'male-products', component: MaleProductListComponent },
       { path: 'female-products', component: FemaleProductListComponent },
       { path: 'kid-products', component: KidProductListComponent },
       { path: 'add-product', component: AddProductComponent },
       { path: 'cart-orders', component: CartOrdersComponent },
-      { path: 'orders-details', component: OrdersDetailsComponent }
-
-
+      { path: 'orders-details', component: OrdersDetailsComponent },
+      { path: 'successfull-order', component: SuccessfullOrderComponent }
     ]),
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),

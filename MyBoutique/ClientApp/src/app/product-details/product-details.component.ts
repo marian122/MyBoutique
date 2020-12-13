@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/product';
-import { Order } from '../models/order';
-import { ProductsService } from '../services/products.service';
+import { Product } from '../../_models/product';
+import { Order } from '../../_models/order';
+import { ProductsService } from '../../_services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from 'src/_services';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-details',
@@ -32,13 +34,20 @@ export class ProductDetailsComponent implements OnInit {
     size: this.selectedSize,
     color: this.selectedColor
   }
-
+  form: FormGroup;
   constructor(private productService: ProductsService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private alertService: AlertService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.getProductById(this.route.snapshot.params.id);
+
+    this.form = this.formBuilder.group({
+      size: ['', [Validators.required]],
+      color: ['', [Validators.required]],
+    });
   }
 
   incrementQTY(item){
@@ -89,11 +98,25 @@ export class ProductDetailsComponent implements OnInit {
     data.size = this.selectedSize;
     data.color = this.selectedColor;
 
-    this.productService.addProductToCard(data)
-    .subscribe(() => {
-      console.log(data);
-      this.router.navigate(['/cart-orders'], { relativeTo: this.route });
-    })
+    if(data.size !== "" && data.color !== ""){
+      this.productService.addProductToCard(data)
+      .subscribe(() => {
+        let message = `Успешно добавихте продукта в количката.`;
+        this.alertService.success(message, { autoClose: true });
+        setTimeout(() => {
+          this.router.navigate(['/cart-orders'], { relativeTo: this.route });
+        }, 2500);
+      })
+    }
+    
+    if(data.size == ""){
+      let message = `Моля изберете размер`;
+      this.alertService.warn(message, { autoClose: true });
+    }
+    if(data.color == ""){
+      let message = `Моля изберете цвят`;
+      this.alertService.warn(message, { autoClose: true });
+    }
   }
 
 }

@@ -34,7 +34,7 @@
                   </div>
 
                    <div class="remove">
-                    <button (click)="removeProduct(item.id, item.totalPrice)">Премахни</button>
+                    <button (click)="removeProduct(item.id, item.product.name)">Премахни</button>
                   </div>
                 </div>
                 <div class="mt-5 mb-3"><strong>Общо:</strong> {{subTotal}} лв.</div>
@@ -87,6 +87,7 @@
                   <div class="form-group">
                     <label for="deliveryType" class="font-weight-bold text-left dark-grey-text">Начин за доставка</label>
                               <select formControlName="deliveryType" class="form-control" id="exampleFormControlSelect1">
+                                  <option value="" disabled selected hidden>Избери начин на доставка</option>
                                   <option value="Econt">Еконт</option>
                                   <option value="Speedy">Спиди</option>
                               </select>
