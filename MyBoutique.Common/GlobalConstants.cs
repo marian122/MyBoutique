@@ -17,6 +17,8 @@ namespace MyBoutique.Common
 
         public const string FinishOrderError = "Finishing a order failed in OrderDataService";
 
+        public const string AdministratorRoleName = "Administrator";
 
+        public const string JsonContentType = "application/json";
     }
 }

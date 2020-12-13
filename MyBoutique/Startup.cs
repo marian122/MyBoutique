@@ -20,6 +20,8 @@ using System.Reflection;
 using MyBoutique.Infrastructure.ViewModels.Collections;
 using System;
 using AutoMapper;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MyBoutique
 {
@@ -39,8 +41,31 @@ namespace MyBoutique
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddAutoMapper(typeof(OrderService).GetTypeInfo().Assembly);
+
+            services.AddIdentity<ApplicationUser, IdentityRole>(cfg =>
+            {
+                cfg.User.RequireUniqueEmail = true;
+            })
+                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddAuthentication()
+               .AddCookie()
+               .AddJwtBearer(cfg =>
+               {
+                   cfg.TokenValidationParameters = new TokenValidationParameters()
+                   {
+                       ValidIssuer = this.Configuration["Tokens:Issuer"],
+                       ValidAudience = this.Configuration["Tokens:Audience"],
+                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.Configuration["Tokens:Key"]))
+                   };
+               });
+
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -53,17 +78,6 @@ namespace MyBoutique
 
             });
 
-            services.AddAutoMapper(typeof(OrderService).GetTypeInfo().Assembly);
-
-            services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-            services.AddAuthentication()
-                .AddIdentityServerJwt();
-            services.AddControllersWithViews().AddNewtonsoftJson(options =>
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-
-            services.AddRazorPages();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -88,6 +102,7 @@ namespace MyBoutique
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<IOrderDataService, OrderDataService>();
+            services.AddTransient<IUserService, UserService>();
             //services.AddTransient<IImageService, ImageService>();
 
 
@@ -96,13 +111,18 @@ namespace MyBoutique
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            UpdateDatabase(app);
+
             AutoMapperConfig.RegisterMappings(
                 typeof(ProductViewModel).GetTypeInfo().Assembly,
                 typeof(OrderViewModel).GetTypeInfo().Assembly,
                 typeof(CartViewModel).GetTypeInfo().Assembly,
                 typeof(OrdersViewModel).GetTypeInfo().Assembly,
                 typeof(ProductsViewModel).GetTypeInfo().Assembly,
-                typeof(ImageViewModel).GetTypeInfo().Assembly);
+                typeof(ImageViewModel).GetTypeInfo().Assembly,
+                typeof(LoginViewModel).GetTypeInfo().Assembly);
+
 
             if (env.IsDevelopment())
             {
@@ -126,15 +146,9 @@ namespace MyBoutique
 
             app.UseSession();
 
-            app.UseAuthentication();
-            app.UseIdentityServer();
-            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+                endpoints.MapDefaultControllerRoute();
             });
 
             app.UseSpa(spa =>
@@ -149,6 +163,19 @@ namespace MyBoutique
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+        }
+
+        private static void UpdateDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>()
+                .CreateScope())
+            {
+                using (var context = serviceScope.ServiceProvider.GetService<ApplicationDbContext>())
+                {
+                    context.Database.Migrate();
+                }
+            }
         }
     }
 }
