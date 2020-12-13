@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit{
     .subscribe(success => {
       if(success){
         this.products = this.productsService.products;
+        console.log(this.products)
       }
     })
   }

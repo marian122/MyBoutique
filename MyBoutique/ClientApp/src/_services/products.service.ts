@@ -28,11 +28,17 @@ export class ProductsService {
 
   public getAll(){
     return this.http.get(`${environment.apiUrl}/api/products`)
-    .pipe(map((data: Product[]) => {
-      data.sort((a,b) => b.price - a.price);
+      .pipe(map((data: any[]) => {
+        data.sort((a, b) => {
+          return this.getTime(b.createdOn) - this.getTime(a.createdOn)
+        });
       this.products = data;
       return true;
     }))
+  }
+
+  private getTime(date?: Date) {
+    return date != null ? new Date(date).getTime() : 0;
   }
 
   public getById(id: any): Observable<Product>{

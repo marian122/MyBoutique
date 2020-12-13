@@ -42,6 +42,7 @@ export class FemaleProductListComponent implements OnInit {
         this.filteredProducts = this.products.filter(p =>  {
           return p.categoryName === CategoryConstants.Female && p.categoryType === this.subcategory
         });
+        this.filteredProducts.sort((a, b) => a.price - b.price);
       }
     })
   }
@@ -54,6 +55,7 @@ export class FemaleProductListComponent implements OnInit {
         this.filteredProducts = this.products.filter(p =>  {
           return p.categoryName === CategoryConstants.Female
         });
+        this.filteredProducts.sort((a, b) => a.price - b.price);
       }
     })
   }
