@@ -25,7 +25,11 @@ namespace MyBoutique.Infrastructure.ViewModels
 
         public string AdditionalInformation { get; set; }
 
+        public string DeliveryType { get; set; }
+
         public string PromoCode { get; set; }
+
+        public decimal SubTotal { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
     }

@@ -15,6 +15,7 @@ export class CartOrdersComponent implements OnInit {
   form: FormGroup;
   loading = false;
   submitted = false;
+  selectedDeliveryType = '';
 
   constructor(private service: ProductsService,
     private formBuilder: FormBuilder,
@@ -31,6 +32,7 @@ export class CartOrdersComponent implements OnInit {
       phone: ['', [Validators.required, Validators.minLength(9)]],
       email: ['', [Validators.required, Validators.minLength(2)]],
       city: ['', [Validators.required, Validators.minLength(2)]],
+      deliveryType: ['', [Validators.required]],
       address: ['', [Validators.required, Validators.minLength(2)]],
       additionalInformation: [''],
       orders: this.formBuilder.array([])
@@ -76,8 +78,10 @@ export class CartOrdersComponent implements OnInit {
       .subscribe(success => {
         if (success) {
           this.orders = this.service.orders;
-          this.subTotal = this.service.subTotal;
-          console.log(this.orders)
+          this.subTotal = 0;
+          this.orders.forEach(element => {
+            this.subTotal += element.totalPrice
+          });
         }
       })
   }
@@ -86,7 +90,7 @@ export class CartOrdersComponent implements OnInit {
     if (item.quantity >= 1) {
       item.quantity += 1;
       item.totalPrice = item.product.price * item.quantity;
-      console.log(item)
+      this.subTotal += item.product.price;
     }
 
   }
@@ -95,15 +99,16 @@ export class CartOrdersComponent implements OnInit {
     if (item.quantity > 1) {
       item.quantity -= 1;
       item.totalPrice -= item.product.price;
+      this.subTotal -= item.product.price;
     }
   }
 
   public removeProduct = (id: number) => {
     this.service.deleteOrder(id)
-      .subscribe(event => {
-        console.log(event);
-        this.getOrdersBySessionId()
-      });
+    .subscribe(event => {
+      console.log(event);
+      this.getOrdersBySessionId();
+    })
   }
 
 }

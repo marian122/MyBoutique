@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" *ngIf="orderData.length>=1">
     <div class="row">
         <div class="col">
             <h3 class="font-weight-bold text-center dark-grey-text">Поръчки</h3>
             <div class="basket"  *ngFor="let data of orderData">
                 <div class="basket-labels">
                   <ul>
-                    <li class="item item-heading">Поръчка номер: 02313</li>
+                    <li class="item item-heading">Поръчка номер: {{data.id}}</li>
                     <li class="quantity">Детайли за доставка</li>
                   </ul>
                 </div>
@@ -15,7 +15,7 @@
                     <div class="basket-product" *ngFor="let productInfo of data.orders">
                         <div class="item">
                             <div class="product-image">
-                              <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"alt="Placholder Image 2">
+                              <img src="../../assets//orange.jpg"alt="Placholder Image 2">
                             </div>
                             <div class="product-details">
                               <h1><strong><span class="item-quantity">{{productInfo.quantity}}</span> x </strong>{{productInfo.product.name}}</h1>
@@ -24,25 +24,42 @@
                               <p><strong>Размер:</strong> {{productInfo.size}}</p>
                               <h1><p>{{productInfo.product.categoryName}} - {{productInfo.product.categoryType}}</p></h1>
                             </div>
-                            <div class="remove">
-                                <button (click)="removeProduct(productInfo.id)">Премахни</button>
-                              </div>
+                            <!-- <div class="remove">
+                                <button (click)="removeProduct(data.orders)">Премахни</button>
+                                
+                              </div> -->
                           </div>
+                                                  
                         </div>
                 </div>  
                 <div class="col-md-5 ml-5">
                     <p><strong>Име: </strong>{{data.firstName}}</p>
                     <p><strong>Фамилия: </strong>{{data.lastName}}</p>
                     <p><strong>Тел. номер: </strong>{{data.phone}}</p>
+                    <p><strong>Начин на доставка: </strong>{{data.deliveryType}}</p>
                     <p><strong>Град: </strong>{{data.city}}</p>
                     <p><strong>Адрес: </strong>{{data.address}}</p>
                     <p><strong>Имейл: </strong>{{data.email}}</p>
                     <p><strong>Допълнителна информация: </strong>{{data.additionalInformation}}</p>
-                    <div class="mt-5 mb-3"><strong>Общо:</strong> {{subTotal}} лв.</div>
+                    <div class="mt-2 mb-3"><strong>Общо:</strong> {{data.subTotal}} лв.</div>
+                    <a class="btn btn-success mb-5" (click)="completeOrder(data.id)" >Приключване на поръчка номер {{data.id}}</a>
                   </div>
-                
+                  
               </div>
             </div>
+            
         </div>
     </div>
+</div>
+
+<div class="container mt-5 mb-5 text-center" *ngIf="orderData.length === 0">
+  <h3 class="text-center">
+      Няма налични поръчки
+  </h3>
+
+  <div>
+    <a [routerLink]="['/']" class="navbar-brand">
+      <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
+    </a>
+  </div>
 </div>

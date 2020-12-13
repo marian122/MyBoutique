@@ -24,17 +24,27 @@ export class OrdersDetailsComponent implements OnInit {
       .subscribe(success => {
         if (success) {
           this.orderData = this.service.orderData;
-          this.subTotal = this.service.subTotal;
-          console.log(this.orderData)
+          console.log(this.orderData);
         }
       })
   }
 
-  removeProduct(id: number): void{
-    this.service.deleteOrder(id)
+  completeOrder(id: number){
+    this.service.completeOrderData(id)
     .subscribe(event => {
-      console.log(event);
+      this.subTotal = 0;
+      this.getOrdersData();
     })
   }
 
+  public removeProduct = (data) => {
+    data.forEach(element => {
+      console.log(element.id)
+      this.service.deleteOrder(element.id)
+      .subscribe(event => {
+        console.log(event)
+        this.getOrdersData();
+      });
+    });
+  }
 }

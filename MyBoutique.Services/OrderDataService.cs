@@ -44,10 +44,12 @@ namespace MyBoutique.Services
                     City = inputModel.City,
                     Email = inputModel.Email,
                     Phone = inputModel.Phone,
+                    DeliveryType = inputModel.DeliveryType,
                     PromoCode = inputModel.PromoCode,
                     AdditionalInformation = inputModel.AdditionalInformation,
                     CreatedOn = DateTime.Now,
                     Orders = orders,
+                    SubTotal = orders.Sum(x => x.TotalPrice)
                 };
 
                 this.repository.Add(data);
@@ -79,25 +81,16 @@ namespace MyBoutique.Services
 
         public async Task<bool> DeleteOrderDataAsynq(int id)
         {
-            if (id == 0)
+            var orderData = this.repository.All().FirstOrDefault(x => x.Id == id);
+
+            if (orderData != null)
             {
-                throw new ArgumentNullException();
-                //Add errMgs
+                this.repository.Delete(orderData);
+                await this.repository.SaveChangesAsync();
+                return true;
             }
 
-            var model = await this.repository.GetByIdAsync(id);
-
-            if (model == null)
-            {
-                throw new ArgumentNullException();
-                //Add errMgs
-            }
-
-            model.IsDeleted = true;
-
-            this.repository.Update(model);
-
-            return true;
+            throw new InvalidOperationException(GlobalConstants.DeleteOrderError);
         }
 
         public async Task<IEnumerable<TViewModel>> GetAllOrderDataAsynq<TViewModel>()

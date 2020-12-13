@@ -14,7 +14,7 @@
                 <div class="basket-product" *ngFor="let item of orders">
                   <div class="item">
                     <div class="product-image">
-                      <img src="https://imgs.michaels.com/MAM/assets/1/726D45CA1C364650A39CD1B336F03305/img/893E44B4248847338CD88E85BD79D361/10186027_r.jpg?fit=inside|540:540"alt="Placholder Image 2">
+                      <img src="../../assets//orange.jpg"alt="Placholder Image 2">
                     </div>
                     <div class="product-details">
                       <h1><strong><span class="item-quantity">{{item.quantity}}</span> x </strong>{{item.product.name}}</h1>
@@ -33,8 +33,8 @@
                     <a class="ml-3"><strong>Общо:</strong> {{item.totalPrice}} лв.</a>
                   </div>
 
-                  <div class="remove">
-                    <button (click)="removeProduct(item.id)">Премахни</button>
+                   <div class="remove">
+                    <button (click)="removeProduct(item.id, item.totalPrice)">Премахни</button>
                   </div>
                 </div>
                 <div class="mt-5 mb-3"><strong>Общо:</strong> {{subTotal}} лв.</div>
@@ -83,6 +83,14 @@
                       <div *ngIf="f.email.errors.required">Имейл адреса е задължителен</div>
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label for="deliveryType" class="font-weight-bold text-left dark-grey-text">Начин за доставка</label>
+                              <select formControlName="deliveryType" class="form-control" id="exampleFormControlSelect1">
+                                  <option value="Econt">Еконт</option>
+                                  <option value="Speedy">Спиди</option>
+                              </select>
+                  </div>
     
                   <div class="form-group">
                     <label for="city" class="font-weight-bold text-left dark-grey-text">Град</label>
@@ -120,8 +128,19 @@
     </div>
 </div>
 </div>
-<div class="container" *ngIf="orders.length === 0">
+<div class="container mt-5 mb-5 text-center" *ngIf="orders.length === 0">
   <h3 class="text-center">
       Вашата количка е празна!
   </h3>
+
+  <hr />
+
+  <p><a class="btn btn-outline-dark" [routerLink]='["/products"]'>Вижте най-новите ни предложения</a></p>
+
+
+  <div>
+    <a [routerLink]="['/']" class="navbar-brand">
+      <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
+    </a>
+  </div>
 </div>

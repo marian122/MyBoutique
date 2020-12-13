@@ -21,6 +21,7 @@ namespace MyBoutique.Infrastructure.InputModels
 
         public string Phone { get; set; }
 
+        public string DeliveryType { get; set; }
 
         public string AdditionalInformation { get; set; }
 

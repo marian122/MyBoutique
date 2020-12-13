@@ -43,9 +43,6 @@ export class ProductsService {
     return this.http.get(`${environment.apiUrl}/api/orders`)
     .pipe(map((data: Order[]) => {
       this.orders = data;
-      this.orders.forEach(element => {
-        this.subTotal += element.totalPrice;
-      });
       return true;
     }))
   }
@@ -85,13 +82,14 @@ export class ProductsService {
     return this.http.get(`${environment.apiUrl}/api/orderdata`)
     .pipe(map((data: any) => {
       this.orderData = data;
-      this.orderData.forEach(element => {
-        element.orders.forEach(innerElement => {
-          this.subTotal += innerElement.totalPrice
-          console.log(element)
-        });
-      });
       return true;
     }))
+  }
+
+  public completeOrderData(id: number){
+    return this.http.delete(`${environment.apiUrl}/api/orderdata/${id}`)
+    .pipe(
+      tap(data => console.log('completedOrderData: ', JSON.stringify(data)))
+    );
   }
 }

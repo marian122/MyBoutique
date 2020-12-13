@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyBoutique.Infrastructure.InputModels;
@@ -25,6 +26,7 @@ namespace MyBoutique.Controllers
         public async Task<IActionResult> Get()
         {
             var orderData = await this.orderDataService.GetAllOrderDataAsynq<OrderDataViewModel>();
+
 
             if (orderData != null)
             {
