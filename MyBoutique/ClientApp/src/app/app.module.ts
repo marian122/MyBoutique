@@ -21,6 +21,7 @@ import { OrdersDetailsComponent } from './orders-details/orders-details.componen
 import { AccountModule } from './account/account.module';
 import { AlertComponent } from './alert/alert.component';
 import { SuccessfullOrderComponent } from './successfull-order/successfull-order.component';
+import { RegisterComponent } from './account/register.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { SuccessfullOrderComponent } from './successfull-order/successfull-order
       { path: 'add-product', component: AddProductComponent },
       { path: 'cart-orders', component: CartOrdersComponent },
       { path: 'orders-details', component: OrdersDetailsComponent },
-      { path: 'successfull-order', component: SuccessfullOrderComponent }
+      { path: 'successfull-order', component: SuccessfullOrderComponent },
     ]),
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),

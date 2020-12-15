@@ -1,58 +1,127 @@
+
 <header>
-  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
-    <div class="container">
-      
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-        aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="navbar-collapse collapse d-sm-inline-flex" [ngClass]="{ show: isExpanded }">
-        <ul class="navbar-nav">
-          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="btn btn-light" [routerLink]='["products"]'>Начало</a>
-         </li>
-  
-          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['male-products']">Мъжки</a>
-          </li>
-  
-          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['female-products']">Женски</a>
-          </li>
+  <div *ngIf="isLoggedIn;  else loggedOut">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
+      <div class="container">
 
-          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['kid-products']">Детски</a>
-          </li>
-        </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse d-sm-inline-flex" [ngClass]="{ show: isExpanded }">
+          <ul class="navbar-nav">
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="btn btn-light" [routerLink]='["products"]'>Начало</a>
+            </li>
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-white" [routerLink]="['male-products']">Мъжки</a>
+            </li>
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-white" [routerLink]="['female-products']">Женски</a>
+            </li>
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-white" [routerLink]="['kid-products']">Детски</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <a [routerLink]="['/']" class="navbar-brand">
+            <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
+          </a>
+        </div>
+
+
+
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
+          <ul class="navbar-nav">
+
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-white" [routerLink]="['cart-orders']">Моята количка</a>
+            </li>
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-white" [routerLink]="['orders-details']">Поръчки</a>
+            </li>
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <app-login-menu></app-login-menu>
+            </li>
+
+            <li class="nav-item " [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="btn btn-light" (click)="LogOut()">Изход</a>
+            </li>
+
+          </ul>
+
+        </div>
       </div>
-      
-      <div>
-        <a [routerLink]="['/']" class="navbar-brand">
-          <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
-        </a>
+    </nav>
+
+  </div>
+
+  <ng-template #loggedOut>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
+      <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse d-sm-inline-flex" [ngClass]="{ show: isExpanded }">
+          <ul class="navbar-nav">
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="btn btn-light" [routerLink]='["products"]'>Начало</a>
+            </li>
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-white" [routerLink]="['male-products']">Мъжки</a>
+            </li>
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-white" [routerLink]="['female-products']">Женски</a>
+            </li>
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-white" [routerLink]="['kid-products']">Детски</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <a [routerLink]="['/']" class="navbar-brand">
+            <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
+          </a>
+        </div>
+
+
+
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
+          <ul class="navbar-nav">
+
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="nav-link text-white" [routerLink]="['cart-orders']">Моята количка</a>
+            </li>
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <app-login-menu></app-login-menu>
+            </li>
+
+            <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <a class="btn btn-light" [routerLink]='["login"]'>Вход</a>
+            </li>
+
+          </ul>
+
+        </div>
       </div>
-      
-      
-
-      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
-        <ul class="navbar-nav">
-          
-          
-          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['cart-orders']">Моята количка</a>
-          </li>
-
-          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link text-white" [routerLink]="['orders-details']">Поръчки</a>
-          </li>
-
-          <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-            <app-login-menu></app-login-menu>
-          </li>
-        </ul>
-        
-      </div>
-    </div>
-  </nav>
+    </nav>
+  </ng-template>
 </header>

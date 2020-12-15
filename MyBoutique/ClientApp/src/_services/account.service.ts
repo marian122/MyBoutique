@@ -27,7 +27,7 @@ export class AccountService {
   }
 
   login(username, password) {
-    return this.http.post<User>(`${environment.apiUrl}/authenticate`, { username, password })
+    return this.http.post<User>(`${environment.apiUrl}/api/account/authenticate`, { username, password })
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('user', JSON.stringify(user));
@@ -40,7 +40,7 @@ export class AccountService {
     // remove user from local storage and set current user to null
     localStorage.removeItem('user');
     this.userSubject.next(null);
-    this.router.navigate(['/home']);
+    this.router.navigate(['products']);
   }
 
   register(user: User) {

@@ -20,7 +20,7 @@ namespace MyBoutique.Models
         [Required]
         [StringLength(80, MinimumLength = 4)]
         public string City { get; set; }
-
+        
         [Required]
         [StringLength(80, MinimumLength = 4)]
         public string Address { get; set; }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AccountService } from '../../_services';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+  collapsed = true;
+  isLoggedIn;
+
+
+  constructor(
+    private accountService: AccountService) { this.isLoggedIn = localStorage.getItem("user"); }
+
 
   collapse() {
     this.isExpanded = false;
@@ -16,5 +24,12 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
-  
+
+   LogOut() {
+    this.accountService.logout();
+    this.isLoggedIn = ""
+    this.collapsed = !this.collapsed;
+    window.location.reload();
+  }
+
 }
