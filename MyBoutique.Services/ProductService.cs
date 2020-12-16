@@ -15,15 +15,22 @@ namespace MyBoutique.Services
     public class ProductService : IProductService
     {
         private readonly IDeletableEntityRepository<Product> productRepository;
+        private readonly IImageService imageService;
 
-        public ProductService(IDeletableEntityRepository<Product> productRepository)
+        public ProductService(IDeletableEntityRepository<Product> productRepository, IImageService imageService)
         {
             this.productRepository = productRepository;
+            this.imageService = imageService;
         }
 
         public async Task<bool> CreateProductAsync(CreateProductInputModel input)
         {
-            // Add CategorTypeCheck
+
+
+            var result = await this.imageService.CreateImageCollectionAsynq(input.Photos);
+
+            var ProductImgs = await this.imageService.GetImageCollectionlByIdsAsynq<Image>(result);
+
 
             var product = new Product()
             {
@@ -37,6 +44,9 @@ namespace MyBoutique.Services
                 CreatedOn = DateTime.Now,
                 IsDeleted = false
             };
+
+
+            product.Photos = ProductImgs.ToList();
 
             if (product != null && product.Price > 0)
             {

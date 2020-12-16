@@ -35,45 +35,6 @@ namespace MyBoutique
             return services;
         }
 
-        public static IServiceCollection RegisterIdentity(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddIdentity<ApplicationUser, IdentityRole>(cfg =>
-            {
-                cfg.User.RequireUniqueEmail = true;
-            })
-                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            services.AddAuthentication()
-               .AddCookie()
-               .AddJwtBearer(cfg =>
-               {
-                   cfg.TokenValidationParameters = new TokenValidationParameters()
-                   {
-                       ValidIssuer = configuration["Tokens:Issuer"],
-                       ValidAudience = configuration["Tokens:Audience"],
-                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Tokens:Key"]))
-                   };
-               });
-
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
-            });
-
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequiredLength = 3;
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequiredUniqueChars = 0;
-
-            });
-
-            return services;
-        }
-
         public static IServiceCollection RegisterCloudinary(this IServiceCollection services, IConfiguration configuration)
         {
             Account account = new Account(

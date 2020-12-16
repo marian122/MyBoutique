@@ -8,10 +8,11 @@ namespace MyBoutique.Services
 {
     public interface IImageService
     {
-        public Task<int> CreateImageAsynq(CreateImageInputModel inputModel);
+        public Task<IList<int>> CreateImageCollectionAsynq (CreateImageInputModel inputModel);
 
         public Task<bool> DeleteImageAsynq(int id);
 
-        public Task<TViewModel> GetImagelByIdAsynq<TViewModel>(int id);
+        public Task<IEnumerable<TViewModel>> GetImageCollectionlByIdsAsynq<TViewModel>(IList<int> id);
+
     }
 }

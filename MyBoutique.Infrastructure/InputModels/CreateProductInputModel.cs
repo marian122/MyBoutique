@@ -1,4 +1,6 @@
-﻿using MyBoutique.Models;
+﻿using Microsoft.AspNetCore.Http;
+using MyBoutique.Infrastructure.InputModels;
+using MyBoutique.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,7 +9,7 @@ namespace MyBoutique.Infrastructures.InputModels
     public class CreateProductInputModel
     {
         public int Id { get; set; }
-        
+
         [Required]
         [StringLength(80, MinimumLength = 4)]
         public string Name { get; set; }
@@ -30,6 +32,6 @@ namespace MyBoutique.Infrastructures.InputModels
 
         public ICollection<Color> Colors { get; set; }
 
-        //public ICollection<Image> Photos { get; set; }
+        public CreateImageInputModel Photos { get; set; }
     }
 }

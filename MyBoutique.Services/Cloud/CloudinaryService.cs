@@ -6,16 +6,16 @@ using System.IO;
 
 namespace MyBoutique.Services.Cloud
 {
-    public class CloudinaryService
+    public class CloudinaryService : ICloudinaryService
     {
-        private readonly CloudinaryDotNet.Cloudinary cloudinaryUtility;
+        private readonly Cloudinary cloudinaryUtility;
 
-        public CloudinaryService(CloudinaryDotNet.Cloudinary cloudinaryUtility)
+        public CloudinaryService(Cloudinary cloudinaryUtility)
         {
             this.cloudinaryUtility = cloudinaryUtility;
         }
 
-        public async Task<string> UploadPictureAsync(IFormFile pictureFile, string fileName)
+        public async Task<string> UploadPictureAsync(IFormFile pictureFile)
         {
             byte[] destinationData;
 
@@ -32,7 +32,7 @@ namespace MyBoutique.Services.Cloud
                 ImageUploadParams uploadParams = new ImageUploadParams
                 {
                     Folder = "profile_images",
-                    File = new FileDescription(fileName, ms),
+                    File = new FileDescription(pictureFile.FileName, ms),
                 };
 
                 uploadResult = this.cloudinaryUtility.Upload(uploadParams);

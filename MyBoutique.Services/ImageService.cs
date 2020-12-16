@@ -3,8 +3,11 @@ using MyBoutique.Common.Repositories;
 using MyBoutique.Infrastructure.InputModels;
 using MyBoutique.Mappings;
 using MyBoutique.Models;
+using MyBoutique.Services.Cloud;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,30 +16,46 @@ namespace MyBoutique.Services
     public class ImageService : IImageService
     {
         readonly IDeletableEntityRepository<Image> repository;
+        private readonly ICloudinaryService cloudinaryService;
 
-        public ImageService(IDeletableEntityRepository<Image> repository)
+        public ImageService(IDeletableEntityRepository<Image> repository, ICloudinaryService cloudinaryService)
         {
             this.repository = repository;
+            this.cloudinaryService = cloudinaryService;
         }
 
-        public async Task<int> CreateImageAsynq(CreateImageInputModel inputModel)
+        public async Task<IList<int>> CreateImageCollectionAsynq(CreateImageInputModel inputModel)
         {
+
+            var results = new List<int>();
+
             if (inputModel == null)
             {
                 throw new ArgumentNullException();
                 // TODO: Add errMsg
             }
 
-            var img = new Image()
+
+            foreach (var file in inputModel.File)
             {
-                Title = inputModel.Title
-            };
+                var fileUrl = await this.cloudinaryService.UploadPictureAsync(file);
+               
+                var img = new Image()
+                {
+                    Title = inputModel.Title,
+                    Path = fileUrl
 
-            this.repository.Add(img);
+                };
 
-            var result = await this.repository.SaveChangesAsync();
+                results.Add(img.Id);
 
-            return result > 0 ? img.Id : throw new InvalidOperationException();
+                this.repository.Add(img);
+            }
+
+
+            await this.repository.SaveChangesAsync();
+
+            return results;
         }
 
         public async Task<bool> DeleteImageAsynq(int id)
@@ -56,17 +75,23 @@ namespace MyBoutique.Services
             return true;
         }
 
-        public async Task<TViewModel> GetImagelByIdAsynq<TViewModel>(int id)
+        public async Task<IEnumerable<TViewModel>> GetImageCollectionlByIdsAsynq<TViewModel>(ICollection<int> Ids)
         {
-            var img = await this.repository.GetByIdAsync(id);
+            var colection = new List<TViewModel>();
 
-            if (img == null)
+            foreach (var id in Ids)
             {
-                throw new ArgumentNullException();
-                // TODO: Add errMsg
+                var img = this.repository.All().FirstOrDefault(a => a.Id == id);
+
+                if (img != null)
+                {
+                   colection.Add(img.MapTo<TViewModel>());
+                }
+               
             }
 
-            return img.MapTo<TViewModel>();
+            return colection;
         }
+
     }
 }

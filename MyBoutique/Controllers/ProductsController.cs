@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyBoutique.Infrastructures.InputModels;
 using MyBoutique.Services;
 using MyBoutique.Infrastructure.ViewModels;
+using MyBoutique.Infrastructure.InputModels;
 
 namespace MyBoutique.Controllers
 {
@@ -15,10 +16,12 @@ namespace MyBoutique.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService productService;
+        private readonly IImageService imageService;
 
-        public ProductsController(IProductService productService)
+        public ProductsController(IProductService productService, IImageService imageService )
         {
             this.productService = productService;
+            this.imageService = imageService;
         }
 
         // GET: api/<ProductsController>
@@ -47,7 +50,13 @@ namespace MyBoutique.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]CreateProductInputModel input)
         {
+            IFormFileCollection files = Request.Form.Files;
+
+            var img = new CreateImageInputModel() { File = files };
+
+            input.Photos = img;
             var result = await this.productService.CreateProductAsync(input);
+
 
             if (result)
             {

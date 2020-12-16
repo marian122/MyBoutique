@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
-namespace MyBoutique.Services.Cloudinary
+namespace MyBoutique.Services.Cloud
 {
     public interface ICloudinaryService
     {
-        public interface ICloudinaryService
-        {
-            Task<string> UploadPictureAsync(IFormFile pictureFile, string fileName);
-        }
+        Task<string> UploadPictureAsync(IFormFile pictureFile);
     }
 }
