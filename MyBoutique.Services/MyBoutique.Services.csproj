@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CloudinaryDotNet" Version="1.14.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MyBoutique.Data\MyBoutique.Data.csproj" />
     <ProjectReference Include="..\MyBoutique.Infrastructure\MyBoutique.Infrastructure.csproj" />
     <ProjectReference Include="..\MyBoutique.Mappings\MyBoutique.Mappings.csproj" />
