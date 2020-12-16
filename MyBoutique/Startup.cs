@@ -22,6 +22,7 @@ using System;
 using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using CloudinaryDotNet;
 
 namespace MyBoutique
 {
@@ -41,42 +42,11 @@ namespace MyBoutique
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
+            services.RegisterCloudinary(Configuration);
 
             services.AddAutoMapper(typeof(OrderService).GetTypeInfo().Assembly);
 
-            services.AddIdentity<ApplicationUser, IdentityRole>(cfg =>
-            {
-                cfg.User.RequireUniqueEmail = true;
-            })
-                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            services.AddAuthentication()
-               .AddCookie()
-               .AddJwtBearer(cfg =>
-               {
-                   cfg.TokenValidationParameters = new TokenValidationParameters()
-                   {
-                       ValidIssuer = this.Configuration["Tokens:Issuer"],
-                       ValidAudience = this.Configuration["Tokens:Audience"],
-                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.Configuration["Tokens:Key"]))
-                   };
-               });
-
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
-            });
-
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequiredLength = 3;
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequiredUniqueChars = 0;
-
-            });
+            services.RegisterIdentity(Configuration);
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -95,34 +65,17 @@ namespace MyBoutique
                 options.Cookie.IsEssential = true;
             });
 
-            services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
-            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            services.RegisterRepositoryServices();
 
-            services.AddTransient<IProductService, ProductService>();
-            services.AddTransient<IOrderService, OrderService>();
-            services.AddTransient<ICartService, CartService>();
-            services.AddTransient<IOrderDataService, OrderDataService>();
-            services.AddTransient<IUserService, UserService>();
-            //services.AddTransient<IImageService, ImageService>();
-
+            services.RegisterCustomServices();
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            AutoMapperConfig.RegisterMappings(typeof(OrderDataViewModel).GetTypeInfo().Assembly);
 
             UpdateDatabase(app);
-
-            AutoMapperConfig.RegisterMappings(
-                typeof(ProductViewModel).GetTypeInfo().Assembly,
-                typeof(OrderViewModel).GetTypeInfo().Assembly,
-                typeof(CartViewModel).GetTypeInfo().Assembly,
-                typeof(OrdersViewModel).GetTypeInfo().Assembly,
-                typeof(ProductsViewModel).GetTypeInfo().Assembly,
-                typeof(ImageViewModel).GetTypeInfo().Assembly,
-                typeof(LoginViewModel).GetTypeInfo().Assembly);
-
 
             if (env.IsDevelopment())
             {
