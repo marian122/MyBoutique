@@ -22,7 +22,7 @@ namespace MyBoutique
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<IOrderDataService, OrderDataService>();
             services.AddTransient<IUserService, UserService>();
-            //services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<IImageService, ImageService>();
 
             return services;
         }

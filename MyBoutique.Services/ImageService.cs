@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyBoutique.Common.Repositories;
 using MyBoutique.Infrastructure.InputModels;
+using MyBoutique.Mappings;
 using MyBoutique.Models;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,10 @@ namespace MyBoutique.Services
     public class ImageService : IImageService
     {
         readonly IDeletableEntityRepository<Image> repository;
-        private readonly MapperConfiguration mapper;
 
-        public ImageService(IDeletableEntityRepository<Image> repository, MapperConfiguration mapper)
+        public ImageService(IDeletableEntityRepository<Image> repository)
         {
             this.repository = repository;
-            this.mapper = mapper;
         }
 
         public async Task<int> CreateImageAsynq(CreateImageInputModel inputModel)
@@ -67,9 +66,7 @@ namespace MyBoutique.Services
                 // TODO: Add errMsg
             }
 
-            var conf = mapper.CreateMapper();
-
-            return conf.Map<TViewModel>(img);
+            return img.MapTo<TViewModel>();
         }
     }
 }

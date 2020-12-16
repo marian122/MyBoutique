@@ -13,13 +13,11 @@ namespace MyBoutique.Models
         public string Title { get; set; }
 
         [Required]
+        [Url]
         public string  Path { get; set; }
 
-        [Required]
-        [StringLength(80, MinimumLength = 2)]
         public string Format { get; set; }
 
-        [Required]
-        public byte[] Content { get; set; }
+        public string Alt { get; set; }
     }
 }

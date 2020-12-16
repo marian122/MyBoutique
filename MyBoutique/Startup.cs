@@ -44,8 +44,6 @@ namespace MyBoutique
 
             services.RegisterCloudinary(Configuration);
 
-            services.AddAutoMapper(typeof(OrderService).GetTypeInfo().Assembly);
-
             services.RegisterIdentity(Configuration);
 
             // In production, the Angular files will be served from this directory
