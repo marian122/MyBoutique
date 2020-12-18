@@ -48,16 +48,14 @@ namespace MyBoutique.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductInputModel input)
         {
-            IFormFileCollection files = this.HttpContext.Request.Form.Files;
+            //IFormFileCollection files = this.HttpContext.Request.Form.Files;
 
             if (!ModelState.IsValid)
             {
                 return this.Ok(ModelState.Values);
             }
 
-            var img = new CreateImageInputModel() { File = files };
-
-            input.Photos = img;
+            //input.Photos = files;
             var result = await this.productService.CreateProductAsync(input);
 
 

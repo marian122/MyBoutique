@@ -10,19 +10,21 @@ import { CategoryConstants } from '../../environments/CategoryConstants';
   styleUrls: ['./female-product-list.component.css']
 })
 export class FemaleProductListComponent implements OnInit {
-  public products = [];
+  isLoggedIn;
+  errorMessage = '';
   filteredProducts: Product[] = [];
+  products: Product[] = [];
   subcategory = '';
   isExpanded = false;
-  
-  constructor(private productsService: ProductsService) { 
+
+  constructor(private productsService: ProductsService) {
     this.products = [];
   }
 
   ngOnInit(): void {
     this.getProductsByCategory();
+    this.isLoggedIn = localStorage.getItem("user");
   }
-
 
   collapse() {
     this.isExpanded = false;
@@ -32,32 +34,43 @@ export class FemaleProductListComponent implements OnInit {
     this.isExpanded = !this.isExpanded;
   }
 
-  getProductsBySubcategory(value: any){
+  //For edit later
+  onSaveComplete(): void {
+    this.productsService.getAll().subscribe(
+      products => {
+        this.products = products;
+      },
+      error => this.errorMessage = <any>error
+    );
+    
+  }
+
+  getProductsBySubcategory(value: any): void{
     this.subcategory = value;
 
-    this.productsService.getAll()
-    .subscribe(success => {
-      if(success){
-        this.products = this.productsService.products;
+    this.productsService.getAll().subscribe(
+      products => {
+        this.products = products
         this.filteredProducts = this.products.filter(p =>  {
           return p.categoryName === CategoryConstants.Female && p.categoryType === this.subcategory
         });
         this.filteredProducts.sort((a, b) => a.price - b.price);
-      }
-    })
+      },
+      error => this.errorMessage = <any>error
+    )
   }
 
   getProductsByCategory(): void{
-    this.productsService.getAll()
-    .subscribe(success => {
-      if(success){
-        this.products = this.productsService.products;
+    this.productsService.getAll().subscribe(
+      products => {
+        this.products = products
         this.filteredProducts = this.products.filter(p =>  {
           return p.categoryName === CategoryConstants.Female
         });
         this.filteredProducts.sort((a, b) => a.price - b.price);
-      }
-    })
+      },
+      error => this.errorMessage = <any>error
+    )
   }
-
 }
+

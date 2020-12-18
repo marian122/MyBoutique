@@ -11,7 +11,12 @@
              alt="Denim Jeans" style="width:100%">
         <h3>{{product.name}}</h3>
         <p class="price">{{product.price}} лв.</p>
-        <p><a class="btn btn-outline-dark" [routerLink]='["/products",product.id]'>Виж повече</a></p>
+        <p>
+          <a class="btn btn-outline-dark" [routerLink]='["/products",product.id]'>Виж повече</a>
+
+          <a *ngIf="this.isLoggedIn" class="btn btn-danger ml-2"
+          (click)="deleteProduct(product.id)">Изтрий</a>
+        </p>
       </div>
     </div>
   </div>
@@ -23,9 +28,14 @@
       <div class="card">
         <img src="../../assets/red.jpg"
              alt="Denim Jeans" style="width:100%">
-        <h3>{{product.name}}</h3>
+        <h3>{{product.name}}</h3> 
         <p class="price">{{product.price}} лв.</p>
-        <p><a class="btn btn-outline-dark" [routerLink]='["/products",product.id]'>Виж повече</a></p>
+        <p>
+          <a class="btn btn-outline-dark" [routerLink]='["/products",product.id]'>Виж повече</a>
+          <a *ngIf="this.isLoggedIn" class="btn btn-danger ml-2"
+          (click)="deleteProduct(product.id)">Изтрий</a>
+        </p>
+        
       </div>
     </div>
   </div>

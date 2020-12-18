@@ -3,8 +3,9 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ProductsService } from '../../_services/products.service';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { HttpEventType, HttpResponse, HttpClient } from '@angular/common/http';
 import { AlertService } from '../../_services';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-add-product',
@@ -22,6 +23,7 @@ export class AddProductComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private alertService: AlertService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -103,40 +105,37 @@ export class AddProductComponent implements OnInit {
 
   }
 
-  uploadFiles(files): void {
+  //public uploadFiles = (files) => {
 
-    if (files.length === 0) {
-      return;
-    }
+  //  if (files.length === 0) {
+  //    return;
+  //  }
 
-    let filesToUpload: FileList = files;
-    const formData = new FormData();
+  //  let filesToUpload = <File>files[0];
+  //  const formData = new FormData();
+  //  formData.append('file', filesToUpload, filesToUpload.name);
 
-    Array.from(filesToUpload).map((file, index) => {
-      return formData.append('file' + index, file, file.name);
-    });
+  //  this.loading = true;
 
-    this.loading = true;
+  //  this.http.post(`${environment.apiUrl}/api/image`, formData, { reportProgress: true, observe: 'events' }).subscribe(
+  //    event => {
+  //      if (event.type === HttpEventType.UploadProgress) {
 
-    this.productService.upload(formData).subscribe(
-      event => {
-        if (event.type === HttpEventType.UploadProgress) {
+  //        this.progress = Math.round(100 * event.loaded / event.total);
+  //      } else if (event instanceof HttpResponse) {
 
-          this.progress = Math.round(100 * event.loaded / event.total);
-        } else if (event instanceof HttpResponse) {
+  //        let message = `Файлът бяха качени успешно :)`;
+  //        this.alertService.success(message, { autoClose: true });
 
-          let message = `Файлът бяха качени успешно :)`;
-          this.alertService.success(message, { autoClose: true });
+  //        if (this.progress == 100) {
+  //          this.loading = false
+  //        }
+  //      }
+  //    },
+  //    err => {
+  //      this.loading = false;
+  //      this.alertService.error(err.error.err, { autoClose: true });
+  //    });
 
-          if (this.progress == 100) {
-            this.loading = false
-          }
-        }
-      },
-      err => {
-        this.loading = false;
-        this.alertService.error(err.error.err, { autoClose: true });
-      });
-
-  }
+  //}
 }

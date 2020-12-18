@@ -22,6 +22,8 @@ import { AccountModule } from './account/account.module';
 import { AlertComponent } from './alert/alert.component';
 import { SuccessfullOrderComponent } from './successfull-order/successfull-order.component';
 import { RegisterComponent } from './account/register.component';
+import { routes } from '../_helpers/routerConfig';
+import { CacheInterceptor } from '../_services/cache.interceptor';
 
 @NgModule({
   declarations: [
@@ -44,22 +46,16 @@ import { RegisterComponent } from './account/register.component';
     HttpClientModule,
     AccountModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: 'products', component: HomeComponent },
-      { path: 'products/:id', component: ProductDetailsComponent },
-      { path: 'male-products', component: MaleProductListComponent },
-      { path: 'female-products', component: FemaleProductListComponent },
-      { path: 'kid-products', component: KidProductListComponent },
-      { path: 'add-product', component: AddProductComponent },
-      { path: 'cart-orders', component: CartOrdersComponent },
-      { path: 'orders-details', component: OrdersDetailsComponent },
-      { path: 'successfull-order', component: SuccessfullOrderComponent },
-    ]),
+    RouterModule.forRoot(routes),
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
     RxReactiveFormsModule 
   ],
+  providers: [  
+    { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }  
+  ],  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

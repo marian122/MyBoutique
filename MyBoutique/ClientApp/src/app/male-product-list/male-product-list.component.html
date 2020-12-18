@@ -14,6 +14,10 @@
                     <ul class="navbar-nav">
                         <!-- <h3 class="font-weight-bold text-center dark-grey-text">Категории</h3> -->
                         <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                        [routerLinkActiveOptions]="{ exact: true }">
+                        <a class="btn" (click)="getProductsByCategory()">Всички</a>
+                        </li>
+                        <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
                             [routerLinkActiveOptions]="{ exact: true }">
                             <a class="btn" (click)="getProductsBySubcategory('Бельо')">Бельо</a>
                         </li>
@@ -22,7 +26,7 @@
                             [routerLinkActiveOptions]="{ exact: true }">
                             <a class="btn" (click)="getProductsBySubcategory('Чорапи')">Чорапи</a>
                         </li>
-                      
+                       
                     </ul>
                 </div>
             </div>

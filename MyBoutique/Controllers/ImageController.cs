@@ -30,7 +30,7 @@ namespace MyBoutique.Controllers
         }
 
         // POST api/<ImageController>
-        [HttpPost()]
+        [HttpPost(), DisableRequestSizeLimit]
         public async Task<IActionResult> Post()
         {
             var files = Request.Form.Files;

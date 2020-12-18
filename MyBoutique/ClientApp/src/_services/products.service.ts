@@ -19,7 +19,7 @@ export class ProductsService {
 
   public createProduct(data) {
 
-    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post(`${environment.apiUrl}/api/products`, data, { headers, responseType: 'json' },)
       .pipe(
@@ -27,16 +27,21 @@ export class ProductsService {
       );
   }
 
-  public getAll(){
-    return this.http.get(`${environment.apiUrl}/api/products`)
-      .pipe(map((data: any[]) => {
-        data.sort((a, b) => {
-          return this.getTime(b.createdOn) - this.getTime(a.createdOn)
-        });
-      this.products = data;
-      return true;
-    }))
+  deleteProduct(id: number): Observable<{}> {  
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });  
+    return this.http.delete<Product>(`${environment.apiUrl}/api/products/${id}`, { headers: headers })  
+      .pipe(  
+        catchError(this.handleError)  
+      );  
+  }  
+
+  getAll(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.apiUrl}/api/products`)
+    .pipe(
+      catchError(this.handleError)
+    )
   }
+
 
   private getTime(date?: Date) {
     return date != null ? new Date(date).getTime() : 0;
@@ -110,4 +115,15 @@ export class ProductsService {
     return this.http.request(req);
 
   }
+
+  private handleError(err) {  
+    let errorMessage: string;  
+    if (err.error instanceof ErrorEvent) {  
+      errorMessage = `An error occurred: ${err.error.message}`;  
+    } else {  
+      errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;  
+    }  
+    console.error(err);  
+    return throwError(errorMessage);  
+  }  
 }

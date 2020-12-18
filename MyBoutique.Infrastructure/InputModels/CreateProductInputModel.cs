@@ -33,6 +33,6 @@ namespace MyBoutique.Infrastructures.InputModels
 
         public ICollection<Color> Colors { get; set; }
 
-        public CreateImageInputModel Photos { get; set; }
+        public IFormFileCollection Photos { get; set; }
     }
 }
