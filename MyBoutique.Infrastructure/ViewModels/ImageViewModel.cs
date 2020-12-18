@@ -12,6 +12,5 @@ namespace MyBoutique.Infrastructure.ViewModels
 
         public string Path { get; set; }
 
-        public string Format { get; set; }
     }
 }

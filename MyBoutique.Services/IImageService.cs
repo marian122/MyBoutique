@@ -1,14 +1,12 @@
-﻿using MyBoutique.Infrastructure.InputModels;
-using System;
+﻿using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyBoutique.Services
 {
     public interface IImageService
     {
-        public Task<IList<int>> CreateImageCollectionAsynq (CreateImageInputModel inputModel);
+        public Task<IList<int>> CreateImageCollectionAsynq (IFormFileCollection inputModel);
 
         public Task<bool> DeleteImageAsynq(int id);
 

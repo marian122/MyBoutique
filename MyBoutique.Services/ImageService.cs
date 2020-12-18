@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using MyBoutique.Common.Repositories;
 using MyBoutique.Infrastructure.InputModels;
 using MyBoutique.Mappings;
@@ -24,7 +25,7 @@ namespace MyBoutique.Services
             this.cloudinaryService = cloudinaryService;
         }
 
-        public async Task<IList<int>> CreateImageCollectionAsynq(CreateImageInputModel inputModel)
+        public async Task<IList<int>> CreateImageCollectionAsynq(IFormFileCollection inputModel)
         {
 
             var results = new List<int>();
@@ -36,13 +37,13 @@ namespace MyBoutique.Services
             }
 
 
-            foreach (var file in inputModel.File)
+            foreach (var file in inputModel)
             {
                 var fileUrl = await this.cloudinaryService.UploadPictureAsync(file);
                
                 var img = new Image()
                 {
-                    Title = inputModel.Title,
+                    Title = file.Name,
                     Path = fileUrl
 
                 };
@@ -75,23 +76,24 @@ namespace MyBoutique.Services
             return true;
         }
 
-        public async Task<IEnumerable<TViewModel>> GetImageCollectionlByIdsAsynq<TViewModel>(ICollection<int> Ids)
+       
+
+        public Task<IEnumerable<TViewModel>> GetImageCollectionlByIdsAsynq<TViewModel>(IList<int> ids)
         {
             var colection = new List<TViewModel>();
 
-            foreach (var id in Ids)
+            foreach (var id in ids)
             {
                 var img = this.repository.All().FirstOrDefault(a => a.Id == id);
 
                 if (img != null)
                 {
-                   colection.Add(img.MapTo<TViewModel>());
+                    colection.Add(img.MapTo<TViewModel>());
                 }
-               
+
             }
 
-            return colection;
+            return (Task<IEnumerable<TViewModel>>)colection.AsEnumerable<TViewModel>();
         }
-
     }
 }

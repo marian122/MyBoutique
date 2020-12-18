@@ -16,12 +16,10 @@ namespace MyBoutique.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService productService;
-        private readonly IImageService imageService;
 
-        public ProductsController(IProductService productService, IImageService imageService )
+        public ProductsController(IProductService productService)
         {
             this.productService = productService;
-            this.imageService = imageService;
         }
 
         // GET: api/<ProductsController>
@@ -48,9 +46,14 @@ namespace MyBoutique.Controllers
 
         // POST: api/<ProductsController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]CreateProductInputModel input)
+        public async Task<IActionResult> Post(CreateProductInputModel input)
         {
-            IFormFileCollection files = Request.Form.Files;
+            IFormFileCollection files = this.HttpContext.Request.Form.Files;
+
+            if (!ModelState.IsValid)
+            {
+                return this.Ok(ModelState.Values);
+            }
 
             var img = new CreateImageInputModel() { File = files };
 

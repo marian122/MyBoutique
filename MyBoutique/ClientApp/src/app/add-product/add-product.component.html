@@ -3,7 +3,7 @@
     <h3 class="font-weight-bold text-center dark-grey-text">Добавяне на продукт</h3>
     <div class="container my-5 py-5 z-depth-2">
       <div class="row justify-content-center">
-        <form [formGroup]="form">
+        <form [formGroup]="form" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name" class="font-weight-bold text-center dark-grey-text">Име</label>
             <input type="text" formControlName="name" class="form-control"
@@ -105,12 +105,12 @@
             <!-- <label for="colors" class="font-weight-bold text-center dark-grey-text">Цветове</label> -->
 
             <div class="mt-3">
-              <input type="file" #file placeholder="Качи снимка" (change)="uploadFile(file.files)"
-                     style="display:none;">
-              <button [disabled]="loading" type="button" class="btn btn-dark " (click)="file.click()">
-                Качи снимка
+              <input type="file" #file placeholder="Качи снимка" 
+                     style="display:none;" (change)="uploadFiles(file.files)">
+              <button [disabled]="loading" type="button" class="btn btn-dark">
+                Качи снимки
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-              </button>
+              </button> 
             </div>
           </div>
 

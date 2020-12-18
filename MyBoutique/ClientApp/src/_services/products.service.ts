@@ -18,9 +18,10 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   public createProduct(data) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.post(`${environment.apiUrl}/api/products`, data, { headers, responseType: 'text' })
+    const headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
+
+    return this.http.post(`${environment.apiUrl}/api/products`, data, { headers, responseType: 'json' },)
       .pipe(
         tap(data => console.log('createdProduct: ', JSON.stringify(data)))
       );
@@ -97,5 +98,16 @@ export class ProductsService {
     .pipe(
       tap(data => console.log('completedOrderData: ', JSON.stringify(data)))
     );
+  }
+
+  upload(files): Observable<HttpEvent<any>> {
+
+    const req = new HttpRequest('POST', `${environment.apiUrl}/api/image`, files, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+
   }
 }

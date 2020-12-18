@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ProductsService } from '../../_services/products.service';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { AlertService } from '../../_services';
 
 @Component({
   selector: 'app-add-product',
@@ -14,10 +16,13 @@ export class AddProductComponent implements OnInit {
   form: FormGroup;
   loading = false;
   submitted = false;
+    progress: number;
   constructor(private productService: ProductsService,
-              private formBuilder: FormBuilder,
-              private router: Router,
-              private route: ActivatedRoute) {}
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
+    private alertService: AlertService,
+  ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -31,11 +36,11 @@ export class AddProductComponent implements OnInit {
     });
   }
 
-  selectCategoryName(event: any){
+  selectCategoryName(event: any) {
     this.selectedCategoryName = event.target.value;
   }
-  
-  get sizes() : FormArray {
+
+  get sizes(): FormArray {
     return this.form.get('sizes') as FormArray
   }
 
@@ -45,15 +50,15 @@ export class AddProductComponent implements OnInit {
     })
   }
 
-  addSizes(){
+  addSizes() {
     this.sizes.push(this.newSize());
   }
 
-  deleteSize(value: any){
+  deleteSize(value: any) {
     this.sizes.removeAt(value);
   }
 
-  get colors() : FormArray {
+  get colors(): FormArray {
     return this.form.get("colors") as FormArray
   }
 
@@ -67,7 +72,7 @@ export class AddProductComponent implements OnInit {
     this.colors.push(this.newColor());
   }
 
-  deleteColor(value: any){
+  deleteColor(value: any) {
     this.colors.removeAt(value);
   }
 
@@ -80,6 +85,8 @@ export class AddProductComponent implements OnInit {
       return;
     }
 
+
+   
     this.loading = true;
 
     this.productService.createProduct(this.form.value)
@@ -96,5 +103,40 @@ export class AddProductComponent implements OnInit {
 
   }
 
-  
+  uploadFiles(files): void {
+
+    if (files.length === 0) {
+      return;
+    }
+
+    let filesToUpload: FileList = files;
+    const formData = new FormData();
+
+    Array.from(filesToUpload).map((file, index) => {
+      return formData.append('file' + index, file, file.name);
+    });
+
+    this.loading = true;
+
+    this.productService.upload(formData).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+
+          let message = `Файлът бяха качени успешно :)`;
+          this.alertService.success(message, { autoClose: true });
+
+          if (this.progress == 100) {
+            this.loading = false
+          }
+        }
+      },
+      err => {
+        this.loading = false;
+        this.alertService.error(err.error.err, { autoClose: true });
+      });
+
+  }
 }

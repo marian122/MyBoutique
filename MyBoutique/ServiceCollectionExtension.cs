@@ -8,6 +8,7 @@ using MyBoutique.Data;
 using MyBoutique.Data.Repositories;
 using MyBoutique.Models;
 using MyBoutique.Services;
+using MyBoutique.Services.Cloud;
 using System.Text;
 
 namespace MyBoutique
@@ -23,6 +24,7 @@ namespace MyBoutique
             services.AddTransient<IOrderDataService, OrderDataService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
 
             return services;
         }
