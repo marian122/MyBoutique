@@ -19,6 +19,7 @@ namespace MyBoutique.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService productService;
+        public static string sessionData = Guid.NewGuid().ToString();
 
         public ProductsController(IProductService productService)
         {
@@ -29,6 +30,7 @@ namespace MyBoutique.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
+            HttpContext.Session.SetString("visitor", sessionData);
 
             var result = await this.productService.GetAllProductsAsync<ProductViewModel>();
             return this.Ok(result);
