@@ -88,12 +88,8 @@ namespace MyBoutique
 
             services.AddSingleton(this.Configuration);
 
-            services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(1);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });
+            services.AddDistributedMemoryCache();
+            services.AddSession();
 
             services.RegisterRepositoryServices();
 
@@ -126,6 +122,7 @@ namespace MyBoutique
             }
 
             app.UseRouting();
+
 
             app.UseSession();
 

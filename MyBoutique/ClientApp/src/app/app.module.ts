@@ -24,6 +24,7 @@ import { SuccessfullOrderComponent } from './successfull-order/successfull-order
 import { RegisterComponent } from './account/register.component';
 import { routes } from '../_helpers/routerConfig';
 import { CacheInterceptor } from '../_services/cache.interceptor';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CacheInterceptor } from '../_services/cache.interceptor';
     RxReactiveFormsModule 
   ],
   providers: [  
-    { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true }  
+    { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
+     CookieService
   ],  
 
   bootstrap: [AppComponent]

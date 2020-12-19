@@ -25,12 +25,14 @@ namespace MyBoutique.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]CreateOrderInputModel input)
         {
+            var sessionId = HttpContext.Session.Id.ToString();
             if (this.ModelState.IsValid)
             {
                 try
                 {
+                    input.UserId = sessionId;
                     var result = await this.orderService.CreateOrderAsync(input);
-
+                    
                     if (result)
                     {
                         return this.Ok(result);
@@ -93,7 +95,8 @@ namespace MyBoutique.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await this.orderService.GetAllOrdersAsync<OrderViewModel>();
+            var sessionId = HttpContext.Session.Id.ToString();
+            var result = await this.orderService.GetAllOrdersAsync<OrderViewModel>(sessionId);
             
             if (result == null)
             {

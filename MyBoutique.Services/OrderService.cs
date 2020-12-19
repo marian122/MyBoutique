@@ -30,7 +30,7 @@ namespace MyBoutique.Services
             {
                 var order = new Order()
                 {
-                    UserId = "placeHereSessionId",
+                    UserId = input.UserId,
                     Product = product,
                     ProductId = product.Id,
                     Color = input.Color,
@@ -84,10 +84,10 @@ namespace MyBoutique.Services
             throw new InvalidOperationException(GlobalConstants.DeleteOrderError);
         }
 
-        public async Task<IEnumerable<TViewModel>> GetAllOrdersAsync<TViewModel>()
+        public async Task<IEnumerable<TViewModel>> GetAllOrdersAsync<TViewModel>(string sessionId)
             => await this.ordersRepository
             .All()
-            .Where(x => x.IsDeleted == false)
+            .Where(x => x.IsDeleted == false && x.UserId == sessionId)
             .OrderBy(x => x.Quantity)
             .To<TViewModel>()
             .ToListAsync();

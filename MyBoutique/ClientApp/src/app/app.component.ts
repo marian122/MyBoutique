@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +9,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'app';
+
   
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
   
   ngOnInit(): void {
     this.router.navigate(['/products']);

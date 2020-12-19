@@ -43,10 +43,6 @@ export class ProductsService {
   }
 
 
-  private getTime(date?: Date) {
-    return date != null ? new Date(date).getTime() : 0;
-  }
-
   public getById(id: any): Observable<Product>{
     return this.http.get<Product>(`${environment.apiUrl}/api/products/${id}`);
   }
@@ -58,6 +54,13 @@ export class ProductsService {
       return true;
     }))
   }
+
+  // getAllOrders(): Observable<Order[]> {
+  //   return this.http.get<Order[]>(`${environment.apiUrl}/api/orders`)
+  //   .pipe(  
+  //     catchError(this.handleError)  
+  //   ); 
+  // }
 
   public addProductToCard(data){
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

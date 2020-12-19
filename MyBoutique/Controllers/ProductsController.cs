@@ -8,6 +8,9 @@ using MyBoutique.Infrastructures.InputModels;
 using MyBoutique.Services;
 using MyBoutique.Infrastructure.ViewModels;
 using MyBoutique.Infrastructure.InputModels;
+using System.Net.Http;
+using System.Collections.Specialized;
+using System.Net.Http.Headers;
 
 namespace MyBoutique.Controllers
 {
@@ -26,9 +29,12 @@ namespace MyBoutique.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
+
             var result = await this.productService.GetAllProductsAsync<ProductViewModel>();
             return this.Ok(result);
         }
+
+
 
         // GET api/<ProductsController>/5
         [HttpGet("{id}")]

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../_models/product';
 import { AlertService } from '../../_services';
 import { ProductsService } from '../../_services/products.service';
+import { Guid } from 'guid-typescript';
+import { SessionService } from '../../_services/session.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +17,13 @@ export class HomeComponent implements OnInit{
   filteredProducts: Product[] = [];    
   products: Product[] = [];    
 
-
   constructor(private productsService: ProductsService,
               private alertService: AlertService) { 
     this.products = [];
   }
 
   ngOnInit(): void {
+    
     this.loading = true;
     this.productsService.getAll().subscribe(
       products => {

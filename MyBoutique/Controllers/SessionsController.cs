@@ -7,18 +7,18 @@ namespace MyBoutique.Controllers
     [ApiController]
     public class SessionsController : ControllerBase
     {
-        [HttpGet("set/{data}")]
-        public IActionResult setsession(string data)
-        {
-            HttpContext.Session.SetString("keyname", data);
-            return this.Ok("session data set");
-        }
+        //[HttpGet("set/{data}")]
+        //public IActionResult setsession(string data)
+        //{
+        //    HttpContext.Session.SetString("client", data);
+        //    return this.Ok("session data set");
+        //}
 
-        [HttpGet("get")]
-        public IActionResult getsessiondata()
-        {
-            var sessionData = HttpContext.Session.GetString("keyname");
-            return this.Ok(sessionData);
-        }
+        //[HttpGet("get")]
+        //public IActionResult getsessiondata()
+        //{
+        //    var sessionData = HttpContext.Session.GetString("client");
+        //    return this.Ok(sessionData);
+        //}
     }
 }
