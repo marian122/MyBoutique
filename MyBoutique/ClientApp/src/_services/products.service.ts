@@ -84,6 +84,13 @@ export class ProductsService {
     );
   }
 
+  public deleteUnfinishedOrdersFromCart(userId: string) {
+    return this.http.delete(`${environment.apiUrl}/api/orders/clear/${userId}`)
+      .pipe(
+        tap(data => console.log('deleted orders: ', JSON.stringify(data)))
+      );
+  }
+
   public createOrder(data) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 

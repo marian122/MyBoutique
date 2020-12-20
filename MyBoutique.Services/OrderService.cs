@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace MyBoutique.Services
 {
+
     public class OrderService : IOrderService
     {
         private readonly IDeletableEntityRepository<Order> ordersRepository;
@@ -24,6 +25,7 @@ namespace MyBoutique.Services
         }
         public async Task<bool> CreateOrderAsync(CreateOrderInputModel input)
         {
+            //here send local storage id value;
             var product = this.productsRepository.All().FirstOrDefault(x => x.Id == input.ProductId);
 
             if (product != null && input.Quantity > 0)
@@ -39,7 +41,6 @@ namespace MyBoutique.Services
                     TotalPrice = product.Price * input.Quantity,
                     CreatedOn = DateTime.Now,
                     IsDeleted = false
-                    
                 };
 
                 this.ordersRepository.Add(order);
@@ -68,6 +69,22 @@ namespace MyBoutique.Services
             }
 
             throw new InvalidOperationException(GlobalConstants.DeleteAllOrdersError);
+        }
+
+        public async Task<bool> DeleteCurrentUserOrderAsync(string userId)
+        {
+            var orders = await this.ordersRepository.All().Where(x => x.UserId == userId).ToListAsync();
+            if (orders.Count != 0)
+            {
+                foreach (var order in orders)
+                {
+                    this.ordersRepository.Delete(order);
+                }
+                await this.ordersRepository.SaveChangesAsync();
+                return true;
+            }
+
+            throw new InvalidOperationException(GlobalConstants.DeleteOrderError);
         }
 
         public async Task<bool> DeleteOrderAsync(int id)

@@ -15,10 +15,12 @@ namespace MyBoutique.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly IOrderService orderService;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
-        public OrdersController(IOrderService orderService)
+        public OrdersController(IOrderService orderService, IHttpContextAccessor httpContextAccessor)
         {
             this.orderService = orderService;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
 
@@ -26,14 +28,12 @@ namespace MyBoutique.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]CreateOrderInputModel input)
         {
-            
-            var sessionId = HttpContext.Session.GetString("visitor");
-            
+
             if (this.ModelState.IsValid)
             {
                 try
                 {
-                    input.UserId = sessionId;
+                    //input.UserId = sessionId;
                     var result = await this.orderService.CreateOrderAsync(input);
                     
                     if (result)
@@ -64,6 +64,20 @@ namespace MyBoutique.Controllers
             }
 
             return this.BadRequest($"Failed to delete order.");
+        }
+
+        // DELETE api/<OrdersController>/{userId}
+        [HttpDelete("clear/{userId}")]
+        public async Task<IActionResult> DeleteAll(string userId)
+        {
+            var order = await this.orderService.DeleteCurrentUserOrderAsync(userId);
+
+            if (order)
+            {
+                return this.Ok(order);
+            }
+
+            return this.BadRequest($"Failed to delete orders.");
         }
 
         // DELETE api/<OrdersController>
@@ -98,7 +112,9 @@ namespace MyBoutique.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var sessionId = HttpContext.Session.GetString("visitor");
+
+            var sessionId = this.httpContextAccessor.HttpContext.Request.Cookies["cookie-name"];
+
             var result = await this.orderService.GetAllOrdersAsync<OrderViewModel>(sessionId);
             
             if (result == null)

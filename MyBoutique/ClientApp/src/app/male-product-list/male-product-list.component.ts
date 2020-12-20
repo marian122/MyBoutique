@@ -23,6 +23,7 @@ export class MaleProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getProductsByCategory();
     this.isLoggedIn = localStorage.getItem("user");
+
   }
 
   collapse() {

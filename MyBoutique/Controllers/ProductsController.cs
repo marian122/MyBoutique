@@ -11,6 +11,7 @@ using MyBoutique.Infrastructure.InputModels;
 using System.Net.Http;
 using System.Collections.Specialized;
 using System.Net.Http.Headers;
+using System.Net;
 
 namespace MyBoutique.Controllers
 {
@@ -19,18 +20,23 @@ namespace MyBoutique.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService productService;
-        public static string sessionData = Guid.NewGuid().ToString();
+        //public static string sessionData = Guid.NewGuid().ToString();
 
         public ProductsController(IProductService productService)
         {
             this.productService = productService;
         }
 
+
         // GET: api/<ProductsController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            HttpContext.Session.SetString("visitor", sessionData);
+            //var sessionData = Dns.GetHostEntry(Dns.GetHostName()).AddressList.GetValue(0).ToString();
+
+            ////create new session here
+            ////var sessionData = Guid.NewGuid().ToString();
+            //HttpContext.Session.SetString("visitor", sessionData);
 
             var result = await this.productService.GetAllProductsAsync<ProductViewModel>();
             return this.Ok(result);
@@ -42,6 +48,7 @@ namespace MyBoutique.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
+
             var product = await this.productService.GetByIdAsync<ProductViewModel>(id);
 
             if (product != null)

@@ -43,6 +43,7 @@ namespace MyBoutique.Models
 
         public string PromoCode { get; set; }
 
+        public bool IsFinished { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
     }

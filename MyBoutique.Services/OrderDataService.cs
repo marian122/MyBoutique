@@ -49,7 +49,8 @@ namespace MyBoutique.Services
                     AdditionalInformation = inputModel.AdditionalInformation,
                     CreatedOn = DateTime.Now,
                     Orders = orders,
-                    SubTotal = orders.Sum(x => x.TotalPrice)
+                    SubTotal = orders.Sum(x => x.TotalPrice),
+                    IsFinished = true,
                 };
 
                 this.repository.Add(data);
@@ -95,7 +96,7 @@ namespace MyBoutique.Services
 
         public async Task<IEnumerable<TViewModel>> GetAllOrderDataAsynq<TViewModel>()
          => await this.repository.All()
-            .Where(x => x.IsDeleted == false)
+            .Where(x => x.IsDeleted == false && x.IsFinished == true)
             .OrderBy(x => x.CreatedOn)
             .Include(x => x.Orders)
             .ThenInclude(x => x.Product)
