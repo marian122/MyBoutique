@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Guid } from 'guid-typescript';
-import { ProductsService } from '../_services/products.service';
+import { OrderService } from '../_services/order.service';
 
 @Component({
   selector: 'app-root',
@@ -20,10 +20,9 @@ export class AppComponent implements OnInit{
   
   constructor(private router: Router,
     private cookieService: CookieService,
-    private orderService: ProductsService) { }
+    private orderService: OrderService) { }
   
   ngOnInit(): void {
-    this.orderService.deleteAllProductsFromCart();
     this.cookieService.set('cookie-name', this.cookieVal);
     this.cookieValue = this.cookieService.get('cookie-name');
     console.log(this.cookieValue);
@@ -31,7 +30,7 @@ export class AppComponent implements OnInit{
   }
 
   cleartCartProducts(): void {
-    this.orderService.deleteUnfinishedOrdersFromCart(this.cookieVal)
+    this.orderService.deleteOrdersFromCartForCurrentUser(this.cookieVal)
       .subscribe(event => {
         console.log(event);
       })

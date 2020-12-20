@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../_models/product';
 import { AlertService } from '../../_services';
 import { ProductsService } from '../../_services/products.service';
-import { Guid } from 'guid-typescript';
-import { SessionService } from '../../_services/session.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +31,6 @@ export class HomeComponent implements OnInit{
       },    
       error => this.errorMessage = <any>error    
     )
-    // this.getAllProducts();
     this.isLoggedIn = localStorage.getItem("user");
   }
 
@@ -67,14 +63,4 @@ export class HomeComponent implements OnInit{
       );
 
   }
-
-  // getAllProducts(): void{
-  //   this.productsService.getAll()
-  //   .subscribe(success => {
-  //     if(success){
-  //       this.products = this.productsService.products 
-  //       console.log(this.products)
-  //     }
-  //   })
-  // }
 }

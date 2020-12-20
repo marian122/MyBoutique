@@ -1,9 +1,6 @@
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using MyBoutique.Data;
@@ -11,18 +8,11 @@ using MyBoutique.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MyBoutique.Common.Repositories;
-using MyBoutique.Data.Repositories;
-using MyBoutique.Services;
 using MyBoutique.Mappings;
 using MyBoutique.Infrastructure.ViewModels;
 using System.Reflection;
-using MyBoutique.Infrastructure.ViewModels.Collections;
-using System;
-using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using CloudinaryDotNet;
 
 namespace MyBoutique
 {

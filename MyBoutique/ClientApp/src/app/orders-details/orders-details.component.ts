@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../_services/products.service';
+import { OrderService } from '../../_services/order.service';
+import { ShoppingCartService } from '../../_services/shopping-cart.service';
 
 @Component({
   selector: 'app-orders-details',
@@ -10,7 +12,9 @@ export class OrdersDetailsComponent implements OnInit {
   public orderData = [];
   public subTotal = 0;
 
-  constructor(private service: ProductsService) { 
+  constructor(private productService: ProductsService,
+    private orderService: OrderService,
+    private shoppingCartService: ShoppingCartService) { 
     this.orderData = [];
     this.subTotal = 0;
   }
@@ -20,17 +24,17 @@ export class OrdersDetailsComponent implements OnInit {
   }
 
   getOrdersData(): void {
-    this.service.getAllOrderData()
+    this.shoppingCartService.getAllOrderData()
       .subscribe(success => {
         if (success) {
-          this.orderData = this.service.orderData;
+          this.orderData = this.shoppingCartService.orderData;
           console.log(this.orderData);
         }
       })
   }
 
   completeOrder(id: number){
-    this.service.completeOrderData(id)
+    this.shoppingCartService.completeOrderData(id)
     .subscribe(event => {
       this.subTotal = 0;
       this.getOrdersData();
@@ -40,7 +44,7 @@ export class OrdersDetailsComponent implements OnInit {
   public removeProduct = (data) => {
     data.forEach(element => {
       console.log(element.id)
-      this.service.deleteOrder(element.id)
+      this.orderService.deleteOrder(element.id)
       .subscribe(event => {
         console.log(event)
         this.getOrdersData();

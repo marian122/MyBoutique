@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using MyBoutique.Infrastructure.InputModels;
 using MyBoutique.Mappings;
 using MyBoutique.Models;
 using System.Collections.Generic;

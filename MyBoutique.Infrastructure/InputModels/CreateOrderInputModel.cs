@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MyBoutique.Infrastructures.InputModels
 {
@@ -10,8 +8,10 @@ namespace MyBoutique.Infrastructures.InputModels
 
         public string UserId { get; set; }
 
+        [Required]
         public string Color { get; set; }
 
+        [Required]
         public string Size { get; set; }
 
         public int Quantity { get; set; }

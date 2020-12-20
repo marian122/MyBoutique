@@ -1,8 +1,6 @@
 ﻿using MyBoutique.Common.BaseModels;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace MyBoutique.Models
 {
@@ -40,10 +38,10 @@ namespace MyBoutique.Models
         public string AdditionalInformation { get; set; }
 
         public decimal SubTotal { get; set; }
-
+        
         public string PromoCode { get; set; }
 
-        public bool IsFinished { get; set; }
+        public string UserId { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
     }

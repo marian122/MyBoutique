@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyBoutique.Data;
 
 namespace MyBoutique.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201220165536_idadded")]
+    partial class idadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -306,6 +308,41 @@ namespace MyBoutique.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("MyBoutique.Models.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderDataId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SessionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderDataId");
+
+                    b.ToTable("Carts");
+                });
+
             modelBuilder.Entity("MyBoutique.Models.Color", b =>
                 {
                     b.Property<int>("Id")
@@ -377,6 +414,9 @@ namespace MyBoutique.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int?>("CartId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -413,6 +453,8 @@ namespace MyBoutique.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CartId");
 
                     b.HasIndex("OrderDataId");
 
@@ -461,6 +503,9 @@ namespace MyBoutique.Data.Migrations
                         .HasColumnType("nvarchar(80)");
 
                     b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsFinished")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
@@ -605,6 +650,17 @@ namespace MyBoutique.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MyBoutique.Models.Cart", b =>
+                {
+                    b.HasOne("MyBoutique.Models.OrderData", "OrderData")
+                        .WithMany()
+                        .HasForeignKey("OrderDataId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OrderData");
+                });
+
             modelBuilder.Entity("MyBoutique.Models.Color", b =>
                 {
                     b.HasOne("MyBoutique.Models.Product", null)
@@ -621,6 +677,10 @@ namespace MyBoutique.Data.Migrations
 
             modelBuilder.Entity("MyBoutique.Models.Order", b =>
                 {
+                    b.HasOne("MyBoutique.Models.Cart", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("CartId");
+
                     b.HasOne("MyBoutique.Models.OrderData", null)
                         .WithMany("Orders")
                         .HasForeignKey("OrderDataId");
@@ -639,6 +699,11 @@ namespace MyBoutique.Data.Migrations
                     b.HasOne("MyBoutique.Models.Product", null)
                         .WithMany("Sizes")
                         .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("MyBoutique.Models.Cart", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("MyBoutique.Models.OrderData", b =>

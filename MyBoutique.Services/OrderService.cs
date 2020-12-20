@@ -25,7 +25,6 @@ namespace MyBoutique.Services
         }
         public async Task<bool> CreateOrderAsync(CreateOrderInputModel input)
         {
-            //here send local storage id value;
             var product = this.productsRepository.All().FirstOrDefault(x => x.Id == input.ProductId);
 
             if (product != null && input.Quantity > 0)

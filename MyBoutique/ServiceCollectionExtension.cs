@@ -1,16 +1,11 @@
 ﻿using CloudinaryDotNet;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
 using MyBoutique.Common.Repositories;
-using MyBoutique.Data;
 using MyBoutique.Data.Repositories;
-using MyBoutique.Models;
 using MyBoutique.Services;
 using MyBoutique.Services.Cloud;
-using System.Text;
 
 namespace MyBoutique
 {
@@ -21,7 +16,6 @@ namespace MyBoutique
         {
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IOrderService, OrderService>();
-            services.AddTransient<ICartService, CartService>();
             services.AddTransient<IOrderDataService, OrderDataService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IImageService, ImageService>();

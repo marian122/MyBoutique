@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/_services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { OrderService } from '../../_services/order.service';
 
 @Component({
   selector: 'app-product-details',
@@ -44,7 +45,8 @@ export class ProductDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private alertService: AlertService,
     private formBuilder: FormBuilder,
-    private cookieService: CookieService) { }
+    private cookieService: CookieService,
+    private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('cookie-name');
@@ -108,12 +110,12 @@ export class ProductDetailsComponent implements OnInit {
     data.userId = this.cookieValue;
 
     if (data.size !== "" && data.color !== "") {
-      this.productService.addProductToCard(data)
+      this.orderService.addProductToCard(data)
         .subscribe(() => {
           let message = `Успешно добавихте продукта в количката.`;
           this.alertService.success(message, { autoClose: true });
           setTimeout(() => {
-            this.router.navigate(['/cart-orders'], { relativeTo: this.route });
+            this.router.navigate(['/products'], { relativeTo: this.route });
           }, 1500);
         })
     }

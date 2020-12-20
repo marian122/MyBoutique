@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using MyBoutique.Common.Repositories;
 using MyBoutique.Models;
 using System;

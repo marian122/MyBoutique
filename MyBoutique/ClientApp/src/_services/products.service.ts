@@ -46,74 +46,9 @@ export class ProductsService {
   public getById(id: any): Observable<Product>{
     return this.http.get<Product>(`${environment.apiUrl}/api/products/${id}`);
   }
-//Later get all orders by session/id
-  public getAllOrders(){
-    return this.http.get(`${environment.apiUrl}/api/orders`)
-    .pipe(map((data: Order[]) => {
-      this.orders = data;
-      return true;
-    }))
-  }
 
-  // getAllOrders(): Observable<Order[]> {
-  //   return this.http.get<Order[]>(`${environment.apiUrl}/api/orders`)
-  //   .pipe(  
-  //     catchError(this.handleError)  
-  //   ); 
-  // }
 
-  public addProductToCard(data){
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(`${environment.apiUrl}/api/orders`, data, { headers, responseType: 'text' })
-    .pipe(
-      tap(data => console.log('addedOrder: ', JSON.stringify(data)))
-    );
-  }
- 
-  public deleteOrder(id : number){
-    return this.http.delete(`${environment.apiUrl}/api/orders/${id}`)
-    .pipe( 
-      tap(data => console.log('deleted order: ', JSON.stringify(data)))
-    );
-  }
-
-  public deleteAllProductsFromCart(){
-    return this.http.delete(`${environment.apiUrl}/api/orders`)
-    .pipe( 
-      tap(data => console.log('deleted orders: ', JSON.stringify(data)))
-    );
-  }
-
-  public deleteUnfinishedOrdersFromCart(userId: string) {
-    return this.http.delete(`${environment.apiUrl}/api/orders/clear/${userId}`)
-      .pipe(
-        tap(data => console.log('deleted orders: ', JSON.stringify(data)))
-      );
-  }
-
-  public createOrder(data) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.post(`${environment.apiUrl}/api/orderdata`, data, { headers, responseType: 'text' })
-      .pipe(
-        tap(data => console.log('createdOrder: ', JSON.stringify(data)))
-      );
-  }
-
-  public getAllOrderData(){
-    return this.http.get(`${environment.apiUrl}/api/orderdata`)
-    .pipe(map((data: any) => {
-      this.orderData = data;
-      return true;
-    }))
-  }
-
-  public completeOrderData(id: number){
-    return this.http.delete(`${environment.apiUrl}/api/orderdata/${id}`)
-    .pipe(
-      tap(data => console.log('completedOrderData: ', JSON.stringify(data)))
-    );
-  }
+  
 
   upload(files): Observable<HttpEvent<any>> {
 

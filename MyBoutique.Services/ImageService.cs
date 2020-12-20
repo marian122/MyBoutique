@@ -1,15 +1,11 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using MyBoutique.Common.Repositories;
-using MyBoutique.Infrastructure.InputModels;
 using MyBoutique.Mappings;
 using MyBoutique.Models;
 using MyBoutique.Services.Cloud;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyBoutique.Services

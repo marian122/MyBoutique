@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AlertService } from 'src/_services';
 import { ProductsService } from '../../_services/products.service';
+import { CookieService } from 'ngx-cookie-service';
+import { OrderService } from '../../_services/order.service';
+import { ShoppingCartService } from '../../_services/shopping-cart.service';
 
 @Component({
   selector: 'app-cart-orders',
@@ -13,21 +16,28 @@ import { ProductsService } from '../../_services/products.service';
 export class CartOrdersComponent implements OnInit {
   public orders = [];
   public subTotal = 0;
+  private cookieValue: string;
+
   form: FormGroup;
   loading = false;
   submitted = false;
   selectedDeliveryType = '';
 
-  constructor(private service: ProductsService,
+  constructor(private productService: ProductsService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private alertService: AlertService) {
+    private alertService: AlertService,
+    private cookieService: CookieService,
+    private orderService: OrderService,
+    private shoppingCartService: ShoppingCartService) {
     this.orders = [];
     this.subTotal = 0;
   }
 
   ngOnInit(): void {
+    this.cookieValue = this.cookieService.get('cookie-name');
+
     this.form = this.formBuilder.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -37,7 +47,8 @@ export class CartOrdersComponent implements OnInit {
       deliveryType: ['', [Validators.required]],
       address: ['', [Validators.required, Validators.minLength(2)]],
       additionalInformation: [''],
-      orders: this.formBuilder.array([])
+      orders: this.formBuilder.array([]),
+      userId: this.cookieService.get('cookie-name')
     });
     this.getOrdersBySessionId();
   }
@@ -53,11 +64,10 @@ export class CartOrdersComponent implements OnInit {
 
     this.loading = true;
 
-    this.service.createOrder(this.form.value)
+    this.shoppingCartService.createOrder(this.form.value)
       .pipe(first())
       .subscribe(
         data => {
-          console.log(this.form.value);
           this.router.navigate(['/successfull-order'], { relativeTo: this.route });
           this.cleartCartProducts();
         },
@@ -69,17 +79,17 @@ export class CartOrdersComponent implements OnInit {
   }
 
   cleartCartProducts(): void {
-    this.service.deleteAllProductsFromCart()
+    this.orderService.deleteOrdersFromCartForCurrentUser(this.cookieValue)
       .subscribe(event => {
         console.log(event);
       })
   }
 
   getOrdersBySessionId(): void {
-    this.service.getAllOrders()
+    this.orderService.getAllOrders()
       .subscribe(success => {
         if (success) {
-          this.orders = this.service.orders;
+          this.orders = this.orderService.orders;
           this.subTotal = 0;
           this.orders.forEach(element => {
             this.subTotal += element.totalPrice
@@ -106,7 +116,7 @@ export class CartOrdersComponent implements OnInit {
   }
 
   public removeProduct = (id: number, productName: string) => {
-    this.service.deleteOrder(id)
+    this.orderService.deleteOrder(id)
       .subscribe(event => {
         console.log(event);
         let message = `Успешно премахнахте ${productName} от вашата количка.`;

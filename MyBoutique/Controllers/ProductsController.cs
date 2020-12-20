@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MyBoutique.Infrastructures.InputModels;
 using MyBoutique.Services;
 using MyBoutique.Infrastructure.ViewModels;
-using MyBoutique.Infrastructure.InputModels;
-using System.Net.Http;
-using System.Collections.Specialized;
-using System.Net.Http.Headers;
-using System.Net;
 
 namespace MyBoutique.Controllers
 {

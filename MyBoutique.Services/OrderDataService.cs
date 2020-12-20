@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyBoutique.Common;
 using MyBoutique.Common.Repositories;
 using MyBoutique.Infrastructure.InputModels;
@@ -30,7 +29,7 @@ namespace MyBoutique.Services
             //get all orders
             var orders = await this.orderRepository
             .All()
-            .Where(x => x.IsDeleted == false)
+            .Where(x => x.IsDeleted == false && x.UserId == inputModel.UserId)
             .OrderBy(x => x.Quantity)
             .ToListAsync();
 
@@ -50,7 +49,7 @@ namespace MyBoutique.Services
                     CreatedOn = DateTime.Now,
                     Orders = orders,
                     SubTotal = orders.Sum(x => x.TotalPrice),
-                    IsFinished = true,
+                    UserId = inputModel.UserId
                 };
 
                 this.repository.Add(data);
@@ -96,7 +95,7 @@ namespace MyBoutique.Services
 
         public async Task<IEnumerable<TViewModel>> GetAllOrderDataAsynq<TViewModel>()
          => await this.repository.All()
-            .Where(x => x.IsDeleted == false && x.IsFinished == true)
+            .Where(x => x.IsDeleted == false)
             .OrderBy(x => x.CreatedOn)
             .Include(x => x.Orders)
             .ThenInclude(x => x.Product)

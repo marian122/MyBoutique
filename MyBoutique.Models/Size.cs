@@ -1,9 +1,4 @@
-﻿using MyBoutique.Common.BaseModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyBoutique.Models
+﻿namespace MyBoutique.Models
 {
     public class Size
     {

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -68,7 +66,7 @@ namespace MyBoutique.Controllers
 
         // DELETE api/<OrdersController>/{userId}
         [HttpDelete("clear/{userId}")]
-        public async Task<IActionResult> DeleteAll(string userId)
+        public async Task<IActionResult> DeleteByUserId(string userId)
         {
             var order = await this.orderService.DeleteCurrentUserOrderAsync(userId);
 

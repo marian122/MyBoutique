@@ -1,5 +1,4 @@
-﻿
-using MyBoutique.Models;
+﻿using MyBoutique.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
