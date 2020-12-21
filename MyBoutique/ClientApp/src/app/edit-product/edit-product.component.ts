@@ -1,37 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { throwError } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { ProductsService } from '../../_services/products.service';
-import { HttpEventType, HttpResponse, HttpClient } from '@angular/common/http';
-import { AlertService } from '../../_services';
-import { environment } from '../../environments/environment';
 import { Product } from '../../_models/product';
-import { Subscription } from 'rxjs';
+import { AlertService } from '../../_services';
+import { ProductsService } from '../../_services/products.service';
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.css']
 })
-export class AddProductComponent implements OnInit {
+export class EditProductComponent implements OnInit {
   selectedCategoryName: string = '';
   form: FormGroup;
   loading = false;
   submitted = false;
   progress: number;
-  productIdUpdate = null;
 
   constructor(private productService: ProductsService,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private alertService: AlertService
-  ) { }
-
+    private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
+      id: [0],
       name: ['', [Validators.required, Validators.minLength(2)]],
       description: ['', [Validators.required, Validators.minLength(2)]],
       price: [0, Validators.required],
@@ -40,6 +36,21 @@ export class AddProductComponent implements OnInit {
       sizes: this.formBuilder.array([]),
       colors: this.formBuilder.array([]),
     });
+
+    this.loadProductForEdit(this.route.snapshot.params.id);
+  }
+
+  loadProductForEdit(productId: number) {
+    this.productService.getById(productId).subscribe(product => {
+      this.form.controls['id'].setValue(productId);
+      this.form.controls['name'].setValue(product.name);
+      this.form.controls['description'].setValue(product.description);
+      this.form.controls['price'].setValue(product.price);
+      this.form.controls['categoryName'].setValue(product.categoryName);
+      this.form.controls['categoryType'].setValue(product.categoryType);
+      this.form.controls['sizes'].patchValue(product.sizes);
+      this.form.controls['colors'].patchValue(product.colors);
+    })
   }
 
   selectCategoryName(event: any) {
@@ -92,18 +103,16 @@ export class AddProductComponent implements OnInit {
     }
 
     const product = this.form.value;
-    this.createProduct(product);
+    this.editProduct(product);
   }
 
-  createProduct(product: Product) {
-    this.loading = true;
-
-    this.productService.createProduct(product)
-      .pipe(first())
+  editProduct(product: Product) {
+    this.productService.updateProduct(product)
+    .pipe(first())
       .subscribe(
         data => {
-          console.log(product);
-          let message = `Успешно добавихте ${product.name}.`;
+          console.log(data);
+          let message = `Успешно редактирахте ${data.name}.`;
           this.alertService.success(message, { autoClose: true });
           setTimeout(() => {
             this.router.navigate(['/products'], { relativeTo: this.route });
@@ -116,37 +125,3 @@ export class AddProductComponent implements OnInit {
 
   }
 }
-
-  //public uploadFiles = (files) => {
-
-  //  if (files.length === 0) {
-  //    return;
-  //  }
-
-  //  let filesToUpload = <File>files[0];
-  //  const formData = new FormData();
-  //  formData.append('file', filesToUpload, filesToUpload.name);
-
-  //  this.loading = true;
-
-  //  this.http.post(`${environment.apiUrl}/api/image`, formData, { reportProgress: true, observe: 'events' }).subscribe(
-  //    event => {
-  //      if (event.type === HttpEventType.UploadProgress) {
-
-  //        this.progress = Math.round(100 * event.loaded / event.total);
-  //      } else if (event instanceof HttpResponse) {
-
-  //        let message = `Файлът бяха качени успешно :)`;
-  //        this.alertService.success(message, { autoClose: true });
-
-  //        if (this.progress == 100) {
-  //          this.loading = false
-  //        }
-  //      }
-  //    },
-  //    err => {
-  //      this.loading = false;
-  //      this.alertService.error(err.error.err, { autoClose: true });
-  //    });
-
-  //}

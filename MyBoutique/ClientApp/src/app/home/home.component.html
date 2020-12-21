@@ -15,7 +15,10 @@
           <a class="btn btn-outline-dark" [routerLink]='["/products",product.id]'>Виж повече</a>
 
           <a *ngIf="this.isLoggedIn" class="btn btn-danger ml-2"
-          (click)="deleteProduct(product.id)">Изтрий</a>
+             (click)="deleteProduct(product.id)">Изтрий</a>
+
+          <a *ngIf="this.isLoggedIn" class="btn btn-warning ml-2"
+             [routerLink]='["/edit-product",product.id]'>Редактирай</a>
         </p>
       </div>
     </div>
@@ -33,7 +36,10 @@
         <p>
           <a class="btn btn-outline-dark" [routerLink]='["/products",product.id]'>Виж повече</a>
           <a *ngIf="this.isLoggedIn" class="btn btn-danger ml-2"
-          (click)="deleteProduct(product.id)">Изтрий</a>
+             (click)="deleteProduct(product.id)">Изтрий</a>
+
+             <a *ngIf="this.isLoggedIn" class="btn btn-warning ml-2"
+             [routerLink]='["/edit-product",product.id]'>Редактирай</a>
         </p>
         
       </div>

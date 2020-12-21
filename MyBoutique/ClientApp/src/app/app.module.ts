@@ -25,6 +25,7 @@ import { RegisterComponent } from './account/register.component';
 import { routes } from '../_helpers/routerConfig';
 import { CacheInterceptor } from '../_services/cache.interceptor';
 import { CookieService } from 'ngx-cookie-service';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CookieService } from 'ngx-cookie-service';
     CartOrdersComponent,
     OrdersDetailsComponent,
     AlertComponent,
-    SuccessfullOrderComponent
+    SuccessfullOrderComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

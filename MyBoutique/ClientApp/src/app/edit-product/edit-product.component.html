@@ -1,0 +1,128 @@
+<div class="wrapper">
+    <div class="inner">
+      <h3 class="font-weight-bold text-center dark-grey-text">Редактиране на продукт</h3>
+      <div class="container my-5 py-5 z-depth-2">
+        <div class="row justify-content-center">
+          <form [formGroup]="form" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="name" class="font-weight-bold text-center dark-grey-text">Име</label>
+              <input type="text" formControlName="name" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Името е задължително</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="description" class="font-weight-bold text-center dark-grey-text">Описание</label>
+              <textarea rows="4" cols="50" type="text" formControlName="description" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+                </textarea>
+              <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required">Описанието е задължително</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="price" class="font-weight-bold text-center dark-grey-text">Цена</label>
+              <input type="number" formControlName="price" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+              <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                <div *ngIf="f.price.errors.required">Цената е задължителна</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="categoryName" class="font-weight-bold text-center dark-grey-text">Категория</label>
+              <div class="mb-0">
+                <select formControlName="categoryName" class="form-control" id="exampleFormControlSelect1">
+                  <option value="Мъже">Мъже</option>
+                  <option value="Жени">Жени</option>
+                  <option value="Деца">Деца</option>
+                </select>
+              </div>
+              <div *ngIf="submitted && f.categoryName.errors" class="invalid-feedback">
+                <div *ngIf="f.categoryName.errors.required">Категорията е задължителна</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="categoryType" class="font-weight-bold text-center dark-grey-text">Подкатегория</label>
+              <select formControlName="categoryType" class="form-control" id="exampleFormControlSelect1">
+                <option value="Блузи">Блузи</option>
+                <option value="Ризи">Ризи</option>
+                <option value="Гащеризони">Гащеризони</option>
+                <option value="Якета">Якета</option>
+                <option value="Палта">Палта</option>
+                <option value="Поли">Поли</option>
+                <option value="Панталони">Панталони</option>
+                <option value="Потници">Потници</option>
+                <option value="Туники">Туники</option>
+                <option value="Шалове">Шалове</option>
+                <option value="Бельо">Бельо</option>
+                <option value="Чорапи">Чорапи</option>
+              </select>
+              <div *ngIf="submitted && f.categoryType.errors" class="invalid-feedback">
+                <div *ngIf="f.categoryType.errors.required">Подкатегорията е задължителна</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <!-- <label for="sizes" class="font-weight-bold text-center dark-grey-text">Размери</label> -->
+              <div formArrayName="sizes">
+                <div [formGroupName]="i" class="mt-3" *ngFor="let size of sizes.controls; let i=index">
+                  <div class="row mb-2">
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="name" placeholder="Напишете размер" />
+                    </div>
+                    <div class="col-md-4">
+                      <button class="btn btn-danger" (click)="deleteSize(i)">Изтрий</button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button class="btn btn-dark" (click)="addSizes()">Добави размер</button>
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <!-- <label for="colors" class="font-weight-bold text-center dark-grey-text">Цветове</label> -->
+              <div formArrayName="colors">
+                <div [formGroupName]="i" class="mt-3" *ngFor="let color of colors.controls; let i=index">
+                  <div class="row mb-2">
+                    <div class="col-md-8">
+                      <input type="text" class="form-control" formControlName="name" placeholder="Напишете цвят" />
+                    </div>
+                    <div class="col-md-4">
+                      <button class="btn btn-danger" (click)="deleteColor(i)">Изтрий</button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button class="btn btn-dark" (click)="addColors()">Добави цвят</button>
+                </div>
+              </div>
+            </div>
+  
+  
+            <!--<div class="form-group">-->
+              <!-- <label for="colors" class="font-weight-bold text-center dark-grey-text">Цветове</label> -->
+  
+              <!--<div class="mt-3">
+                <input type="file" #file placeholder="Качи снимка" 
+                       style="display:none;" (change)="uploadFiles(file.files)">
+                <button [disabled]="loading" (click)="file.click()" type="button" class="btn btn-dark">
+                  Качи снимки
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                </button> 
+              </div>
+            </div>-->
+  
+            <div class="form-group">
+              <button (click)="onSubmit()" [disabled]="loading" class="btn btn-dark">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Редактирай
+              </button>
+              <a routerLink="/products" class="btn btn-light ml-3">Отказ</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

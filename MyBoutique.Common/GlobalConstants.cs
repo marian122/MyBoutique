@@ -17,6 +17,10 @@ namespace MyBoutique.Common
 
         public const string FinishOrderError = "Finishing a order failed in OrderDataService";
 
+        public const string ProductSearchForEditError = "Product search for edit failed in ProductService";
+
+        public const string ProductEditError = "Edit product failed in ProductService";
+
         public const string AdministratorRoleName = "Administrator";
 
         public const string JsonContentType = "application/json";

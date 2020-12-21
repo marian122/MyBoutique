@@ -1,4 +1,6 @@
-﻿using MyBoutique.Infrastructures.InputModels;
+﻿using MyBoutique.Infrastructure.InputModels;
+using MyBoutique.Infrastructure.ViewModels;
+using MyBoutique.Infrastructures.InputModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,6 +11,10 @@ namespace MyBoutique.Services
         public Task<bool> CreateProductAsync(CreateProductInputModel input);
 
         public Task<bool> DeleteProductAsync(int id);
+
+        Task<bool> EditProductAsync(int id, EditProductInputModel input);
+
+        Task<EditProductViewModel> GetProductForEditAsync(int id);
 
         public Task<TViewModel> GetByIdAsync<TViewModel>(int id);
 

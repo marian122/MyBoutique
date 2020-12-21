@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyBoutique.Infrastructures.InputModels;
 using MyBoutique.Services;
 using MyBoutique.Infrastructure.ViewModels;
+using MyBoutique.Infrastructure.InputModels;
 
 namespace MyBoutique.Controllers
 {
@@ -56,9 +57,9 @@ namespace MyBoutique.Controllers
         {
             //IFormFileCollection files = this.HttpContext.Request.Form.Files;
 
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
-                return this.Ok(ModelState.Values);
+                return this.Ok(this.ModelState.Values);
             }
 
             //input.Photos = files;
@@ -71,6 +72,33 @@ namespace MyBoutique.Controllers
             }
 
             return this.BadRequest("Failed to create product");
+        }
+
+        // EDIT api/<ProductsController>/edit/{productId}
+        [HttpGet("edit/{productId}")]
+        public async Task<IActionResult> Edit(int productId)
+        {
+            var result = await this.productService.GetProductForEditAsync(productId);
+
+            return this.Ok();
+        }
+
+        [HttpPut("edit/{productId}")]
+        public async Task<IActionResult> Edit(int productId, EditProductInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.Ok(input);
+            }
+
+            var result = await this.productService.EditProductAsync(productId, input);
+
+            if (result)
+            {
+                return this.Ok();
+            }
+
+            return this.BadRequest();
         }
 
         // DELETE api/<ProductsController>/5

@@ -8,6 +8,7 @@ import { MaleProductListComponent } from '../app/male-product-list/male-product-
 import { OrdersDetailsComponent } from '../app/orders-details/orders-details.component';
 import { ProductDetailsComponent } from '../app/product-details/product-details.component';
 import { SuccessfullOrderComponent } from '../app/successfull-order/successfull-order.component';
+import { EditProductComponent } from '../app/edit-product/edit-product.component';
 
 export const routes: Routes = [    
     { path: 'products', component: HomeComponent },
@@ -16,9 +17,11 @@ export const routes: Routes = [
       { path: 'female-products', component: FemaleProductListComponent },
       { path: 'kid-products', component: KidProductListComponent },
       { path: 'add-product', component: AddProductComponent },
+      { path: 'edit-product/:id', component: EditProductComponent },
       { path: 'cart-orders', component: CartOrdersComponent },
       { path: 'orders-details', component: OrdersDetailsComponent },
       { path: 'successfull-order', component: SuccessfullOrderComponent },
+      
 ];    
 
 

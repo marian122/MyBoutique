@@ -64,7 +64,7 @@ namespace MyBoutique.Controllers
             return this.BadRequest($"Failed to delete order.");
         }
 
-        // DELETE api/<OrdersController>/{userId}
+        // DELETE api/<OrdersController>/clear/{userId}
         [HttpDelete("clear/{userId}")]
         public async Task<IActionResult> DeleteByUserId(string userId)
         {
