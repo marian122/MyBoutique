@@ -98,7 +98,11 @@
                     </tbody>
                 </table>
             </div>
+          
             <button type="button" class="btn btn-outline-dark btn-md mr-1 mb-2" (click)="addProductToCart(currentProduct.id, '1', orderPayload.quantity, 'orderPayload.size', 'orderPayload.color')">Добави в количката</button>
+            <a *ngIf="this.isLoggedIn" class="btn btn-warning ml-2 mb-2"
+             [routerLink]='["/edit-product",currentProduct.id]'>Редактирай</a>
+    
         </div>
     </div>
     

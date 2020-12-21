@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryConstants } from '../../environments/CategoryConstants';
 import { Product } from '../../_models/product';
+import { AlertService } from '../../_services';
 import { ProductsService } from '../../_services/products.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { ProductsService } from '../../_services/products.service';
   styleUrls: ['./kid-product-list.component.css']
 })
 export class KidProductListComponent implements OnInit {
+  public loading: boolean;
   isLoggedIn;
   errorMessage = '';
   filteredProducts: Product[] = [];
@@ -16,7 +18,8 @@ export class KidProductListComponent implements OnInit {
   subcategory = '';
   isExpanded = false;
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService,
+    private alertService: AlertService) {
     this.products = [];
   }
 
@@ -31,17 +34,6 @@ export class KidProductListComponent implements OnInit {
 
   toggle() {
     this.isExpanded = !this.isExpanded;
-  }
-
-  //For edit later
-  onSaveComplete(): void {
-    this.productsService.getAll().subscribe(
-      products => {
-        this.products = products;
-      },
-      error => this.errorMessage = <any>error
-    );
-    
   }
 
   getProductsBySubcategory(value: any): void{
@@ -70,5 +62,22 @@ export class KidProductListComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
     )
+  }
+
+  public deleteProduct = (id: number) => {
+
+    this.productsService.deleteProduct(id)
+      .subscribe(
+        event => {
+            let message = `Продуктът беше премахнат успешно!`;
+            this.alertService.success(message, { autoClose: true });
+            this.getProductsByCategory();    
+        },
+        err => {
+          this.loading = false;
+          this.alertService.error(err.error.err, { autoClose: true });
+        }
+      );
+
   }
 }

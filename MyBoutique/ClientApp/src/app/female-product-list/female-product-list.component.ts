@@ -3,6 +3,7 @@ import { Product } from '../../_models/product';
 import { ProductsService } from '../../_services/products.service';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryConstants } from '../../environments/CategoryConstants';
+import { AlertService } from '../../_services';
 
 @Component({
   selector: 'app-female-product-list',
@@ -10,18 +11,22 @@ import { CategoryConstants } from '../../environments/CategoryConstants';
   styleUrls: ['./female-product-list.component.css']
 })
 export class FemaleProductListComponent implements OnInit {
-  isLoggedIn;
+  public loading: boolean;
+  isLoggedIn: any;
   errorMessage = '';
   filteredProducts: Product[] = [];
   products: Product[] = [];
   subcategory = '';
   isExpanded = false;
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService,
+              private alertService: AlertService) {
     this.products = [];
   }
 
   ngOnInit(): void {
+    this.loading = true;
+
     this.getProductsByCategory();
     this.isLoggedIn = localStorage.getItem("user");
   }
@@ -32,17 +37,6 @@ export class FemaleProductListComponent implements OnInit {
 
   toggle() {
     this.isExpanded = !this.isExpanded;
-  }
-
-  //For edit later
-  onSaveComplete(): void {
-    this.productsService.getAll().subscribe(
-      products => {
-        this.products = products;
-      },
-      error => this.errorMessage = <any>error
-    );
-    
   }
 
   getProductsBySubcategory(value: any): void{
@@ -71,6 +65,23 @@ export class FemaleProductListComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
     )
+  }
+  
+  public deleteProduct = (id: number) => {
+
+    this.productsService.deleteProduct(id)
+      .subscribe(
+        event => {
+            let message = `Продуктът беше премахнат успешно!`;
+            this.alertService.success(message, { autoClose: true });
+            this.getProductsByCategory();    
+        },
+        err => {
+          this.loading = false;
+          this.alertService.error(err.error.err, { autoClose: true });
+        }
+      );
+
   }
 }
 

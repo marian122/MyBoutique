@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryConstants } from '../../environments/CategoryConstants';
 import { Product } from '../../_models/product';
+import { AlertService } from '../../_services';
 import { ProductsService } from '../../_services/products.service';
 
 @Component({
@@ -9,18 +10,22 @@ import { ProductsService } from '../../_services/products.service';
   styleUrls: ['./male-product-list.component.css']
 })
 export class MaleProductListComponent implements OnInit {
-  isLoggedIn;
+  public loading: boolean;
+  isLoggedIn: any;
   errorMessage = '';
   filteredProducts: Product[] = [];
   products: Product[] = [];
   subcategory = '';
   isExpanded = false;
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService,
+    private alertService: AlertService) {
     this.products = [];
   }
 
   ngOnInit(): void {
+    this.loading = true;
+
     this.getProductsByCategory();
     this.isLoggedIn = localStorage.getItem("user");
 
@@ -32,17 +37,6 @@ export class MaleProductListComponent implements OnInit {
 
   toggle() {
     this.isExpanded = !this.isExpanded;
-  }
-
-  //For edit later
-  onSaveComplete(): void {
-    this.productsService.getAll().subscribe(
-      products => {
-        this.products = products;
-      },
-      error => this.errorMessage = <any>error
-    );
-    
   }
 
   getProductsBySubcategory(value: any): void{
@@ -71,5 +65,22 @@ export class MaleProductListComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
     )
+  }
+
+  public deleteProduct = (id: number) => {
+
+    this.productsService.deleteProduct(id)
+      .subscribe(
+        event => {
+            let message = `Продуктът беше премахнат успешно!`;
+            this.alertService.success(message, { autoClose: true });
+            this.getProductsByCategory();    
+        },
+        err => {
+          this.loading = false;
+          this.alertService.error(err.error.err, { autoClose: true });
+        }
+      );
+
   }
 }

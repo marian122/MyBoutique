@@ -15,7 +15,7 @@ import { OrderService } from '../../_services/order.service';
 })
 export class ProductDetailsComponent implements OnInit {
   private cookieValue: string;
-
+  isLoggedIn: any;
   currentProduct: Product = {
     id: 0,
     name: '',
@@ -56,7 +56,7 @@ export class ProductDetailsComponent implements OnInit {
       size: ['', [Validators.required]],
       color: ['', [Validators.required]],
     });
-    console.log(this.cookieValue);
+    this.isLoggedIn = localStorage.getItem("user");
   }
   
 

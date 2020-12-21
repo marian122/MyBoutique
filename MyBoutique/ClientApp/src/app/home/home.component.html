@@ -17,7 +17,7 @@
           <a *ngIf="this.isLoggedIn" class="btn btn-danger ml-2"
              (click)="deleteProduct(product.id)">Изтрий</a>
 
-          <a *ngIf="this.isLoggedIn" class="btn btn-warning ml-2"
+          <a *ngIf="this.isLoggedIn" class="btn btn-warning ml-2 mt-2"
              [routerLink]='["/edit-product",product.id]'>Редактирай</a>
         </p>
       </div>
@@ -38,7 +38,7 @@
           <a *ngIf="this.isLoggedIn" class="btn btn-danger ml-2"
              (click)="deleteProduct(product.id)">Изтрий</a>
 
-             <a *ngIf="this.isLoggedIn" class="btn btn-warning ml-2"
+             <a *ngIf="this.isLoggedIn" class="btn btn-warning ml-2 mt-2"
              [routerLink]='["/edit-product",product.id]'>Редактирай</a>
         </p>
         

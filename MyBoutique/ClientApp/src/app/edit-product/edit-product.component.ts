@@ -27,7 +27,7 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      id: [0],
+      id: 0,
       name: ['', [Validators.required, Validators.minLength(2)]],
       description: ['', [Validators.required, Validators.minLength(2)]],
       price: [0, Validators.required],
@@ -107,12 +107,13 @@ export class EditProductComponent implements OnInit {
   }
 
   editProduct(product: Product) {
+    product.id = +product.id;
     this.productService.updateProduct(product)
     .pipe(first())
       .subscribe(
         data => {
           console.log(data);
-          let message = `Успешно редактирахте ${data.name}.`;
+          let message = `Успешно редактирахте ${product.name}.`;
           this.alertService.success(message, { autoClose: true });
           setTimeout(() => {
             this.router.navigate(['/products'], { relativeTo: this.route });
@@ -124,4 +125,6 @@ export class EditProductComponent implements OnInit {
         });
 
   }
+
+  
 }

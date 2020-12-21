@@ -27,11 +27,11 @@ export class ProductsService {
       );
   }
 
-  updateProduct(productData): Observable<Product> {
+  updateProduct(product): Observable<Product> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<Product>(`${environment.apiUrl}/api/products/edit/${productData.id}`, productData, { headers, responseType: 'json' },)
+    return this.http.put<Product>(`${environment.apiUrl}/api/products/edit/${product.id}`, product, { headers, responseType: 'json' },)
       .pipe(
-        tap(data => console.log('editedProduct: ', data))
+        tap(data => console.log('editedProduct: ', JSON.stringify(data)))
       );
 
   }
