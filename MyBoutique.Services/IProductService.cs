@@ -12,6 +12,10 @@ namespace MyBoutique.Services
 
         public Task<bool> DeleteProductAsync(int id);
 
+        public Task<bool> DeleteProductSizeAsync(int id);
+
+        public Task<bool> DeleteProductColorAsync(int id);
+
         Task<bool> EditProductAsync(int id, EditProductInputModel input);
 
         Task<EditProductViewModel> GetProductForEditAsync(int id);

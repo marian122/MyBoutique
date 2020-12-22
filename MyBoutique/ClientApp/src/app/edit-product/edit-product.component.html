@@ -65,18 +65,19 @@
             <div class="form-group">
               <!-- <label for="sizes" class="font-weight-bold text-center dark-grey-text">Размери</label> -->
               <div formArrayName="sizes">
-                <div [formGroupName]="i" class="mt-3" *ngFor="let size of sizes.controls; let i=index">
+                <label for="sizes" class="font-weight-bold text-center dark-grey-text">Размери</label>
+                <div [formGroupName]="i" *ngFor="let size of sizes.controls; let i=index">
                   <div class="row mb-2">
                     <div class="col-md-8">
                       <input type="text" class="form-control" formControlName="name" placeholder="Напишете размер" />
                     </div>
                     <div class="col-md-4">
-                      <button class="btn btn-danger" (click)="deleteSize(i)">Изтрий</button>
+                      <button class="btn btn-danger" (click)="deleteSize(i, size.value.id)">Изтрий</button>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <button class="btn btn-dark" (click)="addSizes()">Добави размер</button>
+                  <button class="btn btn-warning" (click)="addSize()">Добави размер</button>
                 </div>
               </div>
             </div>
@@ -84,18 +85,19 @@
             <div class="form-group">
               <!-- <label for="colors" class="font-weight-bold text-center dark-grey-text">Цветове</label> -->
               <div formArrayName="colors">
-                <div [formGroupName]="i" class="mt-3" *ngFor="let color of colors.controls; let i=index">
+                <label for="sizes" class="font-weight-bold text-center dark-grey-text">Цветове</label>
+                <div [formGroupName]="i" *ngFor="let color of colors.controls; let i=index">
                   <div class="row mb-2">
                     <div class="col-md-8">
                       <input type="text" class="form-control" formControlName="name" placeholder="Напишете цвят" />
                     </div>
                     <div class="col-md-4">
-                      <button class="btn btn-danger" (click)="deleteColor(i)">Изтрий</button>
+                      <button class="btn btn-danger" (click)="deleteColor(i, color.value.id)">Изтрий</button>
                     </div>
                   </div>
                 </div>
                 <div>
-                  <button class="btn btn-dark" (click)="addColors()">Добави цвят</button>
+                  <button class="btn btn-warning" (click)="addColors()">Добави цвят</button>
                 </div>
               </div>
             </div>
@@ -115,7 +117,7 @@
             </div>-->
   
             <div class="form-group">
-              <button (click)="onSubmit()" [disabled]="loading" class="btn btn-dark">
+              <button (click)="onSubmit()" [disabled]="loading" [disabled]="form.invalid" class="btn btn-dark">
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                 Редактирай
               </button>

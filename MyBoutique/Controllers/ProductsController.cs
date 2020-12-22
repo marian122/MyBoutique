@@ -83,6 +83,7 @@ namespace MyBoutique.Controllers
             return this.Ok();
         }
 
+        // EDIT api/<ProductsController>/edit/{productId}
         [HttpPut("edit/{productId}")]
         public async Task<IActionResult> Edit(int productId, EditProductInputModel input)
         {
@@ -115,5 +116,32 @@ namespace MyBoutique.Controllers
             return this.BadRequest($"Failed to delete product.");
         }
 
+        // DELETE api/<ProductsController>/size/5
+        [HttpDelete("size/{id}")]
+        public async Task<IActionResult> DeleteSize(int id)
+        {
+            var size = await this.productService.DeleteProductSizeAsync(id);
+
+            if (size)
+            {
+                return this.Ok(size);
+            }
+
+            return this.BadRequest($"Failed to delete size.");
+        }
+
+        // DELETE api/<ProductsController>/color/5
+        [HttpDelete("color/{id}")]
+        public async Task<IActionResult> DeleteColor(int id)
+        {
+            var color = await this.productService.DeleteProductColorAsync(id);
+
+            if (color)
+            {
+                return this.Ok(color);
+            }
+
+            return this.BadRequest($"Failed to delete color.");
+        }
     }
 }

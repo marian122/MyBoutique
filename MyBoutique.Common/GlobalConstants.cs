@@ -21,6 +21,11 @@ namespace MyBoutique.Common
 
         public const string ProductEditError = "Edit product failed in ProductService";
 
+        public const string SizeDeleteError = "Deleting size failed in ProductService";
+
+        public const string ColorDeleteError = "Deleting color failed in ProductService";
+
+
         public const string AdministratorRoleName = "Administrator";
 
         public const string JsonContentType = "application/json";

@@ -38,7 +38,23 @@ export class ProductsService {
 
   deleteProduct(id: number): Observable<{}> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.delete<Product>(`${environment.apiUrl}/api/products/${id}`, { headers: headers })
+    return this.http.delete(`${environment.apiUrl}/api/products/${id}`, { headers: headers })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  deleteSize(id: number): Observable<{}> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.delete(`${environment.apiUrl}/api/products/size/${id}`, { headers: headers })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  deleteColor(id: number): Observable<{}> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.delete(`${environment.apiUrl}/api/products/color/${id}`, { headers: headers })
       .pipe(
         catchError(this.handleError)
       );
@@ -55,8 +71,6 @@ export class ProductsService {
   public getById(id: any): Observable<Product> {
     return this.http.get<Product>(`${environment.apiUrl}/api/products/${id}`);
   }
-
-
 
 
   upload(files): Observable<HttpEvent<any>> {

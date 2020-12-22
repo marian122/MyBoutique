@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using MyBoutique.Infrastructures.InputModels;
 using MyBoutique.Infrastructure.ViewModels;
 using MyBoutique.Infrastructure.InputModels;
+using MyBoutique.Data;
 
 namespace MyBoutique.Services
 {
@@ -17,11 +18,18 @@ namespace MyBoutique.Services
     {
         private readonly IDeletableEntityRepository<Product> productRepository;
         private readonly IImageService imageService;
+        private readonly IDeletableEntityRepository<Size> sizeRepository;
+        private readonly IDeletableEntityRepository<Color> colorRepository;
 
-        public ProductService(IDeletableEntityRepository<Product> productRepository, IImageService imageService)
+        public ProductService(IDeletableEntityRepository<Product> productRepository,
+            IImageService imageService,
+            IDeletableEntityRepository<Size> sizeRepository,
+            IDeletableEntityRepository<Color> colorRepository)
         {
             this.productRepository = productRepository;
             this.imageService = imageService;
+            this.sizeRepository = sizeRepository;
+            this.colorRepository = colorRepository;
         }
 
         public async Task<bool> CreateProductAsync(CreateProductInputModel input)
@@ -140,5 +148,32 @@ namespace MyBoutique.Services
 
         public Product GetProductById(int id)
             => this.productRepository.All()?.FirstOrDefault(x => x.Id == id);
+
+        public async Task<bool> DeleteProductSizeAsync(int id)
+        {
+            var size = this.sizeRepository.All().FirstOrDefault(x => x.Id == id);
+
+            if (size != null)
+            {
+                this.sizeRepository.HardDelete(size);
+                await this.sizeRepository.SaveChangesAsync();
+                return true;
+            }
+            throw new InvalidOperationException(GlobalConstants.SizeDeleteError);
+
+        }
+
+        public async Task<bool> DeleteProductColorAsync(int id)
+        {
+            var color = this.colorRepository.All().FirstOrDefault(x => x.Id == id);
+
+            if (color != null)
+            {
+                this.colorRepository.HardDelete(color);
+                await this.colorRepository.SaveChangesAsync();
+                return true;
+            }
+            throw new InvalidOperationException(GlobalConstants.ColorDeleteError);
+        }
     }
 }

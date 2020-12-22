@@ -18,6 +18,10 @@ export class EditProductComponent implements OnInit {
   loading = false;
   submitted = false;
   progress: number;
+  product: Product;
+  sizeArray: number[] = new Array();
+  colorArray: number[] = new Array();
+
 
   constructor(private productService: ProductsService,
     private formBuilder: FormBuilder,
@@ -41,16 +45,50 @@ export class EditProductComponent implements OnInit {
   }
 
   loadProductForEdit(productId: number) {
-    this.productService.getById(productId).subscribe(product => {
-      this.form.controls['id'].setValue(productId);
-      this.form.controls['name'].setValue(product.name);
-      this.form.controls['description'].setValue(product.description);
-      this.form.controls['price'].setValue(product.price);
-      this.form.controls['categoryName'].setValue(product.categoryName);
-      this.form.controls['categoryType'].setValue(product.categoryType);
-      this.form.controls['sizes'].patchValue(product.sizes);
-      this.form.controls['colors'].patchValue(product.colors);
-    })
+    this.productService.getById(productId).subscribe(
+      (product: Product) => this.editForm(product),
+      (err) => console.log(err)
+    );
+  }
+
+  editForm(product: Product): void{
+    this.form.patchValue({
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      categoryName: product.categoryName,
+      categoryType: product.categoryType,
+    });
+
+    this.form.setControl('sizes', this.setExistingSizes(product.sizes))
+    this.form.setControl('colors', this.setExistingSizes(product.colors))
+  }
+
+  setExistingSizes(sizes: any[]): FormArray {
+    const formArray = new FormArray([]);
+
+    sizes.forEach(s => {
+      formArray.push(this.formBuilder.group({
+        id: s.id,
+        name: s.name
+      }))
+    });
+
+    return formArray;
+  }
+
+  setExistingColors(colors: any[]): FormArray {
+    const formArray = new FormArray([]);
+
+    colors.forEach(c => {
+      formArray.push(this.formBuilder.group({
+        id: c.id,
+        name: c.name
+      }))
+    });
+
+    return formArray;
   }
 
   selectCategoryName(event: any) {
@@ -63,16 +101,19 @@ export class EditProductComponent implements OnInit {
 
   newSize(): FormGroup {
     return this.formBuilder.group({
+      id: 0,
       name: ''
     })
   }
 
-  addSizes() {
-    this.sizes.push(this.newSize());
+  addSize(): void{
+    (<FormArray>this.form.get('sizes')).push(this.newSize());
   }
 
-  deleteSize(value: any) {
-    this.sizes.removeAt(value);
+  deleteSize(index: number, sizeId: number): void{
+    this.sizes.removeAt(index);
+
+    this.sizeArray.push(sizeId);
   }
 
   get colors(): FormArray {
@@ -81,6 +122,7 @@ export class EditProductComponent implements OnInit {
 
   newColor(): FormGroup {
     return this.formBuilder.group({
+      id: 0,
       name: ''
     })
   }
@@ -89,8 +131,10 @@ export class EditProductComponent implements OnInit {
     this.colors.push(this.newColor());
   }
 
-  deleteColor(value: any) {
+  deleteColor(value: any, colorId: number) {
     this.colors.removeAt(value);
+
+    this.colorArray.push(colorId)
   }
 
   get f() { return this.form.controls; }
@@ -101,9 +145,19 @@ export class EditProductComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
+    this.editProduct(this.form.value);
 
-    const product = this.form.value;
-    this.editProduct(product);
+    this.colorArray.forEach(color => {
+      this.productService.deleteColor(color).subscribe(data => {
+        console.log(data);
+      })
+    });
+
+    this.sizeArray.forEach(size => {
+      this.productService.deleteSize(size).subscribe(data => {
+        console.log(data);
+      })
+    });
   }
 
   editProduct(product: Product) {

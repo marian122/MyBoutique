@@ -1,6 +1,8 @@
-﻿namespace MyBoutique.Models
+﻿using MyBoutique.Common.BaseModels;
+
+namespace MyBoutique.Models
 {
-    public class Color
+    public class Color : BaseDeletableModel<int>
     {
         public int Id { get; set; }
 
