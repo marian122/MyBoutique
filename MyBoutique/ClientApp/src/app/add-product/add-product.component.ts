@@ -64,7 +64,7 @@ export class AddProductComponent implements OnInit {
     this.sizes.removeAt(value);
   }
 
-  
+
 
   get colors(): FormArray {
     return this.form.get("colors") as FormArray
@@ -84,7 +84,7 @@ export class AddProductComponent implements OnInit {
     this.colors.removeAt(value);
   }
 
-  
+
 
   get f() { return this.form.controls; }
 
@@ -119,38 +119,41 @@ export class AddProductComponent implements OnInit {
         });
 
   }
+
+  public uploadFile = (files) => {
+
+    if (files.length === 0) {
+      return;
+    }
+
+    let filesToUpload: FileList = files;
+    const formData = new FormData();
+
+    Array.from(filesToUpload).map((file, index) => {
+      return formData.append('file' + index, file, file.name);
+    });
+
+    this.loading = true;
+
+    this.productService.upload(formData).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+
+          let message = `Файлът бяха качени успешно :)`;
+          this.alertService.success(message, { autoClose: true });
+
+          if (this.progress == 100) {
+            this.loading = false
+          }
+        }
+      },
+      err => {
+        this.loading = false;
+        this.alertService.error(err.error.err, { autoClose: true });
+      });
+
+  }
 }
-
-  //public uploadFiles = (files) => {
-
-  //  if (files.length === 0) {
-  //    return;
-  //  }
-
-  //  let filesToUpload = <File>files[0];
-  //  const formData = new FormData();
-  //  formData.append('file', filesToUpload, filesToUpload.name);
-
-  //  this.loading = true;
-
-  //  this.http.post(`${environment.apiUrl}/api/image`, formData, { reportProgress: true, observe: 'events' }).subscribe(
-  //    event => {
-  //      if (event.type === HttpEventType.UploadProgress) {
-
-  //        this.progress = Math.round(100 * event.loaded / event.total);
-  //      } else if (event instanceof HttpResponse) {
-
-  //        let message = `Файлът бяха качени успешно :)`;
-  //        this.alertService.success(message, { autoClose: true });
-
-  //        if (this.progress == 100) {
-  //          this.loading = false
-  //        }
-  //      }
-  //    },
-  //    err => {
-  //      this.loading = false;
-  //      this.alertService.error(err.error.err, { autoClose: true });
-  //    });
-
-  //}
