@@ -1,18 +1,33 @@
 <footer class="footer text-white">
   <div id="footerColor" class="container">
       <div class="row">
-          <div class="col-md-4 mb-3 text-center">
-              <h5>Някъв текст за магазина</h5>
-              <div class="row">
-                  <ul>
-                    <li>Нещо яко за магазина</li>
-                  </ul>
-              </div>
-
+        <div class="col-md-4 mb-3 text-center">
+          <h5>Клиентски услуги</h5>
+          <div class="row">
+            <div class="col-md-12 text-left">
+              <ul>
+                <li><a>За нас</a></li>
+                <li><a>Доставка и плащане</a></li>
+                <li><a>Общи условия</a></li>
+              </ul>
+            </div>
+          </div>
+          <h5>Категории</h5>
+          <div class="row">
+            <div class="col-md-12 text-left">
+              <ul>
+                <li><a [routerLink]="['male-products']">Мъжки</a></li>
+                <li><a [routerLink]="['female-products']">Дамски</a></li>
+                <li><a [routerLink]="['kid-products']">Детски</a></li>
+              </ul>
+            </div>
           </div>
 
-          <div class="col-md-5 mb-3 text-center">
-              <h5>Напишете отзив за бутика.</h5>
+        </div>
+
+          <div class="col-md-4 mb-3 text-center">
+              <h5>Напишете отзив</h5>
+
               <form>
                   <fieldset class="form-group">
                       <input type="text" name="firstName" class="form-control" placeholder="Въведете име">
@@ -29,22 +44,24 @@
               </form>
           </div>
 
-          <div class="col-md-3 mb-3 text-center">
-              <h5>Контакти</h5>
-              <div class="row">
-                <ul>
-                  <li>
-                    някви контакти тука
-                  </li>
-              </ul>
-              </div>
+          <div class="col-md-3 m-2 text-center">
+            <h5 >Контакти</h5>
+            <ul class="text-left">
+                <li>
+                    <i class="fa fa-phone"></i>
+                    <a class="text-center">  0889919639</a>
+                </li>
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <a class="text-center">  Ул. Христо Ботев 1, гр.Кърджали</a>
+                </li>
+                <li>
+                    <i class="far fa-envelope"></i>
+                    <a class="text-center">  orders@moqbutik.com</a>
+                </li>
+            </ul>
+        </div>
               
-              <a [routerLink]="['/']" class="navbar-brand">
-                <!-- Logo Image -->
-                <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
-                <!-- Logo Text -->
-              </a>
-          </div>
-      </div>
-  </div>
+    </div>
+</div>
 </footer>
