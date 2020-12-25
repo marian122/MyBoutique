@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ProductsService } from '../../_services/products.service';
 import { HttpEventType, HttpResponse, HttpClient } from '@angular/common/http';
 import { AlertService } from '../../_services';
-import { environment } from '../../environments/environment';
 import { Product } from '../../_models/product';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
@@ -15,6 +13,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
+  public response: { path: '' };
   selectedCategoryName: string = '';
   form: FormGroup;
   loading = false;
@@ -39,6 +38,7 @@ export class AddProductComponent implements OnInit {
       categoryType: ['', [Validators.required]],
       sizes: this.formBuilder.array([]),
       colors: this.formBuilder.array([]),
+      
     });
   }
 
@@ -96,6 +96,7 @@ export class AddProductComponent implements OnInit {
     }
 
     const product = this.form.value;
+    product.images = this.response.path;
     this.createProduct(product);
   }
 
@@ -117,43 +118,10 @@ export class AddProductComponent implements OnInit {
           console.log(error);
           this.loading = false;
         });
-
   }
 
-  public uploadFile = (files) => {
 
-    if (files.length === 0) {
-      return;
-    }
-
-    let filesToUpload: FileList = files;
-    const formData = new FormData();
-
-    Array.from(filesToUpload).map((file, index) => {
-      return formData.append('file' + index, file, file.name);
-    });
-
-    this.loading = true;
-
-    this.productService.upload(formData).subscribe(
-      event => {
-        if (event.type === HttpEventType.UploadProgress) {
-
-          this.progress = Math.round(100 * event.loaded / event.total);
-        } else if (event instanceof HttpResponse) {
-
-          let message = `Файлът бяха качени успешно :)`;
-          this.alertService.success(message, { autoClose: true });
-
-          if (this.progress == 100) {
-            this.loading = false
-          }
-        }
-      },
-      err => {
-        this.loading = false;
-        this.alertService.error(err.error.err, { autoClose: true });
-      });
-
+  public uploadFinished = (event) => {
+    this.response = event;
   }
 }

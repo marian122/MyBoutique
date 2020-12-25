@@ -34,11 +34,9 @@ namespace MyBoutique.Services
 
         public async Task<bool> CreateProductAsync(CreateProductInputModel input)
         {
+            //var result = await this.imageService.CreateImageCollectionAsynq(input.Photos);
 
-
-            var result = await this.imageService.CreateImageCollectionAsynq(input.Photos);
-
-            var ProductImgs = await this.imageService.GetImageCollectionlByIdsAsynq<Image>(result);
+            //var ProductImgs = await this.imageService.GetImageCollectionlByIdsAsynq<Image>(result);
 
 
             var product = new Product()
@@ -55,7 +53,7 @@ namespace MyBoutique.Services
             };
 
 
-            product.Photos = ProductImgs.ToList();
+            //product.Photos = ProductImgs.ToList();
 
             if (product != null && product.Price > 0)
             {

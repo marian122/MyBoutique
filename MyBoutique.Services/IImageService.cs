@@ -6,7 +6,7 @@ namespace MyBoutique.Services
 {
     public interface IImageService
     {
-        public Task<IList<int>> CreateImageCollectionAsynq (IFormFileCollection inputModel);
+        public Task<bool> CreateImageCollectionAsynq (IFormFileCollection inputModel);
 
         public Task<bool> DeleteImageAsynq(int id);
 

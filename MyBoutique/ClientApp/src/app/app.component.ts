@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
     this.cleartCartProducts();
   }
 
+
   title = 'app';
   private cookieValue: string;
   cookieVal = Guid.create().toString();
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit{
         console.log(event);
       })
   }
+
 }
 
 

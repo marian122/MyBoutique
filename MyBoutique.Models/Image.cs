@@ -16,5 +16,10 @@ namespace MyBoutique.Models
         public string Format { get; set; }
 
         public string Alt { get; set; }
+
+        public int ProductId { get; set; }
+
+        public Product Product { get; set; }
+
     }
 }

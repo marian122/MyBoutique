@@ -33,18 +33,28 @@ namespace MyBoutique.Controllers
         [HttpPost, DisableRequestSizeLimit]
         public async Task<IActionResult> Post()
         {
-            var files = Request.Form.Files;
-         
+            try
+            {
+                var files = Request.Form.Files;
 
-            var imgs = await this.imageService
+                var imgs = await this.imageService
                 .CreateImageCollectionAsynq(files);
 
-            if (imgs != null)
-            {
-                return this.Ok(imgs);
+                if (imgs)
+                {
+                    return this.Ok(imgs);
+                }
+                else
+                {
+                    return this.BadRequest();
+                }
             }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+         
 
-             return this.UnprocessableEntity();
         }
     }
 }

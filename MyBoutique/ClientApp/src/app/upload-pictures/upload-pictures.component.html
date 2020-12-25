@@ -1,0 +1,18 @@
+<div class="form-group">
+  <div class="mt-3">
+    <input type="file" #file multiple placeholder="Качи снимка"
+           style="display:none;" (change)="uploadFile(file.files)">
+    <button [disabled]="loading" (click)="file.click()" type="button" class="btn btn-dark">
+      Качи снимки
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+    </button>
+  </div>
+  <div class="col-md-4">
+    <span class="upload" *ngIf="progress > 0">
+      {{progress}}%
+    </span>
+    <span class="upload" *ngIf="message">
+      {{message}}
+    </span>
+  </div>
+</div>

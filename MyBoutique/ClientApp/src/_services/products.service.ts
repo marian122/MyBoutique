@@ -75,12 +75,19 @@ export class ProductsService {
 
   upload(files): Observable<HttpEvent<any>> {
 
-    const req = new HttpRequest('POST', `${environment.apiUrl}/api/image`, files, {
-      reportProgress: true,
-      responseType: 'json'
-    });
+    //const req = new HttpRequest('POST', `${environment.apiUrl}/api/image`, files, {
+    //  reportProgress: true,
+    //  responseType: 'json'
+    //});
 
-    return this.http.request(req);
+    //return this.http.request(req);
+
+    return this.http.post(`${environment.apiUrl}/api/image`, files, {
+      reportProgress: true,
+      observe: "events"
+    }).pipe(
+      catchError(this.handleError)
+    )
 
   }
 

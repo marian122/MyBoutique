@@ -12,7 +12,7 @@ namespace MyBoutique.Services
 {
     public class ImageService : IImageService
     {
-        readonly IDeletableEntityRepository<Image> repository;
+        private readonly IDeletableEntityRepository<Image> repository;
         private readonly ICloudinaryService cloudinaryService;
 
         public ImageService(IDeletableEntityRepository<Image> repository, ICloudinaryService cloudinaryService)
@@ -21,11 +21,8 @@ namespace MyBoutique.Services
             this.cloudinaryService = cloudinaryService;
         }
 
-        public async Task<IList<int>> CreateImageCollectionAsynq(IFormFileCollection inputModel)
+        public async Task<bool> CreateImageCollectionAsynq(IFormFileCollection inputModel)
         {
-
-            var results = new List<int>();
-
             if (inputModel == null)
             {
                 throw new ArgumentNullException();
@@ -35,24 +32,22 @@ namespace MyBoutique.Services
 
             foreach (var file in inputModel)
             {
-                var fileUrl = await this.cloudinaryService.UploadPictureAsync(file);
+                await this.cloudinaryService.UploadPictureAsync(file);
                
-                var img = new Image()
-                {
-                    Title = file.Name,
-                    Path = fileUrl
+                //var img = new Image()
+                //{
+                //    Title = file.Name,
+                //    Path = fileUrl
 
-                };
+                //};
 
-                results.Add(img.Id);
-
-                this.repository.Add(img);
+                //this.repository.Add(img);
             }
 
 
-            await this.repository.SaveChangesAsync();
+            //var result = await this.repository.SaveChangesAsync();
 
-            return results;
+            return true;
         }
 
         public async Task<bool> DeleteImageAsynq(int id)
