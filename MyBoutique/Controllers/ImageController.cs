@@ -30,14 +30,11 @@ namespace MyBoutique.Controllers
         }
 
         // POST api/<ImageController>
-        [HttpPost(), DisableRequestSizeLimit]
+        [HttpPost, DisableRequestSizeLimit]
         public async Task<IActionResult> Post()
         {
             var files = Request.Form.Files;
-            if (files == null )
-            {
-                return this.UnprocessableEntity();
-            }
+         
 
             var imgs = await this.imageService
                 .CreateImageCollectionAsynq(files);
