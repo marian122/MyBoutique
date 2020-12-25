@@ -36,9 +36,9 @@ namespace MyBoutique.Services
         {
 
 
-            //var result = await this.imageService.CreateImageCollectionAsynq(input.Photos);
+            var result = await this.imageService.CreateImageCollectionAsynq(input.Photos);
 
-            //var ProductImgs = await this.imageService.GetImageCollectionlByIdsAsynq<Image>(result);
+            var ProductImgs = await this.imageService.GetImageCollectionlByIdsAsynq<Image>(result);
 
 
             var product = new Product()
@@ -55,7 +55,7 @@ namespace MyBoutique.Services
             };
 
 
-            //product.Photos = ProductImgs.ToList();
+            product.Photos = ProductImgs.ToList();
 
             if (product != null && product.Price > 0)
             {
@@ -98,7 +98,7 @@ namespace MyBoutique.Services
                 currentProduct.Colors = input.Colors;
                 currentProduct.Price = input.Price;
                 currentProduct.Description = input.Description;
-                //currentProduct.Photos = input.Photos;
+                currentProduct.Photos = (ICollection<Image>)input.Photos;
 
                 this.productRepository.Update(currentProduct);
                 await this.productRepository.SaveChangesAsync();
@@ -138,7 +138,7 @@ namespace MyBoutique.Services
                     Colors = product.Colors,
                     Price = product.Price,
                     Description = product.Description,
-                    //Photos = product.Photos,
+                    Photos = (Microsoft.AspNetCore.Http.IFormFileCollection)product.Photos,
                 };
 
                 return result;

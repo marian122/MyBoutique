@@ -4,6 +4,7 @@ using MyBoutique.Infrastructures.InputModels;
 using MyBoutique.Services;
 using MyBoutique.Infrastructure.ViewModels;
 using MyBoutique.Infrastructure.InputModels;
+using Microsoft.AspNetCore.Http;
 
 namespace MyBoutique.Controllers
 {
@@ -55,14 +56,14 @@ namespace MyBoutique.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductInputModel input)
         {
-            //IFormFileCollection files = this.HttpContext.Request.Form.Files;
+            IFormFileCollection files = this.HttpContext.Request.Form.Files;
 
             if (!this.ModelState.IsValid)
             {
                 return this.Ok(this.ModelState.Values);
             }
 
-            //input.Photos = files;
+            input.Photos = files;
             var result = await this.productService.CreateProductAsync(input);
 
 
