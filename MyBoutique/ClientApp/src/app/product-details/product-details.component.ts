@@ -7,6 +7,7 @@ import { AlertService } from 'src/_services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { OrderService } from '../../_services/order.service';
+import { Picture } from '../../_models/picture';
 
 @Component({
   selector: 'app-product-details',
@@ -14,6 +15,7 @@ import { OrderService } from '../../_services/order.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
+  public pictures: Picture[];
   private cookieValue: string;
   isLoggedIn: any;
   currentProduct: Product = {
@@ -26,8 +28,9 @@ export class ProductDetailsComponent implements OnInit {
     sizes: null,
     colors: null,
     createdOn: null,
-    imgPath: '',
+    photos: null,
   }
+
 
   selectedColor = '';
   selectedSize = '';
@@ -51,6 +54,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('cookie-name');
+    this.getPhotosForProduct(this.route.snapshot.params.id);
     this.getProductById(this.route.snapshot.params.id);
 
     this.form = this.formBuilder.group({
@@ -95,6 +99,14 @@ export class ProductDetailsComponent implements OnInit {
           console.log(error);
         }
       )
+  }
+
+  getPhotosForProduct(id: number) {
+    this.productService.getImagesForProduct(id)
+      .subscribe(data => {
+        this.pictures = data;
+        console.log(data)
+      })
   }
 
   addProductToCart(id, userId: string, quantity, size, color): void {

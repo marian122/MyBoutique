@@ -5,6 +5,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Product } from '../_models/product';
 import { Order } from '../_models/order';
+import { Picture } from '../_models/picture';
 
 @Injectable({
   providedIn: 'root'
@@ -67,6 +68,13 @@ export class ProductsService {
       )
   }
 
+  getImagesForProduct(productId: number): Observable<Picture[]> {
+    return this.http.get<Picture[]>(`${environment.apiUrl}/api/image/${productId}`)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
 
   public getById(id: any): Observable<Product> {
     return this.http.get<Product>(`${environment.apiUrl}/api/products/${id}`);
@@ -75,12 +83,6 @@ export class ProductsService {
 
   upload(files): Observable<HttpEvent<any>> {
 
-    //const req = new HttpRequest('POST', `${environment.apiUrl}/api/image`, files, {
-    //  reportProgress: true,
-    //  responseType: 'json'
-    //});
-
-    //return this.http.request(req);
 
     return this.http.post(`${environment.apiUrl}/api/image`, files, {
       reportProgress: true,

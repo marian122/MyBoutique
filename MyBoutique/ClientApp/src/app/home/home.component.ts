@@ -3,12 +3,14 @@ import { Product } from '../../_models/product';
 import { AlertService } from '../../_services';
 import { ProductsService } from '../../_services/products.service';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { Picture } from '../../_models/picture';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit{
+  public pictures: Picture[];
   public loading: boolean;
   isLoggedIn;
   errorMessage = ''; 
@@ -64,4 +66,11 @@ export class HomeComponent implements OnInit{
 
   }
 
+  getPhotosForProduct(id: number) {
+    this.productsService.getImagesForProduct(id)
+      .subscribe(data => {
+        this.pictures = data;
+        console.log(data)
+      })
+  }
 }

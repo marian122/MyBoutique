@@ -8,29 +8,16 @@
             <div class="mdb-lightbox">
                 <div class="row product-gallery mx-5">
 
-                    <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
-                        <mdb-carousel-item>
+                    <mdb-carousel  class="carousel slide carousel-fade" [animation]="'fade'">
+                        <mdb-carousel-item *ngFor="let image of pictures">
                           <div class="view w-100">
-                            <img src="../../assets/orange.jpg"
+                            <img src={{image.url}}
                                         class="img-fluid" alt="First slide">
                             <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
                           </div>
                         </mdb-carousel-item>
-                        <mdb-carousel-item>
-                          <div class="view w-100">
-                            <img src="../../assets/red.jpg"
-                                        class="img-fluid" alt="Second slide">
-                            <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
-                          </div>
-                        </mdb-carousel-item>
-                        <mdb-carousel-item>
-                          <div class="view w-100">
-                            <img src="../../assets/blue.webp"
-                                        class="img-fluid" alt="Third slide">
-                            <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
-                          </div>
-                        </mdb-carousel-item>
                       </mdb-carousel>
+                        
                 </div>
 
             </div>

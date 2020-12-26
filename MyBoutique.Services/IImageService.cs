@@ -10,7 +10,8 @@ namespace MyBoutique.Services
 
         public Task<bool> DeleteImageAsynq(int id);
 
-        public Task<IEnumerable<TViewModel>> GetImageCollectionlByIdsAsynq<TViewModel>(IList<int> id);
+
+        public Task<IEnumerable<TViewModel>> GetImageCollectionlByProductIdsAsynq<TViewModel>(int id);
 
     }
 }

@@ -24,9 +24,16 @@ namespace MyBoutique.Controllers
 
         // GET api/<ImageController>/5
         [HttpGet("{id}")]
-        public async Task<IEnumerable<ImageViewModel>> Get([FromBody] IList<int> Ids)
+        public async Task<IActionResult> Get(int Id)
         {
-            return await this.imageService.GetImageCollectionlByIdsAsynq<ImageViewModel>(Ids);
+            var result = await this.imageService.GetImageCollectionlByProductIdsAsynq<ImageViewModel>(Id);
+
+            if (result.Any())
+            {
+                return this.Ok(result);
+
+            }
+            return this.BadRequest();
         }
 
         // POST api/<ImageController>
@@ -53,7 +60,7 @@ namespace MyBoutique.Controllers
             {
                 return StatusCode(500, "Internal server error");
             }
-         
+
 
         }
     }

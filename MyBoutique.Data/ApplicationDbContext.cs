@@ -19,10 +19,10 @@ namespace MyBoutique.Data
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<Product> Products { get; set; }
-
+         
         public DbSet<Picture> Pictures { get; set; }
 
-        public DbSet<OrderData> OrderDatas { get; set; }
+        public DbSet<OrderData> OrdersData { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

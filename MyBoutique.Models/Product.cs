@@ -13,7 +13,7 @@ namespace MyBoutique.Models
         }
 
         [Required]
-        [StringLength(80, MinimumLength = 4)]
+        [StringLength(80, MinimumLength = 2)]
         public string Name { get; set; }
 
         [Required]
@@ -29,9 +29,6 @@ namespace MyBoutique.Models
 
         [Required]
         public string CategoryType { get; set; }
-
-        public string ImagePath { get; set; }
-
 
         public ICollection<Size> Sizes { get; set; }
 

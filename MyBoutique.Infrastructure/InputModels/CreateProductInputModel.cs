@@ -32,7 +32,6 @@ namespace MyBoutique.Infrastructures.InputModels
 
         public ICollection<Color> Colors { get; set; }
 
-        [DataType(DataType.Upload)]
         public ICollection<IFormFile> Photos { get; set; }
     }
 }

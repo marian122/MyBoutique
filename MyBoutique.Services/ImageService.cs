@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using MyBoutique.Common.Repositories;
 using MyBoutique.Mappings;
 using MyBoutique.Models;
@@ -14,11 +15,15 @@ namespace MyBoutique.Services
     {
         private readonly IDeletableEntityRepository<Picture> repository;
         private readonly ICloudinaryService cloudinaryService;
+        private readonly IDeletableEntityRepository<Product> productsRepository;
 
-        public ImageService(IDeletableEntityRepository<Picture> repository, ICloudinaryService cloudinaryService)
+        public ImageService(IDeletableEntityRepository<Picture> repository, 
+            ICloudinaryService cloudinaryService,
+            IDeletableEntityRepository<Product> productsRepository)
         {
             this.repository = repository;
             this.cloudinaryService = cloudinaryService;
+            this.productsRepository = productsRepository;
         }
 
         public async Task<bool> CreateImageCollectionAsynq(IFormFileCollection inputModel)
@@ -33,12 +38,13 @@ namespace MyBoutique.Services
             foreach (var file in inputModel)
             {
                 var fileUrl = await this.cloudinaryService.UploadPictureAsync(file);
-
+                var lastId = this.productsRepository.All().Max(x => x.Id);
                 var img = new Picture()
                 {
                     CreatedOn = DateTime.Now,
                     Title = Guid.NewGuid().ToString(),
-                    Url = fileUrl
+                    Url = fileUrl,
+                    ProductId = this.productsRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefault().Id,
                 };
 
                 this.repository.Add(img);
@@ -67,24 +73,11 @@ namespace MyBoutique.Services
             return true;
         }
 
-       
 
-        public Task<IEnumerable<TViewModel>> GetImageCollectionlByIdsAsynq<TViewModel>(IList<int> ids)
-        {
-            var colection = new List<TViewModel>();
-
-            foreach (var id in ids)
-            {
-                var img = this.repository.All().FirstOrDefault(a => a.Id == id);
-
-                if (img != null)
-                {
-                    colection.Add(img.MapTo<TViewModel>());
-                }
-
-            }
-
-            return (Task<IEnumerable<TViewModel>>)colection.AsEnumerable<TViewModel>();
-        }
+        public async Task<IEnumerable<TViewModel>> GetImageCollectionlByProductIdsAsynq<TViewModel>(int id)
+            => await this.repository.All()
+            .Where(x => x.ProductId == id)
+            .To<TViewModel>()
+            .ToListAsync();
     }
 }

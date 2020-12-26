@@ -8,5 +8,5 @@ export class Product {
   sizes: Array<string>;
   colors: Array<string>;
   createdOn: Date;
-  imgPath: string;
+  photos: Array<string>;
 }

@@ -454,7 +454,7 @@ namespace MyBoutique.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderDatas");
+                    b.ToTable("OrdersData");
                 });
 
             modelBuilder.Entity("MyBoutique.Models.Picture", b =>
@@ -480,9 +480,11 @@ namespace MyBoutique.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Url")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -517,9 +519,6 @@ namespace MyBoutique.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");

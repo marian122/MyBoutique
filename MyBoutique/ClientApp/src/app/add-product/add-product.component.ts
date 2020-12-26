@@ -109,9 +109,9 @@ export class AddProductComponent implements OnInit {
           console.log(product);
           let message = `Успешно добавихте ${product.name}.`;
           this.alertService.success(message, { autoClose: true });
-          setTimeout(() => {
-            this.router.navigate(['/products'], { relativeTo: this.route });
-          }, 1500);
+          //setTimeout(() => {
+          //  this.router.navigate(['/products'], { relativeTo: this.route });
+          //}, 1500);
         },
         error => {
           console.log(error);
@@ -141,8 +141,12 @@ export class AddProductComponent implements OnInit {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event.type === HttpEventType.Response) {
 
-          this.message = `Успешно :)`;
+          this.message = `Успешно добавихте снимки към продукта :)`;
           this.alertService.success(this.message, { autoClose: true });
+
+          setTimeout(() => {
+            this.router.navigate(['/products'], { relativeTo: this.route });
+          }, 1500);
 
           if (this.progress == 100) {
             this.loading = false
