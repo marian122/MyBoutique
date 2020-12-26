@@ -96,7 +96,7 @@ namespace MyBoutique.Services
                 currentProduct.Colors = input.Colors;
                 currentProduct.Price = input.Price;
                 currentProduct.Description = input.Description;
-                currentProduct.Photos = (ICollection<Image>)input.Photos;
+                currentProduct.Pictures = (ICollection<Picture>)input.Pictures;
 
                 this.productRepository.Update(currentProduct);
                 await this.productRepository.SaveChangesAsync();
@@ -136,7 +136,7 @@ namespace MyBoutique.Services
                     Colors = product.Colors,
                     Price = product.Price,
                     Description = product.Description,
-                    Photos = (Microsoft.AspNetCore.Http.IFormFileCollection)product.Photos,
+                    Photos = (Microsoft.AspNetCore.Http.IFormFileCollection)product.Pictures,
                 };
 
                 return result;

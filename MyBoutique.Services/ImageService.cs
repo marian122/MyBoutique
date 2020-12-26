@@ -12,10 +12,10 @@ namespace MyBoutique.Services
 {
     public class ImageService : IImageService
     {
-        private readonly IDeletableEntityRepository<Image> repository;
+        private readonly IDeletableEntityRepository<Picture> repository;
         private readonly ICloudinaryService cloudinaryService;
 
-        public ImageService(IDeletableEntityRepository<Image> repository, ICloudinaryService cloudinaryService)
+        public ImageService(IDeletableEntityRepository<Picture> repository, ICloudinaryService cloudinaryService)
         {
             this.repository = repository;
             this.cloudinaryService = cloudinaryService;
@@ -32,20 +32,20 @@ namespace MyBoutique.Services
 
             foreach (var file in inputModel)
             {
-                await this.cloudinaryService.UploadPictureAsync(file);
-               
-                //var img = new Image()
-                //{
-                //    Title = file.Name,
-                //    Path = fileUrl
+                var fileUrl = await this.cloudinaryService.UploadPictureAsync(file);
 
-                //};
+                var img = new Picture()
+                {
+                    CreatedOn = DateTime.Now,
+                    Title = Guid.NewGuid().ToString(),
+                    Url = fileUrl
+                };
 
-                //this.repository.Add(img);
+                this.repository.Add(img);
             }
 
 
-            //var result = await this.repository.SaveChangesAsync();
+            await this.repository.SaveChangesAsync();
 
             return true;
         }

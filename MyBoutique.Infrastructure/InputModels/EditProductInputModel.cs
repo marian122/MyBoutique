@@ -34,6 +34,6 @@ namespace MyBoutique.Infrastructure.InputModels
 
         public ICollection<Color> Colors { get; set; }
 
-        public IFormFileCollection Photos { get; set; }
+        public IFormFileCollection Pictures { get; set; }
     }
 }

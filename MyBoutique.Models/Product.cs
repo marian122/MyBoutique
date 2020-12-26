@@ -9,7 +9,7 @@ namespace MyBoutique.Models
     {
         public Product()
         {
-            this.Photos = new List<Image>();
+            this.Pictures = new List<Picture>();
         }
 
         [Required]
@@ -30,10 +30,13 @@ namespace MyBoutique.Models
         [Required]
         public string CategoryType { get; set; }
 
+        public string ImagePath { get; set; }
+
+
         public ICollection<Size> Sizes { get; set; }
 
         public ICollection<Color> Colors { get; set; }
 
-        public ICollection<Image> Photos { get; set; }
+        public ICollection<Picture> Pictures { get; set; }
     }
 }

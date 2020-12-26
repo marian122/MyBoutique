@@ -10,8 +10,8 @@ using MyBoutique.Data;
 namespace MyBoutique.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201225120028_xmassimages")]
-    partial class xmassimages
+    [Migration("20201226123934_picadd")]
+    partial class picadd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -342,10 +342,8 @@ namespace MyBoutique.Data.Migrations
 
             modelBuilder.Entity("MyBoutique.Models.Image", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Alt")
                         .HasColumnType("nvarchar(max)");
@@ -356,20 +354,13 @@ namespace MyBoutique.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Format")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Path")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -377,11 +368,15 @@ namespace MyBoutique.Data.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Images");
+                    b.ToTable("Image");
                 });
 
             modelBuilder.Entity("MyBoutique.Models.Order", b =>
@@ -503,6 +498,36 @@ namespace MyBoutique.Data.Migrations
                     b.ToTable("OrderDatas");
                 });
 
+            modelBuilder.Entity("MyBoutique.Models.Picture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pictures");
+                });
+
             modelBuilder.Entity("MyBoutique.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -528,6 +553,9 @@ namespace MyBoutique.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -640,13 +668,9 @@ namespace MyBoutique.Data.Migrations
 
             modelBuilder.Entity("MyBoutique.Models.Image", b =>
                 {
-                    b.HasOne("MyBoutique.Models.Product", "Product")
+                    b.HasOne("MyBoutique.Models.Product", null)
                         .WithMany("Photos")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("MyBoutique.Models.Order", b =>

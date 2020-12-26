@@ -13,12 +13,12 @@ import { Product } from '../../_models/product';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-  public response: { path: '' };
+  public message: string;
+  public progress: number;
   selectedCategoryName: string = '';
   form: FormGroup;
   loading = false;
   submitted = false;
-  progress: number;
   productIdUpdate = null;
 
   constructor(private productService: ProductsService,
@@ -96,7 +96,6 @@ export class AddProductComponent implements OnInit {
     }
 
     const product = this.form.value;
-    product.images = this.response.path;
     this.createProduct(product);
   }
 
@@ -120,8 +119,37 @@ export class AddProductComponent implements OnInit {
         });
   }
 
+  public uploadFile = (files) => {
 
-  public uploadFinished = (event) => {
-    this.response = event;
+    if (files.length === 0) {
+      return;
+    }
+
+    let filesToUpload: FileList = files;
+    const formData = new FormData();
+
+    Array.from(filesToUpload).map((file, index) => {
+      return formData.append('file' + index, file, file.name);
+    });
+
+    this.loading = true;
+
+    this.productService.upload(formData).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event.type === HttpEventType.Response) {
+
+          this.message = `Успешно :)`;
+          this.alertService.success(this.message, { autoClose: true });
+
+          if (this.progress == 100) {
+            this.loading = false
+          }
+        }
+      })
+
   }
+
 }

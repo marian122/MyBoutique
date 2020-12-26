@@ -26,6 +26,7 @@ export class ProductDetailsComponent implements OnInit {
     sizes: null,
     colors: null,
     createdOn: null,
+    imgPath: '',
   }
 
   selectedColor = '';

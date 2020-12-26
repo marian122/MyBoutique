@@ -3,11 +3,11 @@ using MyBoutique.Models;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {
-    public class ImageViewModel : IMapFrom<Image>
+    public class ImageViewModel : IMapFrom<Picture>
     {
         public string Title { get; set; }
 
-        public string Path { get; set; }
+        public string Url { get; set; }
 
     }
 }

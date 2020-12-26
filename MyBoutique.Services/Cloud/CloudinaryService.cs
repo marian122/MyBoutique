@@ -14,6 +14,31 @@ namespace MyBoutique.Services.Cloud
         {
             this.cloudinaryUtility = cloudinaryUtility;
         }
+        public async Task<string> UploadPhotoAsync(IFormFile picture, string name, string folderName)
+        {
+            byte[] destinationData;
+
+            using (var ms = new MemoryStream())
+            {
+                await picture.CopyToAsync(ms);
+                destinationData = ms.ToArray();
+            }
+
+            UploadResult uploadResult = null;
+
+            using (var ms = new MemoryStream(destinationData))
+            {
+                ImageUploadParams uploadParams = new ImageUploadParams
+                {
+                    Folder = folderName,
+                    File = new FileDescription(name, ms),
+                };
+
+                uploadResult = this.cloudinaryUtility.Upload(uploadParams);
+            }
+
+            return uploadResult?.SecureUri.AbsoluteUri;
+        }
 
         public async Task<string> UploadPictureAsync(IFormFile pictureFile)
         {

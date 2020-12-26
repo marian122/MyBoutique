@@ -20,7 +20,7 @@ namespace MyBoutique.Data
 
         public DbSet<Product> Products { get; set; }
 
-        public DbSet<Image> Images { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
 
         public DbSet<OrderData> OrderDatas { get; set; }
 

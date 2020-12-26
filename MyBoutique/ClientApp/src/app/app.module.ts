@@ -26,7 +26,6 @@ import { routes } from '../_helpers/routerConfig';
 import { CacheInterceptor } from '../_services/cache.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { UploadPicturesComponent } from './upload-pictures/upload-pictures.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +42,7 @@ import { UploadPicturesComponent } from './upload-pictures/upload-pictures.compo
     OrdersDetailsComponent,
     AlertComponent,
     SuccessfullOrderComponent,
-    EditProductComponent,
-    UploadPicturesComponent
+    EditProductComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

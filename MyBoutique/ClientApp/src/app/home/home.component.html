@@ -29,7 +29,7 @@
   <div class="row mb-5">
     <div *ngFor="let product of products | slice:0:4" class="col-md-3">
       <div class="card">
-        <img src="../../assets/red.jpg"
+        <img [src]="createImgPath(product.imgPath)"
              alt="Denim Jeans" style="width:100%">
         <h3>{{product.name}}</h3> 
         <p class="price">{{product.price}} лв.</p>
