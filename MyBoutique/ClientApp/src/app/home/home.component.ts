@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit{
         this.products.sort((a, b) => {
           return this.getTime(b.createdOn) - this.getTime(a.createdOn)
         });
+        console.log(products)
       },    
       error => this.errorMessage = <any>error    
     )
@@ -64,13 +65,5 @@ export class HomeComponent implements OnInit{
         }
       );
 
-  }
-
-  getPhotosForProduct(id: number) {
-    this.productsService.getImagesForProduct(id)
-      .subscribe(data => {
-        this.pictures = data;
-        console.log(data)
-      })
   }
 }

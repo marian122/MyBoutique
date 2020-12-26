@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using MyBoutique.Infrastructures.InputModels;
 using MyBoutique.Services;
 using MyBoutique.Infrastructure.ViewModels;
+using MyBoutique.Common.Repositories;
+using MyBoutique.Models;
+using System.Linq;
 
 namespace MyBoutique.Controllers
 {
@@ -14,11 +17,15 @@ namespace MyBoutique.Controllers
     {
         private readonly IOrderService orderService;
         private readonly IHttpContextAccessor httpContextAccessor;
+        private readonly IDeletableEntityRepository<Picture> pictureRepository;
 
-        public OrdersController(IOrderService orderService, IHttpContextAccessor httpContextAccessor)
+        public OrdersController(IOrderService orderService, 
+            IHttpContextAccessor httpContextAccessor,
+            IDeletableEntityRepository<Picture> pictureRepository)
         {
             this.orderService = orderService;
             this.httpContextAccessor = httpContextAccessor;
+            this.pictureRepository = pictureRepository;
         }
 
 
@@ -114,6 +121,12 @@ namespace MyBoutique.Controllers
             var sessionId = this.httpContextAccessor.HttpContext.Request.Cookies["cookie-name"];
 
             var result = await this.orderService.GetAllOrdersAsync<OrderViewModel>(sessionId);
+
+            //foreach (var product in result)
+            //{
+            //    var pictures = this.pictureRepository.All().Where(x => x.ProductId == product.Product.Id).ToList();
+            //    product.Pictures = pictures;
+            //}
             
             if (result == null)
             {

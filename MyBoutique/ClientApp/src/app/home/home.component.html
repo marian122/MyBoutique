@@ -7,7 +7,7 @@
   <div class="row">
     <div *ngFor="let product of products | slice:0:4" class="col-md-3">
       <div class="card">
-        <img src="../../assets/blue.webp"
+        <img src={{product.pictures[0].url}}
              alt="Denim Jeans" style="width:100%">
         <h3>{{product.name}}</h3>
         <p class="price">{{product.price}} лв.</p>
@@ -29,7 +29,7 @@
   <div class="row mb-5">
     <div *ngFor="let product of products | slice:0:4" class="col-md-3">
       <div class="card">
-        <img [src]="createImgPath(product.imgPath)"
+        <img src={{product.pictures[0].url}}
              alt="Denim Jeans" style="width:100%">
         <h3>{{product.name}}</h3> 
         <p class="price">{{product.price}} лв.</p>

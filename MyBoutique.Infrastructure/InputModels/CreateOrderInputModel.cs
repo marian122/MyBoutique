@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MyBoutique.Models;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyBoutique.Infrastructures.InputModels
 {
@@ -18,5 +20,6 @@ namespace MyBoutique.Infrastructures.InputModels
 
         public decimal TotalPrice { get; set; }
 
+        
     }
 }

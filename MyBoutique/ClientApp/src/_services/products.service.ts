@@ -68,13 +68,6 @@ export class ProductsService {
       )
   }
 
-  getImagesForProduct(productId: number): Observable<Picture[]> {
-    return this.http.get<Picture[]>(`${environment.apiUrl}/api/image/${productId}`)
-      .pipe(
-        catchError(this.handleError)
-      )
-  }
-
 
   public getById(id: any): Observable<Product> {
     return this.http.get<Product>(`${environment.apiUrl}/api/products/${id}`);

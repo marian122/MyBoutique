@@ -16,12 +16,15 @@ namespace MyBoutique.Services
     {
         private readonly IDeletableEntityRepository<Order> ordersRepository;
         private readonly IDeletableEntityRepository<Product> productsRepository;
+        private readonly IDeletableEntityRepository<Picture> pictureRepository;
 
         public OrderService(IDeletableEntityRepository<Order> ordersRepository,
-                            IDeletableEntityRepository<Product> productsRepository)
+                            IDeletableEntityRepository<Product> productsRepository,
+                             IDeletableEntityRepository<Picture> pictureRepository)
         {
             this.ordersRepository = ordersRepository;
             this.productsRepository = productsRepository;
+            this.pictureRepository = pictureRepository;
         }
         public async Task<bool> CreateOrderAsync(CreateOrderInputModel input)
         {
@@ -39,7 +42,8 @@ namespace MyBoutique.Services
                     Quantity = input.Quantity,
                     TotalPrice = product.Price * input.Quantity,
                     CreatedOn = DateTime.Now,
-                    IsDeleted = false
+                    IsDeleted = false,
+
                 };
 
                 this.ordersRepository.Add(order);

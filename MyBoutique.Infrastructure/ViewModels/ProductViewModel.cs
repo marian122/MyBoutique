@@ -1,7 +1,9 @@
-﻿using MyBoutique.Mappings;
+﻿using AutoMapper;
+using MyBoutique.Mappings;
 using MyBoutique.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {
@@ -25,6 +27,9 @@ namespace MyBoutique.Infrastructure.ViewModels
 
         public decimal Price { get; set; }
 
-        //Collection of pics
+        public ICollection<Picture> Pictures { get; set; }
+
+        
     }
+
 }

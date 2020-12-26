@@ -38,14 +38,17 @@ namespace MyBoutique.Services
             foreach (var file in inputModel)
             {
                 var fileUrl = await this.cloudinaryService.UploadPictureAsync(file);
-                var lastId = this.productsRepository.All().Max(x => x.Id);
+
+                var product = this.productsRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefault();
                 var img = new Picture()
                 {
                     CreatedOn = DateTime.Now,
                     Title = Guid.NewGuid().ToString(),
                     Url = fileUrl,
-                    ProductId = this.productsRepository.All().OrderByDescending(x => x.CreatedOn).FirstOrDefault().Id,
+                    ProductId = product.Id,
                 };
+
+                product.Pictures.Add(img);
 
                 this.repository.Add(img);
             }

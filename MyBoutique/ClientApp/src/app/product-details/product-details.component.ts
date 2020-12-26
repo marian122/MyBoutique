@@ -54,7 +54,6 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('cookie-name');
-    this.getPhotosForProduct(this.route.snapshot.params.id);
     this.getProductById(this.route.snapshot.params.id);
 
     this.form = this.formBuilder.group({
@@ -94,19 +93,12 @@ export class ProductDetailsComponent implements OnInit {
       .subscribe(
         data => {
           this.currentProduct = data;
+          console.log(this.currentProduct)
         },
         error => {
           console.log(error);
         }
       )
-  }
-
-  getPhotosForProduct(id: number) {
-    this.productService.getImagesForProduct(id)
-      .subscribe(data => {
-        this.pictures = data;
-        console.log(data)
-      })
   }
 
   addProductToCart(id, userId: string, quantity, size, color): void {

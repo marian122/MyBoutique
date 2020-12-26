@@ -1,5 +1,6 @@
 ﻿using MyBoutique.Mappings;
 using MyBoutique.Models;
+using System.Collections.Generic;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {

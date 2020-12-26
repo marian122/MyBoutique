@@ -36,7 +36,7 @@
 <div class="row">
     <div *ngFor="let product of filteredProducts" class="col-md-3 mb-5">
         <div class="card">
-            <img src="../../assets/orange.jpg"
+            <img src={{product.pictures[0].url}}
             alt="Denim Jeans" style="width:100%">
             <h3>{{product.name}}</h3>
             <p class="price">{{product.price}} лв.</p>

@@ -29,5 +29,7 @@ namespace MyBoutique.Infrastructure.ViewModels
         public decimal SubTotal { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
+
+        public virtual ICollection<Picture> Pictures { get; set; }
     }
 }

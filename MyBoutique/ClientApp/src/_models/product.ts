@@ -1,3 +1,5 @@
+import { Picture } from "./picture";
+
 export class Product {
   id: number;
   name: string;
@@ -8,5 +10,5 @@ export class Product {
   sizes: Array<string>;
   colors: Array<string>;
   createdOn: Date;
-  photos: Array<string>;
+  photos: Array<Picture>;
 }

@@ -94,6 +94,7 @@ export class CartOrdersComponent implements OnInit {
           this.orders.forEach(element => {
             this.subTotal += element.totalPrice
           });
+          console.log(this.orders)
         }
       })
   }

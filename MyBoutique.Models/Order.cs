@@ -1,4 +1,5 @@
 ﻿using MyBoutique.Common.BaseModels;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyBoutique.Models
@@ -23,6 +24,5 @@ namespace MyBoutique.Models
 
         [Required]
         public decimal TotalPrice { get; set; }
-
     }
 }
