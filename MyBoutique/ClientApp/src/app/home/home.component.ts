@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Product } from '../../_models/product';
 import { AlertService } from '../../_services';
 import { ProductsService } from '../../_services/products.service';
-import { AddProductComponent } from '../add-product/add-product.component';
 import { Picture } from '../../_models/picture';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
   public pictures: Picture[];
@@ -20,9 +20,9 @@ export class HomeComponent implements OnInit{
   constructor(private productsService: ProductsService,
     private alertService: AlertService) { this.products = []; }
 
-
   ngOnInit(): void {
-    
+   
+
     this.loading = true;
     this.productsService.getAll().subscribe(
       products => {
@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit{
       error => this.errorMessage = <any>error    
     )
     this.isLoggedIn = localStorage.getItem("user");
+
   }
 
   private getTime(date?: Date) {

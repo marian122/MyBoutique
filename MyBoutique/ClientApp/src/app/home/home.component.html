@@ -1,11 +1,12 @@
+
 <div class="container">
   <ng-template [ngIf]="isLoggedIn">
-      <a class="btn btn-outline-dark mt-1" [routerLink]="['/add-product']">Добави продукт</a>
+    <a class="btn btn-outline-dark mt-1" [routerLink]="['/add-product']">Добави продукт</a>
   </ng-template>
   <h3 class="text-center">Разгледай нашите най-нови предложения</h3>
   <hr />
   <div class="row">
-    <div *ngFor="let product of products | slice:0:4" class="col-md-3">
+    <div *ngFor="let product of products | slice:0:4" class="col-md-3 mb-5">
       <div class="card">
         <img src={{product.pictures[0].url}}
              alt="Denim Jeans" style="width:100%">
@@ -24,25 +25,4 @@
     </div>
   </div>
 
-  <h3 class="text-center mt-5 mb-3">Горещи намаления</h3>
-  <hr />
-  <div class="row mb-5">
-    <div *ngFor="let product of products | slice:0:4" class="col-md-3">
-      <div class="card">
-        <img src={{product.pictures[0].url}}
-             alt="Denim Jeans" style="width:100%">
-        <h3>{{product.name}}</h3> 
-        <p class="price">{{product.price}} лв.</p>
-        <p>
-          <a class="btn btn-outline-dark" [routerLink]='["/products",product.id]'>Виж повече</a>
-          <a *ngIf="this.isLoggedIn" class="btn btn-danger ml-2"
-             (click)="deleteProduct(product.id)">Изтрий</a>
-
-             <a *ngIf="this.isLoggedIn" class="btn btn-warning ml-2 mt-2"
-             [routerLink]='["/edit-product",product.id]'>Редактирай</a>
-        </p>
-        
-      </div>
-    </div>
-  </div>
 </div>

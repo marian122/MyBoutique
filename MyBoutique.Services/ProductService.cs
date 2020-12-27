@@ -17,27 +17,23 @@ namespace MyBoutique.Services
     public class ProductService : IProductService
     {
         private readonly IDeletableEntityRepository<Product> productRepository;
-        private readonly IImageService imageService;
         private readonly IDeletableEntityRepository<Size> sizeRepository;
         private readonly IDeletableEntityRepository<Color> colorRepository;
+        private readonly IDeletableEntityRepository<Picture> pictureRepository;
 
         public ProductService(IDeletableEntityRepository<Product> productRepository,
-            IImageService imageService,
             IDeletableEntityRepository<Size> sizeRepository,
-            IDeletableEntityRepository<Color> colorRepository)
+            IDeletableEntityRepository<Color> colorRepository,
+            IDeletableEntityRepository<Picture> pictureRepository)
         {
             this.productRepository = productRepository;
-            this.imageService = imageService;
             this.sizeRepository = sizeRepository;
             this.colorRepository = colorRepository;
+            this.pictureRepository = pictureRepository;
         }
 
         public async Task<bool> CreateProductAsync(CreateProductInputModel input)
         {
-            //var result = await this.imageService.CreateImageCollectionAsynq(input.Photos);
-
-            //var ProductImgs = await this.imageService.GetImageCollectionlByIdsAsynq<Image>(result);
-
 
             var product = new Product()
             {
@@ -53,10 +49,10 @@ namespace MyBoutique.Services
             };
 
 
-            //product.Photos = ProductImgs.ToList();
-
             if (product != null && product.Price > 0)
             {
+                var pics = this.pictureRepository.All().Where(x => x.ProductId == product.Id).ToList();
+                product.Pictures = pics;
                 this.productRepository.Add(product);
                 await this.productRepository.SaveChangesAsync();
 

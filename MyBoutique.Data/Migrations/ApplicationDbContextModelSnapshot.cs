@@ -364,6 +364,9 @@ namespace MyBoutique.Data.Migrations
                     b.Property<int?>("OrderDataId")
                         .HasColumnType("int");
 
+                    b.Property<string>("PicUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 

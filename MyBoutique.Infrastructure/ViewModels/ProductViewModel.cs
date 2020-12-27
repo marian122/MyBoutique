@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {
-    public class ProductViewModel : IMapFrom<Product>
+    public class ProductViewModel : IMapFrom<Product>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -29,7 +29,13 @@ namespace MyBoutique.Infrastructure.ViewModels
 
         public ICollection<Picture> Pictures { get; set; }
 
-        
+        public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<Product, ProductViewModel>()
+                .ForMember(x => x.Pictures, cfg => cfg.MapFrom(x => x.Pictures));
+        }
+
+
     }
 
 }

@@ -13,6 +13,7 @@ namespace MyBoutique.Models
 
         public string UserId { get; set; }
 
+
         [Required]
         public string Color { get; set; }
 
@@ -24,5 +25,7 @@ namespace MyBoutique.Models
 
         [Required]
         public decimal TotalPrice { get; set; }
+
+        public string PicUrl { get; set; }
     }
 }

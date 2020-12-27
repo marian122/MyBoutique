@@ -18,7 +18,7 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  public createProduct(data) {
+  createProduct(data) {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 

@@ -13,11 +13,13 @@ import { Product } from '../../_models/product';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
+  public productMessage: string;
   public message: string;
   public progress: number;
   selectedCategoryName: string = '';
   form: FormGroup;
   loading = false;
+  loadingProduct = false;
   submitted = false;
   productIdUpdate = null;
 
@@ -100,26 +102,26 @@ export class AddProductComponent implements OnInit {
   }
 
   createProduct(product: Product) {
-    this.loading = true;
+    this.loadingProduct = true;
 
     this.productService.createProduct(product)
       .pipe(first())
       .subscribe(
         data => {
           console.log(product);
-          let message = `Успешно добавихте ${product.name}.`;
-          this.alertService.success(message, { autoClose: true });
+          this.productMessage = `Успешно добавихте ${product.name}, сега добавете снимки към него с бутона по-долу.`;
+          this.loadingProduct = false;
           //setTimeout(() => {
           //  this.router.navigate(['/products'], { relativeTo: this.route });
           //}, 1500);
         },
         error => {
           console.log(error);
-          this.loading = false;
+          this.loadingProduct = false;
         });
   }
 
-  public uploadFile = (files) => {
+  uploadFile (files) {
 
     if (files.length === 0) {
       return;
@@ -141,9 +143,9 @@ export class AddProductComponent implements OnInit {
           this.progress = Math.round(100 * event.loaded / event.total);
         } else if (event.type === HttpEventType.Response) {
 
-          this.message = `Успешно добавихте снимки към продукта :)`;
+          this.message = `Успешно добавяне на продукт.`;
           this.alertService.success(this.message, { autoClose: true });
-
+          this.loading = false;
           setTimeout(() => {
             this.router.navigate(['/products'], { relativeTo: this.route });
           }, 1500);

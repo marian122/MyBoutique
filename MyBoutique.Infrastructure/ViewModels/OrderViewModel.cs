@@ -1,6 +1,8 @@
-﻿using MyBoutique.Mappings;
+﻿using AutoMapper;
+using MyBoutique.Mappings;
 using MyBoutique.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MyBoutique.Infrastructure.ViewModels
 {
@@ -22,5 +24,6 @@ namespace MyBoutique.Infrastructure.ViewModels
 
         public decimal TotalPrice { get; set; }
 
+        public string PicUrl { get; set; }
     }
 }

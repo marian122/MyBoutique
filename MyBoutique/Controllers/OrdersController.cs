@@ -127,7 +127,7 @@ namespace MyBoutique.Controllers
             //    var pictures = this.pictureRepository.All().Where(x => x.ProductId == product.Product.Id).ToList();
             //    product.Pictures = pictures;
             //}
-            
+
             if (result == null)
             {
                 return this.NoContent();

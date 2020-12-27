@@ -10,8 +10,8 @@ using MyBoutique.Data;
 namespace MyBoutique.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201226133214_init")]
-    partial class init
+    [Migration("20201227133421_ini")]
+    partial class ini
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -365,6 +365,9 @@ namespace MyBoutique.Data.Migrations
 
                     b.Property<int?>("OrderDataId")
                         .HasColumnType("int");
+
+                    b.Property<string>("PicUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");

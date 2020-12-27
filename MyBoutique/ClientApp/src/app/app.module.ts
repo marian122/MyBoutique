@@ -26,6 +26,7 @@ import { routes } from '../_helpers/routerConfig';
 import { CacheInterceptor } from '../_services/cache.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
-    RxReactiveFormsModule 
+    RxReactiveFormsModule,
+    SlickCarouselModule
   ],
   providers: [  
     { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },

@@ -29,6 +29,7 @@ namespace MyBoutique.Services
         public async Task<bool> CreateOrderAsync(CreateOrderInputModel input)
         {
             var product = this.productsRepository.All().FirstOrDefault(x => x.Id == input.ProductId);
+            var picture = this.pictureRepository.All().FirstOrDefault(x => x.ProductId == product.Id).Url;
 
             if (product != null && input.Quantity > 0)
             {
@@ -37,6 +38,7 @@ namespace MyBoutique.Services
                     UserId = input.UserId,
                     Product = product,
                     ProductId = product.Id,
+                    PicUrl = picture,
                     Color = input.Color,
                     Size = input.Size,
                     Quantity = input.Quantity,
@@ -108,6 +110,7 @@ namespace MyBoutique.Services
             => await this.ordersRepository
             .All()
             .Where(x => x.IsDeleted == false && x.UserId == sessionId)
+            .Include(x => x.Product)
             .OrderBy(x => x.Quantity)
             .To<TViewModel>()
             .ToListAsync();
