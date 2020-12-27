@@ -6,4 +6,5 @@ export class Order {
   quantity: number;
   size: string;
   color: string;
+  picUrl: string;
 }

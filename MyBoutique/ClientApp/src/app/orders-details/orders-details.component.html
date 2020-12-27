@@ -15,7 +15,7 @@
                     <div class="basket-product" *ngFor="let productInfo of data.orders">
                         <div class="item">
                             <div class="product-image">
-                              <img src="../../assets//orange.jpg"alt="Placholder Image 2">
+                              <img src={{productInfo.picUrl}} alt="Placholder Image 2">
                             </div>
                             <div class="product-details">
                               <h1><strong><span class="item-quantity">{{productInfo.quantity}}</span> x </strong>{{productInfo.product.name}}</h1>
