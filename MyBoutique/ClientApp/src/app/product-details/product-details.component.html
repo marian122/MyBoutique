@@ -9,7 +9,7 @@
                 <div class="row product-gallery mx-5">
 
                     <mdb-carousel  class="carousel slide carousel-fade" [animation]="'fade'">
-                        <mdb-carousel-item *ngFor="let image of currentProduct.pictures">
+                        <mdb-carousel-item *ngFor="let image of product.pictures">
                           <div class="view w-100">
                             <img src={{image.url}}
                                         class="img-fluid" alt="First slide">

@@ -18,6 +18,8 @@ export class ProductDetailsComponent implements OnInit {
   public pictures: Picture[];
   private cookieValue: string;
   isLoggedIn: any;
+  public product: Product;
+
   currentProduct: Product = {
     id: 0,
     name: '',
@@ -28,7 +30,7 @@ export class ProductDetailsComponent implements OnInit {
     sizes: null,
     colors: null,
     createdOn: null,
-    photos: null,
+    pictures: '',
   }
 
 
@@ -40,8 +42,10 @@ export class ProductDetailsComponent implements OnInit {
     userId:'',
     quantity: 1,
     size: this.selectedSize,
-    color: this.selectedColor
+    color: this.selectedColor,
+    picUrl: ''
   }
+
   form: FormGroup;
 
   constructor(private productService: ProductsService,
@@ -92,8 +96,10 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getById(id)
       .subscribe(
         data => {
+          this.product = data;
           this.currentProduct = data;
           console.log(this.currentProduct)
+          console.log(this.product)
         },
         error => {
           console.log(error);
