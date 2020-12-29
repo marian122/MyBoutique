@@ -13,7 +13,7 @@ import { Product } from '../../_models/product';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent implements OnInit {
-  public response: { path: '' };
+  //public response: { path: '' };
   selectedCategoryName: string = '';
   form: FormGroup;
   loading = false;
@@ -96,7 +96,7 @@ export class AddProductComponent implements OnInit {
     }
 
     const product = this.form.value;
-    product.images = this.response.path;
+    //product.images = this.response.path;
     this.createProduct(product);
   }
 

@@ -92,6 +92,7 @@ namespace MyBoutique
             services.RegisterRepositoryServices();
 
             services.RegisterCustomServices();
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
         }
 
