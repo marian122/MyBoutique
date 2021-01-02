@@ -8,12 +8,12 @@
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyBoutique.Common\MyBoutique.Common.csproj" />
     <ProjectReference Include="..\MyBoutique.Mappings\MyBoutique.Mappings.csproj" />
     <ProjectReference Include="..\MyBoutique.Models\MyBoutique.Models.csproj" />
   </ItemGroup>

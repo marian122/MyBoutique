@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using MyBoutique.Mappings;
-using MyBoutique.Models;
+﻿using MyBoutique.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyBoutique.Infrastructures.InputModels
 {
-    public class CreateProductInputModel : IMapTo<Product>
+    public class CreateProductInputModel
     {
         public int Id { get; set; }
 

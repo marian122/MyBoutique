@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using MyBoutique.Mappings;
 using MyBoutique.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using System.Text;
 
 namespace MyBoutique.Infrastructure.InputModels
 {
-    public class EditProductInputModel : IMapTo<Product>
+    public class EditProductInputModel
     {
         public int Id { get; set; }
 
