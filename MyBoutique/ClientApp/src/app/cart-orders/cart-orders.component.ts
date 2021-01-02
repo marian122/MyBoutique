@@ -39,19 +39,20 @@ export class CartOrdersComponent implements OnInit {
     this.cookieValue = this.cookieService.get('cookie-name');
 
     this.form = this.formBuilder.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      phone: ['', [Validators.required, Validators.minLength(9)]],
-      email: ['', [Validators.required, Validators.minLength(2)]],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
+      phone: ['', [Validators.required]],
       city: ['', [Validators.required, Validators.minLength(2)]],
       deliveryType: ['', [Validators.required]],
       address: ['', [Validators.required, Validators.minLength(2)]],
-      additionalInformation: [''],
+      additionalInformation: ['', [Validators.maxLength(350)]],
       orders: this.formBuilder.array([]),
       userId: this.cookieService.get('cookie-name')
     });
     this.getOrdersBySessionId();
   }
+
+  get f() { return this.form.controls; }
 
   onSubmit() {
     this.submitted = true;
@@ -72,7 +73,7 @@ export class CartOrdersComponent implements OnInit {
           this.cleartCartProducts();
         },
         error => {
-          console.log(error);
+          this.alertService.error(error);
           this.loading = false;
         });
 

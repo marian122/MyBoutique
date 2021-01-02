@@ -32,19 +32,22 @@
           <div class="form-group">
             <label for="categoryName" class="font-weight-bold text-center dark-grey-text">Категория</label>
             <div class="mb-0">
-              <select formControlName="categoryName" class="form-control" id="exampleFormControlSelect1">
+              <select formControlName="categoryName" class="form-control" id="exampleFormControlSelect1"
+                      [ngClass]="{ 'is-invalid': submitted && f.categoryName.errors }">
                 <option value="Мъже">Мъже</option>
                 <option value="Жени">Жени</option>
                 <option value="Деца">Деца</option>
               </select>
-            </div>
-            <div *ngIf="submitted && f.categoryName.errors" class="invalid-feedback">
-              <div *ngIf="f.categoryName.errors.required">Категорията е задължителна</div>
+              <div *ngIf="submitted && f.categoryName.errors" class="invalid-feedback">
+                <div *ngIf="f.categoryName.errors.required">Категорията е задължителна</div>
+              </div>
             </div>
           </div>
+
           <div class="form-group">
             <label for="categoryType" class="font-weight-bold text-center dark-grey-text">Подкатегория</label>
-            <select formControlName="categoryType" class="form-control" id="exampleFormControlSelect1">
+            <select formControlName="categoryType" class="form-control" id="exampleFormControlSelect1"
+                    [ngClass]="{ 'is-invalid': submitted && f.categoryType.errors }">
               <option value="Блузи">Блузи</option>
               <option value="Ризи">Ризи</option>
               <option value="Гащеризони">Гащеризони</option>

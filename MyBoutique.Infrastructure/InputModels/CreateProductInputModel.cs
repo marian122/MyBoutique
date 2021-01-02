@@ -13,7 +13,7 @@ namespace MyBoutique.Infrastructures.InputModels
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Description is required")]
-        [StringLength(250, MinimumLength = 4)]
+        [StringLength(350, MinimumLength = 4)]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Price is required")]

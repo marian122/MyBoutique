@@ -17,7 +17,7 @@ namespace MyBoutique.Models
         public string Name { get; set; }
 
         [Required]
-        [StringLength(250, MinimumLength = 4)]
+        [StringLength(350, MinimumLength = 4)]
         public string Description { get; set; }
 
         [Required]

@@ -126,7 +126,7 @@ export class ProductDetailsComponent implements OnInit {
           let message = `Успешно добавихте продукта в количката.`;
           this.alertService.success(message, { autoClose: true });
           setTimeout(() => {
-            this.router.navigate(['/products'], { relativeTo: this.route });
+            this.router.navigate(['/products'], { relativeTo: this.route }); 
           }, 1500);
         })
     }

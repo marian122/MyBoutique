@@ -18,7 +18,6 @@ namespace MyBoutique.Infrastructure.InputModels
         [Required]
         public string Address { get; set; }
 
-        public string Email { get; set; }
 
         [Required]
         public string Phone { get; set; }
@@ -26,6 +25,7 @@ namespace MyBoutique.Infrastructure.InputModels
         [Required]
         public string DeliveryType { get; set; }
 
+        [MaxLength(350)]
         public string AdditionalInformation { get; set; }
 
         public string UserId  { get; set; }

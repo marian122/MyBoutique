@@ -7,26 +7,26 @@ namespace MyBoutique.Models
     public class OrderData : BaseDeletableModel<int>
     {
         [Required]
-        [StringLength(80, MinimumLength = 4)]
+        [StringLength(80, MinimumLength = 2)]
         public string FirstName { get; set; }
-
+        
 
         [Required]
-        [StringLength(80, MinimumLength = 4)]
+        [StringLength(80, MinimumLength = 2)]
         public string LastName { get; set; }
 
         [Required]
-        [StringLength(80, MinimumLength = 4)]
+        [StringLength(80, MinimumLength = 2)]
         public string City { get; set; }
         
         [Required]
-        [StringLength(80, MinimumLength = 4)]
+        [StringLength(80, MinimumLength = 2)]
         public string Address { get; set; }
 
 
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+        //[Required]
+        //[EmailAddress]
+        //public string Email { get; set; }
 
         [Required]
         [Phone]
@@ -35,6 +35,7 @@ namespace MyBoutique.Models
         [Required]
         public string DeliveryType { get; set; }
 
+        [MaxLength(350)]
         public string AdditionalInformation { get; set; }
 
         public decimal SubTotal { get; set; }

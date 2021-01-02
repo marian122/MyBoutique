@@ -8,10 +8,12 @@ import { Order } from '../_models/order';
   providedIn: 'root'
 })
 export class OrderService {
+
   public orders = [];
   public subTotal = 0;
 
   constructor(private http: HttpClient) { }
+
 
   public getAllOrders() {
     return this.http.get(`${environment.apiUrl}/api/orders`)

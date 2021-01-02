@@ -41,7 +41,6 @@ namespace MyBoutique.Services
                     LastName = inputModel.LastName,
                     Address = inputModel.Address,
                     City = inputModel.City,
-                    Email = inputModel.Email,
                     Phone = inputModel.Phone,
                     DeliveryType = inputModel.DeliveryType,
                     PromoCode = inputModel.PromoCode,

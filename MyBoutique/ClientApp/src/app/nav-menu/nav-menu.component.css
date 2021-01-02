@@ -8,6 +8,13 @@ ul>li{
   margin: 20px;
 }
 
+@media screen and (min-width:768px) {
+  #shoppingCart {
+     visibility: hidden;
+  }
+}
+
+
 .navbar{
   background-color:rgb(64, 98, 160);
   font-family: Lato;
