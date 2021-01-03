@@ -18,9 +18,8 @@ namespace MyBoutique.Infrastructure.InputModels
         [Required]
         public string Address { get; set; }
 
-
         [Required]
-        public string Phone { get; set; }
+        public int Phone { get; set; }
 
         [Required]
         public string DeliveryType { get; set; }

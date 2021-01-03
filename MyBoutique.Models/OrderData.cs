@@ -30,7 +30,7 @@ namespace MyBoutique.Models
 
         [Required]
         [Phone]
-        public string Phone { get; set; }
+        public int Phone { get; set; }
 
         [Required]
         public string DeliveryType { get; set; }

@@ -17,7 +17,7 @@ namespace MyBoutique.Infrastructure.ViewModels
         public string Address { get; set; }
 
 
-        public string Phone { get; set; }
+        public int Phone { get; set; }
 
         public string AdditionalInformation { get; set; }
 

@@ -91,7 +91,8 @@
 
                   <div class="form-group">
                     <label for="deliveryType" class="font-weight-bold text-left dark-grey-text">Начин за доставка</label>
-                    <select formControlName="deliveryType" class="form-control" id="exampleFormControlSelect1">
+                    <select formControlName="deliveryType" class="form-control" id="exampleFormControlSelect1"
+                            [ngClass]="{ 'is-invalid': submitted && f.deliveryType.errors }">
                       <option value="" disabled selected hidden>Избери начин на доставка</option>
                       <option value="Econt">Еконт</option>
                       <option value="Speedy">Спиди</option>
