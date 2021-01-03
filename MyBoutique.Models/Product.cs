@@ -27,6 +27,7 @@ namespace MyBoutique.Models
         [Required]
         public string CategoryName { get; set; }
 
+
         [Required]
         public string CategoryType { get; set; }
 

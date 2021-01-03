@@ -8,7 +8,7 @@ import { OrderService } from '../../_services/order.service';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  public orders = 0;
+  count = 0;
   isExpanded = false;
   collapsed = true;
   isLoggedIn;
@@ -17,8 +17,10 @@ export class NavMenuComponent {
   constructor(
     private accountService: AccountService, private orderService: OrderService) {
     this.isLoggedIn = localStorage.getItem("user");
-    this.orders = this.orderService.orders.length;
 
+    this.orderService.cartCountSubject.subscribe(status => {
+      this.count = status;
+    })
   }
 
 

@@ -103,7 +103,6 @@ export class AddProductComponent implements OnInit {
 
   createProduct(product: Product) {
     this.loadingProduct = true;
-
     this.productService.createProduct(product)
       .pipe(first())
       .subscribe(
@@ -111,9 +110,6 @@ export class AddProductComponent implements OnInit {
           console.log(product);
           this.productMessage = `Успешно добавихте ${product.name}, сега добавете снимки към него с бутона по-долу.`;
           this.loadingProduct = false;
-          //setTimeout(() => {
-          //  this.router.navigate(['/products'], { relativeTo: this.route });
-          //}, 1500);
         },
         error => {
           console.log(error);

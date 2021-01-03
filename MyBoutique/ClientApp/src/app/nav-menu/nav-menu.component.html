@@ -5,7 +5,7 @@
         <div class="container">
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-                  aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
+            aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
             <span class="navbar-toggler-icon"></span>
           </button>
 
@@ -23,33 +23,33 @@
                 <a class="nav-link text-white" [routerLink]="['female-products']">Дамски</a>
               </li>
 
-              <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
-                <a class="nav-link text-white" [routerLink]="['kid-products']">Детски</a>
-              </li>
+             
             </ul>
           </div>
-
-          <div id="shoppingCart">
-            <a [routerLink]="['cart-orders']">
-              <img src="../../assets/shopping-cart-32.png" />
-              <span class='badge badge-warning'> {{this.orders}} </span>
-            </a>
-          </div>
-
-
           <div id="logo">
 
             <a [routerLink]="['/']" class="navbar-brand">
-              <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
+              <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt=""
+                class="d-inline-block align-middle">
             </a>
           </div>
-
+          <div class="navbar-toggler cartCount" data-toggle="collapse" data-target=".navbar-collapse"
+            aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded">
+            <a [routerLink]="['cart-orders']">
+              <img src="../../assets/shopping-cart-32.png" />
+              <span class='badge badge-warning'> {{count}} </span>
+            </a>
+          </div>
 
 
           <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
             <ul class="navbar-nav">
-
-              <li *ngIf="isLoggedIn;" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <li class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link text-white" [routerLink]="['kid-products']">Детски</a>
+              </li>
+              
+              <li *ngIf="isLoggedIn;" class="nav-item" [routerLinkActive]="['link-active']"
+                [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link text-white" [routerLink]="['orders-details']">Поръчки</a>
               </li>
 
@@ -63,11 +63,10 @@
                 </li>
               </ng-template>
 
-              <li *ngIf="isLoggedIn; else loggedOut" class="nav-item " [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <li *ngIf="isLoggedIn; else loggedOut" class="nav-item " [routerLinkActive]="['link-active']"
+                [routerLinkActiveOptions]="{ exact: true }">
                 <a class="btn btn-light" (click)="LogOut()">Изход</a>
               </li>
-
-             
 
             </ul>
           </div>
@@ -80,44 +79,53 @@
         <div class="container">
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-                  aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
+            aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
             <span class="navbar-toggler-icon"></span>
           </button>
 
+
           <div class="navbar-collapse collapse d-sm-inline-flex" [ngClass]="{ show: isExpanded }">
             <ul class="navbar-nav">
-              <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                [routerLinkActiveOptions]="{ exact: true }">
                 <a class="btn btn-light" [routerLink]='["products"]'>Начало</a>
               </li>
 
-              <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link text-white" [routerLink]="['male-products']">Мъжки</a>
               </li>
 
-              <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link text-white" [routerLink]="['female-products']">Дамски</a>
               </li>
 
-              <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link text-white" [routerLink]="['kid-products']">Детски</a>
               </li>
 
 
-              <li (click)="toggle()" *ngIf="isLoggedIn;" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <li (click)="toggle()" *ngIf="isLoggedIn;" class="nav-item" [routerLinkActive]="['link-active']"
+                [routerLinkActiveOptions]="{ exact: true }">
                 <a class="nav-link text-white" [routerLink]="['orders-details']">Поръчки</a>
               </li>
 
               <ng-template #loggedOut>
-                <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+                <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                  [routerLinkActiveOptions]="{ exact: true }">
                   <a class="nav-link text-white" [routerLink]="['cart-orders']">Количка</a>
                 </li>
 
-                <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+                <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
+                  [routerLinkActiveOptions]="{ exact: true }">
                   <a class="btn btn-light" [routerLink]='["login"]'>Вход</a>
                 </li>
               </ng-template>
 
-              <li (click)="toggle()" *ngIf="isLoggedIn; else loggedOut" class="nav-item " [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
+              <li (click)="toggle()" *ngIf="isLoggedIn; else loggedOut" class="nav-item "
+                [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }">
                 <a class="btn btn-light" (click)="LogOut()">Изход</a>
               </li>
             </ul>
@@ -126,7 +134,8 @@
           <div id="logo">
 
             <a [routerLink]="['/']" class="navbar-brand">
-              <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt="" class="d-inline-block align-middle">
+              <img src="../../assets/0b996bbf-16d9-49d9-a96f-7a822790cf9b_200x200.png" width="120" alt=""
+                class="d-inline-block align-middle">
             </a>
           </div>
 
@@ -287,5 +296,3 @@
 
   </ng-template>-->
 </header>
-
-

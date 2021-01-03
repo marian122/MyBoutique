@@ -37,6 +37,7 @@ export class CartOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('cookie-name');
+    this.getOrdersBySessionId();
 
     this.form = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
@@ -49,7 +50,6 @@ export class CartOrdersComponent implements OnInit {
       orders: this.formBuilder.array([]),
       userId: this.cookieService.get('cookie-name')
     });
-    this.getOrdersBySessionId();
   }
 
   get f() { return this.form.controls; }
@@ -95,7 +95,6 @@ export class CartOrdersComponent implements OnInit {
           this.orders.forEach(element => {
             this.subTotal += element.totalPrice
           });
-          console.log(this.orders)
         }
       })
   }
@@ -120,7 +119,6 @@ export class CartOrdersComponent implements OnInit {
   public removeProduct = (id: number, productName: string) => {
     this.orderService.deleteOrder(id)
       .subscribe(event => {
-        console.log(event);
         let message = `Успешно премахнахте ${productName} от вашата количка.`;
         this.alertService.success(message, { autoClose: true });
         this.getOrdersBySessionId();

@@ -7,7 +7,6 @@ import { AlertService } from 'src/_services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { OrderService } from '../../_services/order.service';
-import { Picture } from '../../_models/picture';
 
 @Component({
   selector: 'app-product-details',
@@ -15,7 +14,6 @@ import { Picture } from '../../_models/picture';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  public pictures: Picture[];
   private cookieValue: string;
   isLoggedIn: any;
   public product: Product;
@@ -30,9 +28,8 @@ export class ProductDetailsComponent implements OnInit {
     sizes: null,
     colors: null,
     createdOn: null,
-    pictures: '',
+    pictures: ''
   }
-
 
   selectedColor = '';
   selectedSize = '';
@@ -71,8 +68,7 @@ export class ProductDetailsComponent implements OnInit {
   incrementQTY(item) {
     if (item.quantity >= 1) {
       item.quantity += 1;
-      item.totalPrice = item.product.price * item.quantity;
-      console.log(item)
+      item.totalPrice = this.currentProduct.price * item.quantity;
     }
 
   }
@@ -80,7 +76,7 @@ export class ProductDetailsComponent implements OnInit {
   decrementQTY(item) {
     if (item.quantity > 1) {
       item.quantity -= 1;
-      item.totalPrice -= item.product.price;
+      item.totalPrice -= this.currentProduct.price;
     }
   }
 
@@ -98,8 +94,6 @@ export class ProductDetailsComponent implements OnInit {
         data => {
           this.product = data;
           this.currentProduct = data;
-          console.log(this.currentProduct)
-          console.log(this.product)
         },
         error => {
           console.log(error);

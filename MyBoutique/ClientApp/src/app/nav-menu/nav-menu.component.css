@@ -8,12 +8,10 @@ ul>li{
   margin: 20px;
 }
 
-@media screen and (min-width:768px) {
-  #shoppingCart {
-     visibility: hidden;
-  }
+.cartCount{
+  outline:none;
+  border: none;
 }
-
 
 .navbar{
   background-color:rgb(64, 98, 160);
@@ -41,6 +39,16 @@ html {
     height: 100px;
   }
 }
+/* 
+@media (min-width: 1198px) {
+  html {  
+    font-size: 16px;
+  }
+  
+  .navbar{
+    height: 100px;
+  }
+} */
 
 
 .box-shadow {

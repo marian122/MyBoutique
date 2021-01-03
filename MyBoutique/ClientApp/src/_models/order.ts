@@ -1,5 +1,3 @@
-import { Picture } from "./picture";
-
 export class Order {
   productId: number;
   userId: string;
@@ -7,4 +5,5 @@ export class Order {
   size: string;
   color: string;
   picUrl: string;
+
 }

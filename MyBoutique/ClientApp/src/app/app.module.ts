@@ -27,6 +27,9 @@ import { CacheInterceptor } from '../_services/cache.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { DeliveryComponent } from './delivery/delivery.component';
+import { TermsComponent } from './terms/terms.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     OrdersDetailsComponent,
     AlertComponent,
     SuccessfullOrderComponent,
-    EditProductComponent
+    EditProductComponent,
+    DeliveryComponent,
+    TermsComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

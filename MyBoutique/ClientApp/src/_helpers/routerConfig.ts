@@ -9,6 +9,9 @@ import { OrdersDetailsComponent } from '../app/orders-details/orders-details.com
 import { ProductDetailsComponent } from '../app/product-details/product-details.component';
 import { SuccessfullOrderComponent } from '../app/successfull-order/successfull-order.component';
 import { EditProductComponent } from '../app/edit-product/edit-product.component';
+import { DeliveryComponent } from 'src/app/delivery/delivery.component';
+import { AboutusComponent } from 'src/app/aboutus/aboutus.component';
+import { TermsComponent } from 'src/app/terms/terms.component';
 
 export const routes: Routes = [    
     { path: 'products', component: HomeComponent },
@@ -21,7 +24,9 @@ export const routes: Routes = [
       { path: 'cart-orders', component: CartOrdersComponent },
       { path: 'orders-details', component: OrdersDetailsComponent },
       { path: 'successfull-order', component: SuccessfullOrderComponent },
-      
+      { path: 'delivery', component: DeliveryComponent },
+      { path: 'about-us', component: AboutusComponent },
+      { path: 'terms', component: TermsComponent }
 ];    
 
 

@@ -28,7 +28,6 @@ export class OrdersDetailsComponent implements OnInit {
       .subscribe(success => {
         if (success) {
           this.orderData = this.shoppingCartService.orderData;
-          console.log(this.orderData);
         }
       })
   }
@@ -46,7 +45,6 @@ export class OrdersDetailsComponent implements OnInit {
       console.log(element.id)
       this.orderService.deleteOrder(element.id)
       .subscribe(event => {
-        console.log(event)
         this.getOrdersData();
       });
     });

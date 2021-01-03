@@ -1,4 +1,4 @@
-<footer class="footer text-white">
+<!-- <footer class="footer text-white">
   <div id="footerColor" class="container">
       <div class="row">
         <div class="col-md-4 mb-3 text-center">
@@ -42,6 +42,59 @@
                       <input type="submit" value="Изпрати" class="btn btn-light">
                   </fieldset>
               </form>
+          </div>
+
+          <div class="col-md-3 m-2 text-center">
+            <h5 >Контакти</h5>
+            <ul class="text-left">
+                <li>
+                    <i class="fa fa-phone"></i>
+                    <a class="text-center">  0889919639</a>
+                </li>
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <a class="text-center">  Ул. Христо Ботев 1, гр.Кърджали</a>
+                </li>
+                <li>
+                    <i class="far fa-envelope"></i>
+                    <a class="text-center">  orders@moqbutik.com</a>
+                </li>
+            </ul>
+        </div>
+              
+    </div>
+</div>
+</footer> -->
+<footer class="footer text-white">
+  <div id="footerColor" class="container">
+      <div class="row">
+        <div class="col-md-4 mb-3 text-center">
+          <h5>Клиентски услуги</h5>
+          <div class="row">
+            <div class="col-md-12 text-left">
+              <ul>
+                <li><a [routerLink]="['delivery']">Доставка и плащане</a></li>
+                <li><a [routerLink]="['terms']">Общи условия</a></li>
+                <li><a [routerLink]="['about-us']">За нас</a></li>
+              </ul>
+            </div>
+          </div>
+          
+
+        </div>
+
+          <div class="col-md-4 mb-3 text-center">
+            <h5>Категории</h5>
+            <div class="row">
+              <div class="col-md-12 text-left">
+                <ul>
+                  <li><a [routerLink]="['male-products']">Мъжки</a></li>
+                  <li><a [routerLink]="['female-products']">Дамски</a></li>
+                  <li><a [routerLink]="['kid-products']">Детски</a></li>
+                </ul>
+              </div>
+            </div>
+              
           </div>
 
           <div class="col-md-3 m-2 text-center">
