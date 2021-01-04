@@ -6,7 +6,7 @@
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
                     aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
-                    <h3 class="font-weight-bold text-center dark-grey-text">Избери категория</h3>
+                  <h3 class="font-weight-bold text-center dark-grey-text">Избери подкатегория</h3>
                     <!-- <span class="navbar-toggler-icon"></span> -->
                 </button>
 
@@ -36,11 +36,11 @@
 <h3 class="font-weight-bold text-center dark-grey-text">Детски</h3>
 
 <div class="row">
-    <div *ngFor="let product of filteredProducts" class="col-md-3 mb-5">
+    <div *ngFor="let product of filteredProducts" class="col-md-2 mb-5 mt-2">
         <div class="card">
             <img src={{product.pictures[0].url}}
             alt="Denim Jeans" style="width:100%">
-            <h3>{{product.name}}</h3>
+            <h5>{{product.name}}</h5>
             <p class="price">{{product.price}} лв.</p>
             <p>
                 <a class="btn btn-outline-dark" [routerLink]='["/products",product.id]'>Виж повече</a>
