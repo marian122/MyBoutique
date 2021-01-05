@@ -36,6 +36,20 @@
 <h3 class="font-weight-bold text-center dark-grey-text">Детски</h3>
 
 <div class="row">
+  <div class="col-md-3">
+    <label class="font-weight-bold text-center dark-grey-text">Сортирай по:</label>
+    <select (change)="sortBy($event)" class="form-control" id="exampleFormControlSelect1">
+      <option value="low">Цена: ниска към висока</option>
+      <option value="high">Цена: висока към ниска</option>
+    </select>
+  </div>
+
+  <div class="col-md-6">
+    <h5 class="font-weight-bold text-center dark-grey-text">{{this.subcategory}}</h5>
+  </div>
+</div>
+
+<div class="row">
     <div *ngFor="let product of filteredProducts" class="col-md-2 mb-5 mt-2">
         <div class="card">
             <img src={{product.pictures[0].url}}

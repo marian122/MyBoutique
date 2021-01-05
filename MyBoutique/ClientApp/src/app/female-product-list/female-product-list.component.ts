@@ -18,6 +18,7 @@ export class FemaleProductListComponent implements OnInit {
   products: Product[] = [];
   subcategory = '';
   isExpanded = false;
+  selectedSort = '';
 
   constructor(private productsService: ProductsService,
               private alertService: AlertService) {
@@ -39,29 +40,55 @@ export class FemaleProductListComponent implements OnInit {
     this.isExpanded = !this.isExpanded;
   }
 
-  getProductsBySubcategory(value: any): void{
+  sortBy(event: any) {
+    this.selectedSort = event.target.value;
+
+    if (this.subcategory == '') {
+      this.getProductsByCategory();
+    } else {
+      this.getProductsBySubcategory(this.subcategory);
+    }
+  }
+
+  getProductsBySubcategory(value: any): void {
     this.subcategory = value;
 
     this.productsService.getAll().subscribe(
       products => {
         this.products = products
-        this.filteredProducts = this.products.filter(p =>  {
-          return p.categoryName === CategoryConstants.Female && p.categoryType === this.subcategory
-        });
-        this.filteredProducts.sort((a, b) => a.price - b.price);
+        if (this.selectedSort == '' || this.selectedSort == 'low') {
+          this.filteredProducts = this.products.filter(p => {
+            return p.categoryName === CategoryConstants.Female && p.categoryType === this.subcategory
+          });
+          this.filteredProducts.sort((a, b) => a.price - b.price);
+        } else if (this.selectedSort == 'high') {
+          this.filteredProducts = this.products.filter(p => {
+            return p.categoryName === CategoryConstants.Female && p.categoryType === this.subcategory
+          });
+          this.filteredProducts.sort((a, b) => b.price - a.price);
+        }
+
       },
       error => this.errorMessage = <any>error
     )
   }
 
-  getProductsByCategory(): void{
+  getProductsByCategory(): void {
     this.productsService.getAll().subscribe(
       products => {
         this.products = products
-        this.filteredProducts = this.products.filter(p =>  {
-          return p.categoryName === CategoryConstants.Female
-        });
-        this.filteredProducts.sort((a, b) => a.price - b.price);
+        if (this.selectedSort == '' || this.selectedSort == 'low') {
+          this.filteredProducts = this.products.filter(p => {
+            return p.categoryName === CategoryConstants.Female
+          });
+          this.filteredProducts.sort((a, b) => a.price - b.price);
+        } else if (this.selectedSort == 'high') {
+          this.filteredProducts = this.products.filter(p => {
+            return p.categoryName === CategoryConstants.Female
+          });
+          this.filteredProducts.sort((a, b) => b.price - a.price);
+        }
+
       },
       error => this.errorMessage = <any>error
     )
