@@ -118,7 +118,10 @@
               <ng-template #loggedOut>
                 <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
                   [routerLinkActiveOptions]="{ exact: true }">
-                  <a class="nav-link text-white" [routerLink]="['cart-orders']">Количка</a>
+                  <a [routerLink]="['cart-orders']">
+                    <img src="../../assets/shopping-cart-32.png" />
+                    <span class='badge badge-warning'> {{count}} </span>
+                  </a>
                 </li>
 
                 <li (click)="toggle()" class="nav-item" [routerLinkActive]="['link-active']"
