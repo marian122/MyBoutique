@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit{
     this.productsService.getAll().subscribe(
       products => {
         this.products = products
+        
         this.products.sort((a, b) => {
           return this.getTime(b.createdOn) - this.getTime(a.createdOn)
         });

@@ -19,7 +19,7 @@ namespace MyBoutique.Controllers
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly IDeletableEntityRepository<Picture> pictureRepository;
 
-        public OrdersController(IOrderService orderService, 
+        public OrdersController(IOrderService orderService,
             IHttpContextAccessor httpContextAccessor,
             IDeletableEntityRepository<Picture> pictureRepository)
         {
@@ -31,7 +31,7 @@ namespace MyBoutique.Controllers
 
         // POST: api/<OrdersController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]CreateOrderInputModel input)
+        public async Task<IActionResult> Post([FromBody] CreateOrderInputModel input)
         {
 
             if (this.ModelState.IsValid)
@@ -40,7 +40,7 @@ namespace MyBoutique.Controllers
                 {
                     //input.UserId = sessionId;
                     var result = await this.orderService.CreateOrderAsync(input);
-                    
+
                     if (result)
                     {
                         return this.Ok(result);
@@ -53,7 +53,7 @@ namespace MyBoutique.Controllers
                     return this.BadRequest(e.Message);
                 }
             }
-          
+
             return this.BadRequest("Failed to create order");
         }
 
@@ -114,11 +114,11 @@ namespace MyBoutique.Controllers
         }
 
         // GET: api/<OrderController>
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
+        [HttpGet("myOrders/{sessionId}")]
+        public async Task<IActionResult> GetAll(string sessionId)
         {
 
-            var sessionId = this.httpContextAccessor.HttpContext.Request.Cookies["cookie-name"];
+            //var sessionId = this.httpContextAccessor.HttpContext.Request.Cookies["cookie-name"];
 
             var result = await this.orderService.GetAllOrdersAsync<OrderViewModel>(sessionId);
 

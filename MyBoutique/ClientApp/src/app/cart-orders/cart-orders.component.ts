@@ -38,7 +38,7 @@ export class CartOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('cookie-name');
     this.getOrdersBySessionId();
-
+    console.log(this.cookieValue);
     this.form = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
@@ -87,7 +87,7 @@ export class CartOrdersComponent implements OnInit {
   }
 
   getOrdersBySessionId(): void {
-    this.orderService.getAllOrders()
+    this.orderService.getAllOrders(this.cookieValue)
       .subscribe(success => {
         if (success) {
           this.orders = this.orderService.orders;

@@ -18,8 +18,8 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
 
-  public getAllOrders() {
-    return this.http.get(`${environment.apiUrl}/api/orders`)
+  public getAllOrders(sessionId: string) {
+    return this.http.get(`${environment.apiUrl}/api/orders/myOrders/${sessionId}`)
       .pipe(map((data: Order[]) => {
         this.orders = data;
         return true;
